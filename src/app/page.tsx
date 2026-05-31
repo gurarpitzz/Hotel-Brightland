@@ -71,19 +71,19 @@ export default function Home() {
         <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-yellow-50 rounded-l-full opacity-50 -z-10 transform translate-x-1/3"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-4xl font-extrabold text-brand-green-900 mb-6">
-              Welcome to Brightland Hotel, Shimla
+            <h2 className="text-4xl font-extrabold text-brand-green-900 mb-6 tracking-tight">
+              A Timeless Escape in the Heart of Shimla
             </h2>
-            <h3 className="text-xl text-brand-green-700 font-medium mb-8">
-              For a great stay n&apos; style!
+            <h3 className="text-xl text-brand-green-700 font-medium mb-8 italic">
+              Where Imperial Heritage Meets Modern Luxury
             </h3>
             
-            <div className="space-y-6 text-gray-700 text-lg leading-relaxed text-justify md:text-center">
+            <div className="space-y-6 text-gray-700 text-lg leading-relaxed text-justify md:text-center max-w-4xl mx-auto">
               <p>
-                Brightland Hotel, Shimla is one of the oldest and leading hotels of Shimla, former summer capital of imperial India. We are open throughout the year – in all seasons and for all reasons, whether your stay is for a honeymoon, a business trip or for just a leisure-pleasure holiday! We provide most artistic, tastefully decorated, luxurious and fully furnished rooms/suites as well as excellent Indian cuisine.
+                As one of Shimla&apos;s most prestigious and historic properties, Brightland Hotel offers an unparalleled experience in the former summer capital of Imperial India. Open year-round, our estate provides a sanctuary for every season—whether you are seeking a romantic honeymoon, a distinguished corporate retreat, or a deeply relaxing mountain getaway. Step into our thoughtfully curated, luxuriously appointed suites and indulge in the finest authentic Indian cuisine.
               </p>
               <p>
-                Stay with us to just lose yourself in Shimla&apos;s myriad mysterious n&apos; wondrous moods that are reflected in... its whispering pines... floating clouds and mists... melodious drizzle... raindrops showering as hail n&apos; sleet... snowflakes gently falling from gray skies... distant twinkling lights of Tara Devi, Chail, Subathu and Kasauli!
+                Lose yourself in the mesmerizing, ever-changing moods of the Himalayas. Awaken to the scent of whispering pines, watch the floating mists roll through the valleys, and cozy up as snowflakes gently blanket the slate roofs. By dusk, watch the horizon come alive as the distant twinkling lights of Tara Devi, Chail, Subathu, and Kasauli illuminate the mountain sky.
               </p>
             </div>
           </div>
@@ -93,12 +93,12 @@ export default function Home() {
               <div className="inline-block bg-brand-green-800 text-brand-yellow-200 font-bold px-4 py-2 rounded-full text-sm mb-2 shadow-sm">
                 Established 1959
               </div>
-              <h3 className="text-3xl font-bold text-brand-green-900">A Hotel With A Legend.</h3>
+              <h3 className="text-3xl font-bold text-brand-green-900">A Heritage Woven in Legend</h3>
               <p className="text-gray-700 text-lg leading-relaxed">
-                Brightland is a successor to the famed hotels Imperial, Chambers and Central (housed in the many-acred Wyming Estate, Murree Hills, West Pakistan). We are proudly run by professionally qualified third and fourth generation hoteliers.
+                Our legacy runs deep. Brightland is the proud successor to the legendary Imperial, Chambers, and Central Hotels—once housed within the sprawling Wyming Estate of the Murree Hills. Today, we are passionately managed by third and fourth-generation hoteliers who carry forward an unbroken tradition of excellence.
               </p>
-              <p className="text-brand-green-800 font-bold text-lg mt-4">
-                Indeed, in Brightland, holidaying n&apos; hospitality is a way of life.
+              <p className="text-brand-green-800 font-bold text-xl mt-4 italic">
+                At Brightland, hospitality is not just a service—it is a cherished way of life.
               </p>
             </div>
             
@@ -123,9 +123,9 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-1 space-y-6">
-            <h2 className="text-3xl font-bold text-brand-green-800">Prime Location in Shimla</h2>
+            <h2 className="text-3xl font-bold text-brand-green-800">The Perfect Starting Point</h2>
             <p className="text-gray-600 text-lg">
-              Nestled strategically to give you the best of both worlds: tranquil mountain serenity and proximity to major attractions.
+              Strategically positioned to offer the absolute best of both worlds: deep, tranquil mountain serenity combined with effortless walking access to Shimla&apos;s most iconic attractions.
             </p>
             <ul className="space-y-3 text-gray-600">
               <li className="flex items-center space-x-3">
