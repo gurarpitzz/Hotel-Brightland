@@ -1,5 +1,6 @@
 import { Check, Info, AlertTriangle, Coffee, Utensils, Award, FileText } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "Tariff | Brightland Hotel, Shimla",
@@ -160,22 +161,35 @@ export default function TariffPage() {
 
         {/* Accreditations Footer */}
         <div className="border-t border-brand-green-200 pt-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div className="bg-white p-6 rounded-2xl border border-brand-green-100 shadow-sm">
-              <p className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-2">Registered With</p>
-              <h4 className="text-xl font-extrabold text-brand-green-900">H.P. Tourism Deptt.</h4>
-            </div>
-            <div className="bg-white p-6 rounded-2xl border border-brand-green-100 shadow-sm">
-              <p className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-2">Member Of</p>
-              <h4 className="text-xl font-extrabold text-brand-green-900">H.R.A.N.I.</h4>
-            </div>
-            <div className="bg-white p-6 rounded-2xl border border-brand-green-100 shadow-sm">
-              <p className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-2">Member Of</p>
-              <h4 className="text-xl font-extrabold text-brand-green-900">F.H.R.A.I.</h4>
-            </div>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 text-center">
+            
+            <a href="https://himachaltourism.gov.in/" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center bg-white p-6 rounded-2xl border border-brand-green-100 shadow-sm hover:shadow-md transition-shadow min-w-[220px]">
+              <p className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-4">Registered With</p>
+              <div className="relative w-32 h-24 transition-transform duration-300 group-hover:scale-105">
+                <Image src="/assets/accreditations/hp_tourism.jpg" alt="H.P. Tourism Department" fill className="object-contain" />
+              </div>
+              <h4 className="mt-4 text-lg font-extrabold text-brand-green-900 group-hover:text-brand-green-700 transition-colors">H.P. Tourism Deptt.</h4>
+            </a>
+
+            <a href="https://hrani.net.in/" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center bg-white p-6 rounded-2xl border border-brand-green-100 shadow-sm hover:shadow-md transition-shadow min-w-[220px]">
+              <p className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-4">Member Of</p>
+              <div className="relative w-32 h-24 transition-transform duration-300 group-hover:scale-105">
+                <Image src="/assets/accreditations/hrani.png" alt="H.R.A.N.I." fill className="object-contain" />
+              </div>
+              <h4 className="mt-4 text-lg font-extrabold text-brand-green-900 group-hover:text-brand-green-700 transition-colors">H.R.A.N.I.</h4>
+            </a>
+
+            <a href="https://fhrai.com/" target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center bg-white p-6 rounded-2xl border border-brand-green-100 shadow-sm hover:shadow-md transition-shadow min-w-[220px]">
+              <p className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-4">Member Of</p>
+              <div className="relative w-32 h-24 transition-transform duration-300 group-hover:scale-105">
+                <Image src="/assets/accreditations/fhrai.jpg" alt="F.H.R.A.I." fill className="object-contain" />
+              </div>
+              <h4 className="mt-4 text-lg font-extrabold text-brand-green-900 group-hover:text-brand-green-700 transition-colors">F.H.R.A.I.</h4>
+            </a>
+
           </div>
           
-          <div className="mt-12 text-center">
+          <div className="mt-16 text-center">
             <p className="text-xl text-brand-green-800 font-medium mb-6">
               Off Season Discount: As applicable. <br className="md:hidden" />
               <span className="font-bold">Get best deals on direct booking!</span>
