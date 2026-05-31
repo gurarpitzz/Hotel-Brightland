@@ -87,7 +87,7 @@ export default function Home() {
           </div>
           <div className="flex-1 w-full h-[400px] relative rounded-2xl overflow-hidden shadow-xl border border-brand-green-100">
             <iframe 
-              src="https://www.google.com/maps?cid=12391757659019198126&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en-US&source=embed" 
+              src="https://maps.google.com/maps?q=Brightland+Hotel,+Shimla&t=&z=15&ie=UTF8&iwloc=&output=embed" 
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 
