@@ -9,7 +9,7 @@ import { useCallback } from "react";
 const facilities = [
   {
     title: "Multi-Cuisine Restaurant",
-    description: "Enjoy delicious local Himachali, Indian, Chinese, and Continental dishes prepared fresh by our expert chefs. Our dining experience is designed to cater to every palate.",
+    description: "Embark on a culinary journey at our signature restaurant, where every meal is a celebration of flavor and tradition. Our expert chefs meticulously craft a diverse menu featuring authentic Himachali delicacies, aromatic Indian curries, zesty Chinese woks, and elegant Continental plates. Sourced from the freshest local ingredients, our dining experience is thoughtfully designed to indulge the senses and cater to every discerning palate.",
     icon: <Utensils className="w-8 h-8 text-brand-green-700" />,
     images: [
       "/assets/Restaurant/Restaurant 1.jpg",
@@ -19,8 +19,8 @@ const facilities = [
     pdfEmbed: "/assets/BL-Menu.pdf"
   },
   {
-    title: "Terrace Garden",
-    description: "Relax in our beautiful terrace garden with a cup of tea while enjoying the panoramic views of the Shimla mountains. The perfect spot for morning yoga or evening relaxation.",
+    title: "The Terrace Garden",
+    description: "Step into our lush, beautifully manicured Terrace Garden—a serene oasis suspended above the bustling world below. Surrounded by the majestic Shimla mountains, it is the ultimate sanctuary for morning meditation, afternoon high tea, or an intimate evening under the stars. Breathe in the crisp Himalayan air as you unwind amidst vibrant blooms and panoramic valley views.",
     icon: <TreePine className="w-8 h-8 text-brand-green-700" />,
     images: [
       "/assets/Terrace Garden/Garden (4).JPG",
@@ -30,8 +30,8 @@ const facilities = [
     ]
   },
   {
-    title: "Free Secure Parking",
-    description: "Ample and safe parking space available for all our guests right at the hotel premises—a rare luxury in Shimla. Drive in and park with complete peace of mind.",
+    title: "Exclusive Private Parking",
+    description: "Navigating the winding roads of Shimla is thrilling, but finding parking shouldn't be. We offer the rare luxury of ample, secure, and complimentary on-site parking exclusively for our guests. Drive directly into our private premises and enjoy complete peace of mind, knowing your vehicle is safe and accessible at all times.",
     icon: <Car className="w-8 h-8 text-brand-green-700" />,
     images: [
       "/assets/Hotel building/Hotel building (1).jpg",
@@ -41,8 +41,8 @@ const facilities = [
     ]
   },
   {
-    title: "24/7 Room Service & Reception",
-    description: "Round-the-clock room service and a dedicated reception team to cater to all your needs, ensuring a hassle-free and luxurious stay from check-in to check-out.",
+    title: "24/7 Guest Services",
+    description: "True luxury lies in effortless convenience. Our dedicated reception and room service teams are at your disposal around the clock. Whether you require a midnight snack, early morning travel arrangements, or a sudden change in itinerary, our staff is committed to anticipating your needs and delivering flawless, highly personalized service throughout your stay.",
     icon: <Clock className="w-8 h-8 text-brand-green-700" />,
     images: [
       "/assets/Reception/reception.JPG"
@@ -64,14 +64,14 @@ function FacilityCarousel({ images }: { images: string[] }) {
 
   if (images.length === 1) {
     return (
-      <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
+      <div className="relative h-full min-h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
         <Image src={images[0]} alt="Facility Image" fill className="object-cover" />
       </div>
     );
   }
 
   return (
-    <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-xl group bg-black/5">
+    <div className="relative h-full min-h-[400px] w-full rounded-2xl overflow-hidden shadow-xl group bg-black/5">
       <div className="overflow-hidden h-full" ref={emblaRef}>
         <div className="flex h-full">
           {images.map((src, idx) => (
@@ -122,7 +122,7 @@ export default function FacilitiesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8 }}
-                className={`flex flex-col gap-12 items-center ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+                className={`flex flex-col gap-12 items-center lg:items-stretch ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
               >
                 {/* Images Side */}
                 <div className="w-full lg:w-1/2">
