@@ -1,11 +1,18 @@
 @import "tailwindcss";
 
 @theme {
+  --color-brand-green-50: #ecfdf5;
+  --color-brand-green-100: #d1fae5;
+  --color-brand-green-200: #a7f3d0;
+  --color-brand-green-500: #10b981;
+  --color-brand-green-600: #059669;
   --color-brand-green-700: #047857; /* Tailwind Emerald 700 */
   --color-brand-green-800: #065f46; /* Tailwind Emerald 800 */
   --color-brand-green-900: #022c22;
   --color-brand-yellow-50: #fffde7; /* Mild yellow */
   --color-brand-yellow-100: #fff9c4;
+  --color-brand-yellow-200: #fff59d;
+  --color-brand-yellow-600: #fbc02d;
   --font-cursive: var(--font-great-vibes);
 }
 
