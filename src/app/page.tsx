@@ -66,6 +66,59 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About & Legacy Section */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-yellow-50 rounded-l-full opacity-50 -z-10 transform translate-x-1/3"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <h2 className="text-4xl font-extrabold text-brand-green-900 mb-6">
+              Welcome to Brightland Hotel, Shimla
+            </h2>
+            <h3 className="text-xl text-brand-green-700 font-medium mb-8">
+              For a great stay n&apos; style!
+            </h3>
+            
+            <div className="space-y-6 text-gray-700 text-lg leading-relaxed text-justify md:text-center">
+              <p>
+                Brightland Hotel, Shimla is one of the oldest and leading hotels of Shimla, former summer capital of imperial India. We are open throughout the year – in all seasons and for all reasons, whether your stay is for a honeymoon, a business trip or for just a leisure-pleasure holiday! We provide most artistic, tastefully decorated, luxurious and fully furnished rooms/suites as well as excellent Indian cuisine.
+              </p>
+              <p>
+                Stay with us to just lose yourself in Shimla&apos;s myriad mysterious n&apos; wondrous moods that are reflected in... its whispering pines... floating clouds and mists... melodious drizzle... raindrops showering as hail n&apos; sleet... snowflakes gently falling from gray skies... distant twinkling lights of Tara Devi, Chail, Subathu and Kasauli!
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center bg-brand-yellow-50 rounded-3xl p-8 md:p-12 border border-brand-yellow-100 shadow-sm">
+            <div className="space-y-4">
+              <div className="inline-block bg-brand-green-800 text-brand-yellow-200 font-bold px-4 py-2 rounded-full text-sm mb-2 shadow-sm">
+                Established 1959
+              </div>
+              <h3 className="text-3xl font-bold text-brand-green-900">A Hotel With A Legend.</h3>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Brightland is a successor to the famed hotels Imperial, Chambers and Central (housed in the many-acred Wyming Estate, Murree Hills, West Pakistan). We are proudly run by professionally qualified third and fourth generation hoteliers.
+              </p>
+              <p className="text-brand-green-800 font-bold text-lg mt-4">
+                Indeed, in Brightland, holidaying n&apos; hospitality is a way of life.
+              </p>
+            </div>
+            
+            <div className="relative h-72 md:h-full w-full rounded-2xl overflow-hidden shadow-lg border-4 border-white">
+              <Image 
+                src="/assets/Hotel building/Hotel building (1).jpg" 
+                alt="Brightland Hotel Legacy" 
+                fill 
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-brand-green-900/20"></div>
+              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-md">
+                <p className="text-brand-green-900 font-extrabold">The Best Address in Shimla</p>
+                <p className="text-gray-600 text-sm font-medium">Since 1959</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Location Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-12 items-center">
