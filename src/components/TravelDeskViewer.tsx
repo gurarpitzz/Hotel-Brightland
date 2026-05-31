@@ -16,9 +16,9 @@ const categories = [
     title: "Walk Around The Town",
     icon: <Navigation size={20} />,
     images: [
-      "https://images.unsplash.com/photo-1526391456885-3b918b959d28?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1588629555182-36c646067b5e?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1627993077794-fb5e66299b80?auto=format&fit=crop&q=80&w=1000"
+      "/assets/tours/shimla_city.png",
+      "/assets/tours/forest.png",
+      "/assets/tours/himalayas.png"
     ],
     destinations: [
       {
@@ -78,9 +78,9 @@ const categories = [
     title: "Shimla From Dawn-To-Dusk",
     icon: <Sunrise size={20} />,
     images: [
-      "https://images.unsplash.com/photo-1601334460492-c4e207908b98?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1602416410620-1d898a87bdf5?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?auto=format&fit=crop&q=80&w=1000"
+      "/assets/tours/himalayas.png",
+      "/assets/tours/shimla_city.png",
+      "/assets/tours/forest.png"
     ],
     destinations: [
       {
@@ -148,9 +148,9 @@ const categories = [
     title: "River Valley",
     icon: <Compass size={20} />,
     images: [
-      "https://images.unsplash.com/photo-1627993077794-fb5e66299b80?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1628198305001-c8ef63403d6d?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1601334460492-c4e207908b98?auto=format&fit=crop&q=80&w=1000"
+      "/assets/tours/forest.png",
+      "/assets/tours/himalayas.png",
+      "/assets/tours/shimla_city.png"
     ],
     destinations: [
       {
@@ -199,9 +199,9 @@ const categories = [
     title: "Misty Meadows",
     icon: <Mountain size={20} />,
     images: [
-      "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1616801931674-d4dd21f8a7e0?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1628198305001-c8ef63403d6d?auto=format&fit=crop&q=80&w=1000"
+      "/assets/tours/himalayas.png",
+      "/assets/tours/forest.png",
+      "/assets/tours/shimla_city.png"
     ],
     destinations: [
       {
@@ -268,9 +268,9 @@ const categories = [
     title: "Himalayan Heights",
     icon: <MapIcon size={20} />,
     images: [
-      "https://images.unsplash.com/photo-1616801931674-d4dd21f8a7e0?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1627993077794-fb5e66299b80?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?auto=format&fit=crop&q=80&w=1000"
+      "/assets/tours/forest.png",
+      "/assets/tours/himalayas.png",
+      "/assets/tours/shimla_city.png"
     ],
     destinations: [
       {
@@ -307,9 +307,9 @@ const categories = [
     title: "Shimla-On-Wheels",
     icon: <Train size={20} />,
     images: [
-      "https://images.unsplash.com/photo-1628198305001-c8ef63403d6d?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1627993077794-fb5e66299b80?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1526391456885-3b918b959d28?auto=format&fit=crop&q=80&w=1000"
+      "/assets/tours/shimla_city.png",
+      "/assets/tours/forest.png",
+      "/assets/tours/himalayas.png"
     ],
     destinations: [
       {
@@ -345,9 +345,9 @@ const categories = [
     title: "Other Recreations",
     icon: <Gamepad2 size={20} />,
     images: [
-      "https://images.unsplash.com/photo-1588629555182-36c646067b5e?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1526391456885-3b918b959d28?auto=format&fit=crop&q=80&w=1000",
-      "https://images.unsplash.com/photo-1601334460492-c4e207908b98?auto=format&fit=crop&q=80&w=1000"
+      "/assets/tours/shimla_city.png",
+      "/assets/tours/himalayas.png",
+      "/assets/tours/forest.png"
     ],
     destinations: [
       {
@@ -400,7 +400,7 @@ export default function TravelDeskViewer() {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 pb-16">
+    <div className="w-full mx-auto flex flex-col lg:flex-row gap-8 pb-16">
       {/* Sidebar Navigation */}
       <div className="w-full lg:w-1/3 xl:w-1/4 shrink-0 z-10">
         <div className="bg-white rounded-3xl p-4 shadow-sm border border-brand-green-100 lg:sticky lg:top-24">
