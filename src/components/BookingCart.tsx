@@ -3,13 +3,24 @@
 import { useBooking } from "@/context/BookingContext";
 import { X, Calendar as CalendarIcon, Users, CreditCard } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
+import React from "react";
 
 export default function BookingCart() {
-  const { booking, isCartOpen, setIsCartOpen, calculateTotal, generateWhatsAppLink } = useBooking();
+  const { booking, setBooking, isCartOpen, setIsCartOpen, calculateTotal, generateWhatsAppLink } = useBooking();
   const { nights, total, baseRate } = calculateTotal();
 
   if (!isCartOpen) return null;
+
+  const handleCheckInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newDate = e.target.value ? parseISO(e.target.value) : null;
+    setBooking((prev) => ({ ...prev, checkIn: newDate }));
+  };
+
+  const handleCheckOutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newDate = e.target.value ? parseISO(e.target.value) : null;
+    setBooking((prev) => ({ ...prev, checkOut: newDate }));
+  };
 
   return (
     <AnimatePresence>
@@ -62,33 +73,66 @@ export default function BookingCart() {
                         </p>
                       </div>
 
-                      {/* Dates */}
+                      {/* Dates with Inputs */}
                       <div className="mb-6 border-b border-gray-100 pb-4 flex items-start space-x-3">
                         <CalendarIcon className="text-brand-green-700 mt-1" size={20} />
-                        <div>
-                          <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">Stay Dates</h3>
-                          <p className="text-base text-gray-900">
-                            <span className="font-semibold">Check-in:</span> {booking.checkIn ? format(booking.checkIn, "MMM dd, yyyy") : "Select Date"}
-                          </p>
-                          <p className="text-base text-gray-900">
-                            <span className="font-semibold">Check-out:</span> {booking.checkOut ? format(booking.checkOut, "MMM dd, yyyy") : "Select Date"}
-                          </p>
+                        <div className="w-full">
+                          <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Stay Dates</h3>
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-xs font-semibold text-gray-700 mb-1">Check-in</label>
+                              <input 
+                                type="date" 
+                                className="w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-brand-green-500 focus:border-brand-green-500"
+                                value={booking.checkIn ? format(booking.checkIn, "yyyy-MM-dd") : ""}
+                                onChange={handleCheckInChange}
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-semibold text-gray-700 mb-1">Check-out</label>
+                              <input 
+                                type="date" 
+                                className="w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-brand-green-500 focus:border-brand-green-500"
+                                value={booking.checkOut ? format(booking.checkOut, "yyyy-MM-dd") : ""}
+                                onChange={handleCheckOutChange}
+                              />
+                            </div>
+                          </div>
                           {nights > 0 && (
-                            <p className="text-sm text-brand-green-700 mt-1 font-medium bg-brand-green-50 inline-block px-2 py-0.5 rounded">
+                            <p className="text-sm text-brand-green-700 mt-3 font-medium bg-brand-green-50 inline-block px-2 py-0.5 rounded">
                               {nights} Night{nights > 1 ? 's' : ''} Stay
                             </p>
                           )}
                         </div>
                       </div>
 
-                      {/* Guests */}
+                      {/* Guests with Inputs */}
                       <div className="mb-6 border-b border-gray-100 pb-4 flex items-start space-x-3">
                         <Users className="text-brand-green-700 mt-1" size={20} />
-                        <div>
-                          <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">Guests</h3>
-                          <p className="text-base text-gray-900">
-                            {booking.adults} Adults, {booking.children} Children
-                          </p>
+                        <div className="w-full">
+                          <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Guests</h3>
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <label className="block text-xs font-semibold text-gray-700 mb-1">Adults</label>
+                              <input 
+                                type="number" 
+                                min="1"
+                                className="w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-brand-green-500 focus:border-brand-green-500"
+                                value={booking.adults}
+                                onChange={(e) => setBooking(prev => ({ ...prev, adults: parseInt(e.target.value) || 1 }))}
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-semibold text-gray-700 mb-1">Children</label>
+                              <input 
+                                type="number" 
+                                min="0"
+                                className="w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-brand-green-500 focus:border-brand-green-500"
+                                value={booking.children}
+                                onChange={(e) => setBooking(prev => ({ ...prev, children: parseInt(e.target.value) || 0 }))}
+                              />
+                            </div>
+                          </div>
                         </div>
                       </div>
 
@@ -98,7 +142,7 @@ export default function BookingCart() {
                         <div className="w-full">
                           <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Pricing Estimate</h3>
                           {booking.roomType ? (
-                            <div className="bg-gray-50 rounded-lg p-3 w-full">
+                            <div className="bg-gray-50 rounded-lg p-3 w-full border border-gray-100">
                               <div className="flex justify-between text-sm text-gray-600 mb-1">
                                 <span>Base Rate (per night)</span>
                                 <span>₹{baseRate}</span>
@@ -107,7 +151,7 @@ export default function BookingCart() {
                                 <span>Nights</span>
                                 <span>x {nights}</span>
                               </div>
-                              <div className="flex justify-between text-lg font-bold text-brand-green-900 pt-2 border-t border-gray-200">
+                              <div className="flex justify-between text-lg font-bold text-brand-green-900 pt-2 border-t border-gray-200 mt-2">
                                 <span>Total Estimate</span>
                                 <span>₹{total}</span>
                               </div>
@@ -125,17 +169,27 @@ export default function BookingCart() {
 
               {/* Checkout Footer */}
               <div className="border-t border-brand-green-200 bg-white px-4 py-6 sm:px-6">
-                <p className="text-xs text-center text-gray-500 mb-4">
-                  By proceeding, you will be redirected to WhatsApp to confirm your dates and process the booking deposit directly with our staff.
-                </p>
-                <div className="mt-6">
+                
+                {/* Scrollable Terms & Conditions Box */}
+                <div className="mb-5">
+                  <h4 className="text-xs font-semibold text-gray-700 mb-2 uppercase tracking-wider">Terms & Conditions</h4>
+                  <div className="h-28 overflow-y-auto text-[11px] text-gray-600 border border-gray-200 rounded-lg p-3 bg-gray-50 leading-relaxed shadow-inner">
+                    <p className="mb-2"><strong>1. Booking & Deposit:</strong> A minimum advance deposit is required to confirm your booking. The remaining balance must be paid upon check-in.</p>
+                    <p className="mb-2"><strong>2. Check-In & Check-Out:</strong> Standard check-in time is 1:00 PM and check-out is 11:00 AM. Early check-in or late check-out is subject to availability and may incur additional charges.</p>
+                    <p className="mb-2"><strong>3. Cancellation Policy:</strong> Cancellations made 7 days prior to arrival will receive a full refund. Cancellations made within 7 days are non-refundable.</p>
+                    <p className="mb-2"><strong>4. Identification:</strong> All guests (including children) must present a valid government-issued ID upon arrival.</p>
+                    <p><strong>5. Damages:</strong> Any damages to hotel property caused by the guest will be billed directly to the guest's account.</p>
+                  </div>
+                </div>
+
+                <div className="mt-4">
                   <a
                     href={generateWhatsAppLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center rounded-xl border border-transparent bg-brand-green-700 px-6 py-4 text-base font-bold text-white shadow-lg hover:bg-brand-green-800 transition-all transform hover:scale-[1.02]"
+                    className="flex items-center justify-center rounded-xl border border-transparent bg-brand-green-700 px-4 py-4 text-sm font-bold text-white shadow-lg hover:bg-brand-green-800 transition-all transform hover:scale-[1.02] text-center leading-snug"
                   >
-                    Confirm & Chat to Book
+                    Read all terms and conditions continue to chat to Book Room
                   </a>
                 </div>
                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
