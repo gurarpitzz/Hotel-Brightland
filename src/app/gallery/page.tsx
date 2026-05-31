@@ -15,7 +15,9 @@ function getAssetImages(dir: string, baseDir: string): string[] {
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      images = [...images, ...getAssetImages(fullPath, baseDir)];
+      if (entry.name.toLowerCase() !== "logo") {
+        images = [...images, ...getAssetImages(fullPath, baseDir)];
+      }
     } else {
       const ext = path.extname(entry.name).toLowerCase();
       if ([".jpg", ".jpeg", ".png", ".gif", ".webp"].includes(ext)) {
