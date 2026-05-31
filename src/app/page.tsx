@@ -85,22 +85,17 @@ export default function Home() {
                 <span>15 minutes walk to the historic Toy Train</span>
               </li>
             </ul>
-            <a
-              href="https://maps.app.goo.gl/aBS4dAoDwjUdKePy5"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-4 bg-brand-green-50 text-brand-green-800 border border-brand-green-200 px-6 py-3 rounded-lg font-semibold hover:bg-brand-yellow-50 transition-colors"
-            >
-              Get Directions via Google Maps
-            </a>
           </div>
-          <div className="flex-1 w-full h-[400px] relative rounded-2xl overflow-hidden shadow-xl">
-             <Image
-              src="/assets/View from Hotel/View  (2).jpg"
-              alt="View from Brightland Hotel"
-              fill
-              className="object-cover"
-            />
+          <div className="flex-1 w-full h-[400px] relative rounded-2xl overflow-hidden shadow-xl border border-brand-green-100">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3418.0664983693257!2d77.16872227633215!3d31.10850257440409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390578f1498b965f%3A0xc3b2f5674092b3a!2sBrightland%20Hotel!5e0!3m2!1sen!2sin!4v1717235221000!5m2!1sen!2sin" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </section>
