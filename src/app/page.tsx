@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 import { useBooking } from "@/context/BookingContext";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const { setIsCartOpen } = useBooking();
@@ -28,14 +29,29 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-green-900/90 to-transparent" />
         <div className="absolute inset-0 flex flex-col justify-end pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 shadow-sm">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 shadow-sm"
+          >
             Experience the True <br className="hidden sm:block" />
             <span className="text-brand-yellow-100">Beauty of Shimla</span>
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-200 max-w-2xl mb-8">
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-lg sm:text-xl text-gray-200 max-w-2xl mb-8"
+          >
             Enjoy premium comfort, breathtaking mountain views, and exceptional hospitality at Brightland Hotel. Just minutes away from Shimla's finest attractions.
-          </p>
-          <div className="flex flex-wrap gap-4">
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-wrap gap-4"
+          >
             <Link
               href="/rooms"
               className="bg-brand-green-700 hover:bg-brand-green-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-colors shadow-lg"
@@ -48,7 +64,7 @@ export default function Home() {
             >
               Book Directly
             </button>
-          </div>
+          </motion.div>
         </div>
       </section>
 

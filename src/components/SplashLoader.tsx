@@ -37,7 +37,10 @@ export default function SplashLoader() {
           <div className="flex flex-col items-center">
             <div className="relative w-48 h-48 sm:w-64 sm:h-64 mb-6">
               {/* Using a standard img tag prevents Next.js hydration delays for critical splash screens */}
-              <img
+              <motion.img
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 src="/assets/logo/logo.png"
                 alt="Brightland Hotel Logo"
                 className="w-full h-full object-contain"
