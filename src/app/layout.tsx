@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import SplashLoader from "@/components/SplashLoader";
 import FloatingContactBar from "@/components/FloatingContactBar";
 import Providers from "@/components/Providers";
@@ -43,6 +44,7 @@ export default function RootLayout({
           <SplashLoader />
           <Header />
           <main className="flex-1">{children}</main>
+          <Footer />
           <FloatingContactBar />
           <BookingCart />
         </Providers>
