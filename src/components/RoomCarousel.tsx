@@ -12,9 +12,13 @@ interface RoomCarouselProps {
 }
 
 export default function RoomCarousel({ images, badgeText }: RoomCarouselProps) {
+  const autoplayPlugin = React.useRef(
+    Autoplay({ delay: 3500, stopOnInteraction: false })
+  );
+  
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true },
-    [Autoplay({ delay: 3500, stopOnInteraction: true, stopOnMouseEnter: true })]
+    [autoplayPlugin.current]
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
 

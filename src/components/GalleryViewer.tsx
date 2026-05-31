@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
@@ -14,9 +14,13 @@ export default function GalleryViewer({ images }: { images: string[] }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   // Slideshow State
+  const autoplayPlugin = React.useRef(
+    Autoplay({ delay: 3500, stopOnInteraction: false })
+  );
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true },
-    [Autoplay({ delay: 3500, stopOnInteraction: true, stopOnMouseEnter: true })]
+    [autoplayPlugin.current]
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
 

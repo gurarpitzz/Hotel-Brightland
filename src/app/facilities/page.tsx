@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Utensils, TreePine, Car, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 
 const facilities = [
   {
@@ -53,9 +53,13 @@ const facilities = [
 
 // Carousel Component for each Facility
 function FacilityCarousel({ images }: { images: string[] }) {
+  const autoplayPlugin = React.useRef(
+    Autoplay({ delay: 3500, stopOnInteraction: false })
+  );
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true },
-    [Autoplay({ delay: 3500, stopOnInteraction: true, stopOnMouseEnter: true })]
+    [autoplayPlugin.current]
   );
 
   const scrollPrev = useCallback(() => {
