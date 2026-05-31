@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <section className="relative h-[80vh] w-full bg-brand-green-900">
+      <section className="relative min-h-screen w-full bg-brand-green-900">
         <Image
           src="/assets/Hotel building/Hotel building (5).jpg"
           alt="Brightland Hotel Building"
