@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 export default function SplashLoader() {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,34 +34,26 @@ export default function SplashLoader() {
           transition={{ duration: 0.8, ease: "easeInOut" }}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-brand-yellow-50 h-screen w-screen"
         >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="flex flex-col items-center"
-          >
+          <div className="flex flex-col items-center">
             <div className="relative w-48 h-48 sm:w-64 sm:h-64 mb-6">
-              <Image
+              {/* Using a standard img tag prevents Next.js hydration delays for critical splash screens */}
+              <img
                 src="/assets/logo/logo.png"
                 alt="Brightland Hotel Logo"
-                fill
-                className="object-contain"
-                priority
-                fetchPriority="high"
-                loading="eager"
-                unoptimized // Bypasses Next.js server-side processing for instant initial load
+                className="w-full h-full object-contain"
+                width={256}
+                height={256}
               />
             </div>
             <motion.h1
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+              transition={{ delay: 0.1, duration: 0.4, ease: "easeOut" }}
               className="text-5xl sm:text-6xl font-cursive text-brand-green-800 text-center"
             >
               Brightland Hotel
             </motion.h1>
-          </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

@@ -40,6 +40,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="preload" as="image" href="/assets/logo/logo.png" />
+      </head>
       <body className="min-h-full flex flex-col pb-16 md:pb-0">
         <Providers>
           <SplashLoader />
