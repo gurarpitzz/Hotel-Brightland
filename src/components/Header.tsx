@@ -45,13 +45,13 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Logo Section */}
           <Link href="/"
-            className="flex-shrink-0 cursor-pointer select-none flex items-center space-x-3"
+            className="flex-shrink-0 cursor-pointer select-none flex items-center space-x-2 sm:space-x-3"
             onDoubleClick={handleLogoDoubleClick}
           >
-            <div className="relative w-12 h-12">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12">
               <Image 
                 src="/assets/logo/logo.png" 
                 alt="Brightland Hotel Logo" 
@@ -59,7 +59,7 @@ export default function Header() {
                 className="object-contain" 
               />
             </div>
-            <span className="font-cursive text-3xl tracking-tight text-brand-green-800 hidden sm:block mt-2">
+            <span className="font-cursive text-[1.4rem] sm:text-3xl tracking-tight text-brand-green-800 mt-1 sm:mt-2 whitespace-nowrap">
               Brightland Hotel
             </span>
           </Link>
