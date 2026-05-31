@@ -18,10 +18,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
       <section className="relative h-[80vh] w-full bg-brand-green-900">
         <Image
-          src="/assets/Hotel building/Hotel building (1).jpg"
+          src="/assets/Hotel building/Hotel building (5).jpg"
           alt="Brightland Hotel Building"
           fill
           className="object-cover opacity-70"
