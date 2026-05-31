@@ -20,44 +20,78 @@ export default function TravelDeskPage() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-brand-green-100 overflow-hidden mb-12">
-          <div className="p-8">
-            <h2 className="text-2xl font-bold text-brand-green-900 mb-6 border-b border-gray-100 pb-4">
-              Popular Local Tours
-            </h2>
-            
-            <div className="space-y-8">
-              <div className="flex flex-col sm:flex-row gap-6">
-                <div className="bg-brand-yellow-100/50 p-4 rounded-xl flex items-center justify-center shrink-0 w-24 h-24">
-                  <MapPin className="text-brand-green-700 w-10 h-10" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-brand-green-800 mb-2">Kufri & Fagu Valley Tour</h3>
-                  <p className="text-gray-600 mb-2">Experience the snow-capped peaks, horse riding, and the Himalayan Nature Park at Kufri. Enjoy the scenic beauty of Fagu Valley.</p>
-                  <p className="text-sm font-medium text-brand-green-700 flex items-center"><Clock size={16} className="mr-1" /> Duration: Half Day</p>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-6">
-                <div className="bg-brand-yellow-100/50 p-4 rounded-xl flex items-center justify-center shrink-0 w-24 h-24">
-                  <MapPin className="text-brand-green-700 w-10 h-10" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-brand-green-800 mb-2">Naldehra & Mashobra Tour</h3>
-                  <p className="text-gray-600 mb-2">Visit the famous 18-hole golf course at Naldehra surrounded by cedar forests, and explore the apple orchards of Mashobra.</p>
-                  <p className="text-sm font-medium text-brand-green-700 flex items-center"><Clock size={16} className="mr-1" /> Duration: Full Day</p>
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-brand-green-900 mb-10 text-center">
+            Unforgettable Local Experiences
+          </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Kufri Tour */}
+            <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-brand-green-100 group hover:shadow-2xl transition-all duration-300">
+              <div className="relative h-64 w-full overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?auto=format&fit=crop&q=80&w=1000"
+                  alt="Kufri Snow Peaks"
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-brand-green-800 shadow-sm flex items-center">
+                  <Clock size={14} className="mr-1" /> Half Day
                 </div>
               </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-brand-green-900 mb-3">Kufri & Fagu Valley</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Immerse yourself in a winter wonderland. Ride horseback through dense cedar forests to Mahasu Peak, experience the adrenaline of skiing on fresh snow, and lose yourself in the breathtaking, panoramic vistas of the Himalayan ranges at Fagu Valley. An absolute must for nature and adventure lovers.
+                </p>
+                <button className="w-full bg-brand-green-50 text-brand-green-800 hover:bg-brand-green-700 hover:text-white py-3 rounded-xl font-bold transition-colors">
+                  Inquire Now
+                </button>
+              </div>
+            </div>
 
-              <div className="flex flex-col sm:flex-row gap-6">
-                <div className="bg-brand-yellow-100/50 p-4 rounded-xl flex items-center justify-center shrink-0 w-24 h-24">
-                  <MapPin className="text-brand-green-700 w-10 h-10" />
+            {/* Naldehra Tour */}
+            <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-brand-green-100 group hover:shadow-2xl transition-all duration-300">
+              <div className="relative h-64 w-full overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1601334460492-c4e207908b98?auto=format&fit=crop&q=80&w=1000"
+                  alt="Naldehra Forests"
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-brand-green-800 shadow-sm flex items-center">
+                  <Clock size={14} className="mr-1" /> Full Day
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-brand-green-800 mb-2">Shimla Local Sightseeing</h3>
-                  <p className="text-gray-600 mb-2">Explore the Vice Regal Lodge (Indian Institute of Advanced Study), Jakhu Temple, State Museum, and the famous Mall Road.</p>
-                  <p className="text-sm font-medium text-brand-green-700 flex items-center"><Clock size={16} className="mr-1" /> Duration: Half Day</p>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-brand-green-900 mb-3">Naldehra & Mashobra</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Step into serene tranquility. Wander through the world-famous 18-hole golf course perched amidst towering deodar trees. Later, breathe in the crisp mountain air as you stroll through the aromatic, sun-drenched apple orchards of Mashobra. A perfect escape for absolute peace of mind.
+                </p>
+                <button className="w-full bg-brand-green-50 text-brand-green-800 hover:bg-brand-green-700 hover:text-white py-3 rounded-xl font-bold transition-colors">
+                  Inquire Now
+                </button>
+              </div>
+            </div>
+
+            {/* Shimla Sightseeing */}
+            <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-brand-green-100 group hover:shadow-2xl transition-all duration-300">
+              <div className="relative h-64 w-full overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1526391456885-3b918b959d28?auto=format&fit=crop&q=80&w=1000"
+                  alt="Shimla Mall Road"
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-brand-green-800 shadow-sm flex items-center">
+                  <Clock size={14} className="mr-1" /> Half Day
                 </div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-brand-green-900 mb-3">Heritage Sightseeing</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Travel back in time through Shimla's rich colonial heritage. Marvel at the majestic architecture of the Vice Regal Lodge, seek blessings at the towering Jakhu Temple, and end your evening with a vibrant, bustling walk down the iconic Mall Road as the sun sets over the valley.
+                </p>
+                <button className="w-full bg-brand-green-50 text-brand-green-800 hover:bg-brand-green-700 hover:text-white py-3 rounded-xl font-bold transition-colors">
+                  Inquire Now
+                </button>
               </div>
             </div>
           </div>
