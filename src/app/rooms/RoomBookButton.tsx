@@ -1,6 +1,6 @@
 "use client";
 
-import { useBooking } from "@/context/BookingContext";
+import { useBooking, RoomCategory } from "@/context/BookingContext";
 
 interface RoomBookButtonProps {
   roomType: string;
@@ -11,9 +11,17 @@ export default function RoomBookButton({ roomType, baseRate }: RoomBookButtonPro
   const { setBooking, setIsCartOpen } = useBooking();
 
   const handleBookNow = () => {
+    // Map full names to keys if needed, but since it's just a TS error, we can cast it.
+    let mappedType = "imperial";
+    if (roomType.toLowerCase().includes("royal")) mappedType = "royal";
+    else if (roomType.toLowerCase().includes("corporate")) mappedType = "corporate";
+    else if (roomType.toLowerCase().includes("presidential")) mappedType = "presidential";
+    else if (roomType.toLowerCase().includes("regal")) mappedType = "regal";
+    else if (roomType.toLowerCase().includes("imperial")) mappedType = "imperial";
+    
     setBooking((prev) => ({
       ...prev,
-      roomType: roomType,
+      roomType: mappedType as RoomCategory,
     }));
     setIsCartOpen(true);
   };
