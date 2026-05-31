@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-green-700: #047857; /* Tailwind Emerald 700 */
+  --color-brand-green-800: #065f46; /* Tailwind Emerald 800 */
+  --color-brand-green-900: #022c22;
+  --color-brand-yellow-50: #fffde7; /* Mild yellow */
+  --color-brand-yellow-100: #fff9c4;
+  --font-cursive: var(--font-great-vibes);
+}
+
+:root {
+  --background: var(--color-brand-yellow-50);
+  --foreground: var(--color-brand-green-900);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--color-brand-green-900);
+    --foreground: var(--color-brand-yellow-50);
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
