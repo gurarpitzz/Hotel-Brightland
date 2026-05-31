@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function SplashLoader() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
     // Check if the splash screen has already been shown in this session
@@ -19,13 +20,16 @@ export default function SplashLoader() {
       }, 2500);
       
       return () => clearTimeout(timer);
+    } else {
+      setIsMounted(false);
     }
   }, []);
 
-  if (!isVisible && typeof window !== 'undefined' && sessionStorage.getItem("hasShownSplash")) return null;
+  // Return null if we know we don't need to show it, avoiding an empty AnimatePresence
+  if (!isMounted) return null;
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={() => setIsMounted(false)}>
       {isVisible && (
         <motion.div
           key="splash"
