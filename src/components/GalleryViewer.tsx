@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import { Grid, Presentation, ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
 
 export default function GalleryViewer({ images }: { images: string[] }) {
@@ -13,7 +14,10 @@ export default function GalleryViewer({ images }: { images: string[] }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   // Slideshow State
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true },
+    [Autoplay({ delay: 3500, stopOnInteraction: true, stopOnMouseEnter: true })]
+  );
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const onSelect = useCallback(() => {

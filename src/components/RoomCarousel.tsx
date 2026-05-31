@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Autoplay from "embla-carousel-autoplay";
 
 interface RoomCarouselProps {
   images: string[];
@@ -11,7 +12,10 @@ interface RoomCarouselProps {
 }
 
 export default function RoomCarousel({ images, badgeText }: RoomCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true },
+    [Autoplay({ delay: 3500, stopOnInteraction: true, stopOnMouseEnter: true })]
+  );
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const scrollPrev = useCallback(() => {
