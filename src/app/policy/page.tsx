@@ -115,8 +115,22 @@ export default function PolicyPage() {
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          className="mt-12 text-center"
+        >
+          <a 
+            href="/terms" 
+            className="inline-flex items-center justify-center px-6 py-3 border-2 border-brand-green-200 text-brand-green-800 font-semibold rounded-full hover:bg-brand-green-50 hover:border-brand-green-300 transition-all duration-300"
+          >
+            View Comprehensive Terms & Conditions
+          </a>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
-          className="mt-16 text-center text-gray-500 flex items-center justify-center space-x-2"
+          className="mt-8 text-center text-gray-500 flex items-center justify-center space-x-2"
         >
           <Ban className="w-5 h-5 text-gray-400" />
           <p className="text-sm">Brightland Hotel Shimla maintains a strict no-smoking policy in all indoor areas.</p>

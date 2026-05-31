@@ -31,6 +31,7 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "Rooms", href: "/rooms" },
     { name: "Facilities", href: "/facilities" },
+    { name: "Gallery", href: "/gallery" },
     { name: "Policy", href: "/policy" },
     { name: "Travel Desk", href: "/travel-desk" },
   ];
