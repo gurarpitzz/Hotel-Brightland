@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SplashLoader from "@/components/SplashLoader";
 import FloatingContactBar from "@/components/FloatingContactBar";
+import FloatingWeatherWidget from "@/components/FloatingWeatherWidget";
 import Providers from "@/components/Providers";
 import BookingCart from "@/components/BookingCart";
 
@@ -46,6 +47,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <FloatingContactBar />
+          <FloatingWeatherWidget />
           <BookingCart />
         </Providers>
       </body>

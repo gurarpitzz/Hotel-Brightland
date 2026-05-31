@@ -2,7 +2,6 @@
 
 import { MapPin, Mail, Phone, PhoneCall } from "lucide-react";
 import Image from "next/image";
-import Script from "next/script";
 import Link from "next/link";
 
 export default function Footer() {
@@ -16,7 +15,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
           
           {/* Address Section */}
           <div className="space-y-6">
@@ -86,45 +85,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Weather Widget (Forecast7) */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-bold text-brand-yellow-200 flex items-center mb-6">
-              <span className="w-8 h-1 bg-brand-yellow-400 mr-3 rounded-full"></span>
-              Live Weather
-            </h3>
-            <div className="bg-brand-green-800/30 rounded-xl overflow-hidden border border-brand-green-700 p-2 min-h-[150px]">
-              <a 
-                className="weatherwidget-io" 
-                href="https://forecast7.com/en/31d1077d17/shimla/" 
-                data-label_1="SHIMLA" 
-                data-label_2="WEATHER" 
-                data-font="Arial" 
-                data-icons="Climacons Animated" 
-                data-theme="pure" 
-                data-basecolor="transparent"
-                data-textcolor="#fefce8"
-              >
-                SHIMLA WEATHER
-              </a>
-              <Script
-                id="weather-widget-script"
-                strategy="lazyOnload"
-                dangerouslySetInnerHTML={{
-                  __html: `
-                    !function(d,s,id){
-                      var js,fjs=d.getElementsByTagName(s)[0];
-                      if(!d.getElementById(id)){
-                        js=d.createElement(s);
-                        js.id=id;
-                        js.src='https://weatherwidget.io/js/widget.min.js';
-                        fjs.parentNode.insertBefore(js,fjs);
-                      }
-                    }(document,'script','weatherwidget-io-js');
-                  `,
-                }}
-              />
-            </div>
-          </div>
+
 
           {/* TripAdvisor & Links */}
           <div className="space-y-6 flex flex-col items-center lg:items-end justify-start">
