@@ -1,6 +1,7 @@
 import { Check, Info, AlertTriangle, Coffee, Utensils, Award, FileText } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { AnimatedFadeUp } from "@/components/AnimatedWrappers";
 
 export const metadata = {
   title: "Tariff | Brightland Hotel, Shimla",
@@ -22,7 +23,7 @@ export default function TariffPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
-        <div className="text-center mb-16">
+        <AnimatedFadeUp className="text-center mb-16">
           <div className="inline-flex items-center justify-center space-x-2 bg-brand-green-100 text-brand-green-800 px-4 py-1.5 rounded-full text-sm font-bold mb-4 shadow-sm">
             <Award size={16} />
             <span>Approved by H.P. Tourism Department</span>
@@ -33,13 +34,14 @@ export default function TariffPage() {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             FIT Tariff In Rupees Per Day. Enjoy our European Plan (E.P.) accommodation in the heart of Shimla.
           </p>
-        </div>
+        </AnimatedFadeUp>
 
         {/* Room Rates Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {roomRates.map((room, idx) => (
-            <div 
+            <AnimatedFadeUp 
               key={idx} 
+              delay={idx * 0.1}
               className={`relative bg-white rounded-3xl p-8 shadow-sm border ${
                 room.popular ? "border-brand-green-500 ring-4 ring-brand-green-50" : "border-brand-green-100"
               }`}
@@ -71,14 +73,14 @@ export default function TariffPage() {
                   Daily Housekeeping
                 </li>
               </ul>
-            </div>
+            </AnimatedFadeUp>
           ))}
         </div>
 
         {/* Extra Bed & Meal Rates */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Meals Section */}
-          <div className="bg-white rounded-3xl p-8 shadow-sm border border-brand-green-100">
+          <AnimatedFadeUp className="bg-white rounded-3xl p-8 shadow-sm border border-brand-green-100">
             <h3 className="text-2xl font-bold text-brand-green-900 mb-6 flex items-center">
               <Utensils className="mr-3 text-brand-green-600" />
               Meal Rates (Fixed Menu)
@@ -101,10 +103,10 @@ export default function TariffPage() {
                 <div className="font-extrabold text-xl text-brand-green-800">₹700</div>
               </div>
             </div>
-          </div>
+          </AnimatedFadeUp>
 
           {/* Add-ons & Discounts */}
-          <div className="bg-white rounded-3xl p-8 shadow-sm border border-brand-green-100 flex flex-col justify-between">
+          <AnimatedFadeUp delay={0.2} className="bg-white rounded-3xl p-8 shadow-sm border border-brand-green-100 flex flex-col justify-between">
             <div>
               <h3 className="text-2xl font-bold text-brand-green-900 mb-6 flex items-center">
                 <FileText className="mr-3 text-brand-green-600" />
@@ -130,11 +132,11 @@ export default function TariffPage() {
                 </li>
               </ul>
             </div>
-          </div>
+          </AnimatedFadeUp>
         </div>
 
         {/* Important Notes Alert */}
-        <div className="bg-red-50 border border-red-200 rounded-3xl p-8 mb-16 shadow-sm">
+        <AnimatedFadeUp className="bg-red-50 border border-red-200 rounded-3xl p-8 mb-16 shadow-sm">
           <h3 className="text-xl font-bold text-red-800 mb-4 flex items-center">
             <AlertTriangle className="mr-2" />
             Important Rules & Regulations
@@ -157,7 +159,7 @@ export default function TariffPage() {
               <span>Wi-fi connection is limited to the Hotel Reception and Restaurant only.</span>
             </li>
           </ul>
-        </div>
+        </AnimatedFadeUp>
 
         {/* Accreditations Footer */}
         <div className="border-t border-brand-green-200 pt-10">

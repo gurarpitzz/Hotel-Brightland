@@ -1,5 +1,6 @@
-import { CheckCircle2, Bed, Maximize, Wifi, Coffee, Tv } from "lucide-react";
+import { CheckCircle2, Bed, Maximize, Wifi, Coffee, Tv, Users } from "lucide-react";
 import RoomCarousel from "@/components/RoomCarousel";
+import { AnimatedFadeUp } from "@/components/AnimatedWrappers";
 
 export const metadata = {
   title: "Rooms & Suites | Brightland Hotel, Shimla",
@@ -21,6 +22,7 @@ const rooms = [
       "Intercom Facility"
     ],
     amenities: [
+      { icon: <Users size={18} />, label: "Up to 2 Guests" },
       { icon: <Wifi size={18} />, label: "Free WiFi" },
       { icon: <Tv size={18} />, label: "Smart TV" },
       { icon: <Coffee size={18} />, label: "Tea/Coffee Maker" },
@@ -48,6 +50,7 @@ const rooms = [
       "Express Laundry"
     ],
     amenities: [
+      { icon: <Users size={18} />, label: "Up to 2 Guests" },
       { icon: <Wifi size={18} />, label: "High-Speed WiFi" },
       { icon: <Tv size={18} />, label: "Smart TV" },
       { icon: <Coffee size={18} />, label: "Tea/Coffee Maker" },
@@ -77,6 +80,7 @@ const rooms = [
       "Premium Linen"
     ],
     amenities: [
+      { icon: <Users size={18} />, label: "Up to 2 Guests" },
       { icon: <Wifi size={18} />, label: "Free WiFi" },
       { icon: <Tv size={18} />, label: "Smart TV" },
       { icon: <Coffee size={18} />, label: "Tea/Coffee Maker" },
@@ -106,6 +110,7 @@ const rooms = [
       "Welcome Basket"
     ],
     amenities: [
+      { icon: <Users size={18} />, label: "Up to 2 Guests" },
       { icon: <Wifi size={18} />, label: "Premium WiFi" },
       { icon: <Tv size={18} />, label: "55\" Smart TV" },
       { icon: <Coffee size={18} />, label: "Espresso Machine" },
@@ -136,6 +141,7 @@ const rooms = [
       "Mountain Views"
     ],
     amenities: [
+      { icon: <Users size={18} />, label: "Up to 4 Guests" },
       { icon: <Wifi size={18} />, label: "Free WiFi" },
       { icon: <Tv size={18} />, label: "Two Smart TVs" },
       { icon: <Coffee size={18} />, label: "Tea/Coffee Maker" },
@@ -158,18 +164,18 @@ export default function RoomsPage() {
     <div className="bg-brand-yellow-50 min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center mb-16">
+        <AnimatedFadeUp className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-brand-green-900 mb-4">
             Our Rooms & Suites
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Discover comfort and elegance in the heart of Shimla. Every room is designed to provide a warm, relaxing atmosphere with beautiful views.
           </p>
-        </div>
+        </AnimatedFadeUp>
 
         <div className="space-y-16">
-          {rooms.map((room) => (
-            <div key={room.id} className="bg-white rounded-2xl shadow-sm border border-brand-green-100 overflow-hidden flex flex-col md:flex-row">
+          {rooms.map((room, index) => (
+            <AnimatedFadeUp key={room.id} delay={index * 0.1} className="bg-white rounded-2xl shadow-sm border border-brand-green-100 overflow-hidden flex flex-col md:flex-row">
               {/* Carousel Section */}
               <div className="w-full md:w-1/2 md:max-w-md lg:max-w-lg p-2">
                 <RoomCarousel images={room.images} badgeText={room.badgeText} />
@@ -210,7 +216,7 @@ export default function RoomsPage() {
                   <RoomBookButton roomType={room.name} baseRate={room.price} />
                 </div>
               </div>
-            </div>
+            </AnimatedFadeUp>
           ))}
         </div>
 

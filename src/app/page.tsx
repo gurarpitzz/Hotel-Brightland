@@ -73,10 +73,17 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-6 md:gap-12">
             {trustIndicators.map((indicator, index) => (
-              <div key={index} className="flex items-center space-x-2">
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex items-center space-x-2"
+              >
                 <CheckCircle2 className="text-brand-green-700" size={24} />
                 <span className="text-brand-green-900 font-medium">{indicator}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -86,7 +93,13 @@ export default function Home() {
       <section className="py-20 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-yellow-50 rounded-l-full opacity-50 -z-10 transform translate-x-1/3"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7 }}
+            className="text-center max-w-4xl mx-auto mb-16"
+          >
             <h2 className="text-4xl font-extrabold text-brand-green-900 mb-6 tracking-tight">
               A Timeless Escape in the Heart of Shimla
             </h2>
@@ -102,10 +115,16 @@ export default function Home() {
                 Lose yourself in the mesmerizing, ever-changing moods of the Himalayas. Awaken to the scent of whispering pines, watch the floating mists roll through the valleys, and cozy up as snowflakes gently blanket the slate roofs. By dusk, watch the horizon come alive as the distant twinkling lights of Tara Devi, Chail, Subathu, and Kasauli illuminate the mountain sky.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center bg-brand-yellow-50 rounded-3xl p-8 md:p-12 border border-brand-yellow-100 shadow-sm">
-            <div className="space-y-4">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+              className="space-y-4"
+            >
               <div className="inline-block bg-brand-green-800 text-brand-yellow-200 font-bold px-4 py-2 rounded-full text-sm mb-2 shadow-sm">
                 Established 1959
               </div>
@@ -116,9 +135,15 @@ export default function Home() {
               <p className="text-brand-green-800 font-bold text-xl mt-4 italic">
                 At Brightland, hospitality is not just a service—it is a cherished way of life.
               </p>
-            </div>
+            </motion.div>
             
-            <div className="relative h-72 md:h-full w-full rounded-2xl overflow-hidden shadow-lg border-4 border-white">
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+              className="relative h-72 md:h-full w-full rounded-2xl overflow-hidden shadow-lg border-4 border-white"
+            >
               <Image 
                 src="/assets/Hotel building/Hotel building (1).jpg" 
                 alt="Brightland Hotel Legacy" 
@@ -130,7 +155,7 @@ export default function Home() {
                 <p className="text-brand-green-900 font-extrabold">The Best Address in Shimla</p>
                 <p className="text-gray-600 text-sm font-medium">Since 1959</p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -138,7 +163,13 @@ export default function Home() {
       {/* Location Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-12 items-center">
-          <div className="flex-1 space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7 }}
+            className="flex-1 space-y-6"
+          >
             <h2 className="text-3xl font-bold text-brand-green-800">The Perfect Starting Point</h2>
             <p className="text-gray-600 text-lg">
               Strategically positioned to offer the absolute best of both worlds: deep, tranquil mountain serenity combined with effortless walking access to Shimla&apos;s most iconic attractions.
@@ -153,8 +184,14 @@ export default function Home() {
                 <span>15 minutes walk to the historic Toy Train</span>
               </li>
             </ul>
-          </div>
-          <div className="flex-1 w-full h-[400px] relative rounded-2xl overflow-hidden shadow-xl border border-brand-green-100">
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="flex-1 w-full h-[400px] relative rounded-2xl overflow-hidden shadow-xl border border-brand-green-100"
+          >
             <iframe 
               src="https://maps.google.com/maps?q=Brightland+Hotel,+Shimla&t=&z=15&ie=UTF8&iwloc=&output=embed" 
               width="100%" 
@@ -164,7 +201,7 @@ export default function Home() {
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

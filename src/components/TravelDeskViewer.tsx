@@ -469,8 +469,11 @@ export default function TravelDeskViewer() {
                 const isExpanded = expandedCards[dest.name];
                 
                 return (
-                  <div 
+                  <motion.div 
                     key={i} 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1, duration: 0.4 }}
                     className={`bg-white rounded-2xl shadow-sm border transition-all duration-300 overflow-hidden ${
                       isExpanded ? "border-brand-green-300 ring-2 ring-brand-green-50" : "border-brand-green-100 hover:border-brand-green-200"
                     }`}
@@ -517,7 +520,7 @@ export default function TravelDeskViewer() {
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>

@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import GalleryViewer from "@/components/GalleryViewer";
+import { AnimatedFadeUp } from "@/components/AnimatedWrappers";
 
 export const metadata = {
   title: "Photo Gallery | Brightland Hotel, Shimla",
@@ -48,14 +49,14 @@ export default function GalleryPage() {
     <div className="bg-brand-yellow-50 min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center mb-12">
+        <AnimatedFadeUp className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-brand-green-900 mb-6 font-cursive tracking-wider">
             Our Gallery
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Take a visual tour of Brightland Hotel. We currently have {images.length} photos showcasing our rooms, facilities, and beautiful surroundings.
           </p>
-        </div>
+        </AnimatedFadeUp>
 
         {images.length > 0 ? (
           <GalleryViewer images={images} />

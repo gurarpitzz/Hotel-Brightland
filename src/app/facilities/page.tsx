@@ -124,21 +124,29 @@ export default function FacilitiesPage() {
           {facilities.map((facility, index) => {
             const isEven = index % 2 === 0;
             return (
-              <motion.div 
+              <div 
                 key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
-                className={`flex flex-col gap-12 items-center lg:items-stretch ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+                className={`flex flex-col gap-12 items-center lg:items-stretch overflow-hidden ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
               >
                 {/* Images Side */}
-                <div className="w-full lg:w-1/2">
+                <motion.div 
+                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8 }}
+                  className="w-full lg:w-1/2"
+                >
                   <FacilityCarousel images={facility.images} />
-                </div>
+                </motion.div>
 
                 {/* Content Side */}
-                <div className="w-full lg:w-1/2 space-y-6">
+                <motion.div 
+                  initial={{ opacity: 0, x: isEven ? 50 : -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="w-full lg:w-1/2 space-y-6"
+                >
                   <div className="inline-flex items-center justify-center p-4 bg-brand-green-100 rounded-2xl shadow-sm text-brand-green-800">
                     {facility.icon}
                   </div>
@@ -162,8 +170,8 @@ export default function FacilitiesPage() {
                       />
                     </div>
                   )}
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             );
           })}
         </div>

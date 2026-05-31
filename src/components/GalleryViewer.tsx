@@ -85,8 +85,12 @@ export default function GalleryViewer({ images }: { images: string[] }) {
             className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4"
           >
             {images.map((src, idx) => (
-              <div 
+              <motion.div 
                 key={idx} 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6 }}
                 className="relative break-inside-avoid rounded-2xl overflow-hidden cursor-pointer group"
                 onClick={() => setSelectedImageIndex(idx)}
               >
@@ -101,7 +105,7 @@ export default function GalleryViewer({ images }: { images: string[] }) {
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <ZoomIn className="text-white w-10 h-10" />
                 </div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         ) : (
