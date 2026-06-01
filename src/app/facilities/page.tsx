@@ -72,14 +72,14 @@ function FacilityCarousel({ images }: { images: string[] }) {
 
   if (images.length === 1) {
     return (
-      <div className="relative h-full min-h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
+      <div className="relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-full lg:min-h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
         <Image src={images[0]} alt="Facility Image" fill className="object-cover" />
       </div>
     );
   }
 
   return (
-    <div className="relative h-full min-h-[400px] w-full rounded-2xl overflow-hidden shadow-xl group bg-black/5">
+    <div className="relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-full lg:min-h-[400px] w-full rounded-2xl overflow-hidden shadow-xl group bg-black/5">
       <div className="overflow-hidden h-full" ref={emblaRef}>
         <div className="flex h-full">
           {images.map((src, idx) => (
