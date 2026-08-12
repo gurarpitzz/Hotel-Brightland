@@ -1,7 +1,7 @@
 "use client";
 
 import { useBooking } from "@/context/BookingContext";
-import { X, Calendar as CalendarIcon, Users, CreditCard, ChevronDown } from "lucide-react";
+import { X, Calendar as CalendarIcon, Users, CreditCard, ChevronDown, AlertCircle } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { format, parseISO } from "date-fns";
 import React, { useState } from "react";
@@ -296,7 +296,8 @@ export default function BookingCart() {
                 <div className="pb-6">
                   {isCheckoutDisabled ? (
                     <div className="flex items-center justify-center rounded-xl border border-red-700 bg-red-600 px-4 py-4 text-xs font-bold text-white cursor-not-allowed text-center leading-snug shadow-md">
-                      ⚠️ {getCheckoutDisabledMessage()}
+                      <AlertCircle className="w-4 h-4 mr-2 shrink-0 inline-block text-white" />
+                      <span>{getCheckoutDisabledMessage()}</span>
                     </div>
                   ) : (
                     <a
