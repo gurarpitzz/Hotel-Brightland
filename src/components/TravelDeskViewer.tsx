@@ -10,15 +10,57 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const destinationImageMap: Record<string, string> = {
+  "Christ Church": "/assets/traveldesk/Christ-Church-Shimla-scaled.jpg",
+  "The Mall": "/assets/traveldesk/the_mall.jpg",
+  "Lakkar Bazaar": "/assets/traveldesk/531957817Lakkar_Bazaar_Main.jpg",
+  "The Ridge": "/assets/traveldesk/the_ridge_shima.jpeg",
+  "Himachal State Museum": "/assets/traveldesk/himachal_state_musem.jpg",
+  "Kali Bari": "/assets/traveldesk/kali-bari.jpg",
+  "Prospect Hill & Kamna Devi Temple": "/assets/traveldesk/kamna_devi_temple.jpg",
+  "Viceregal Lodge (IIAS)": "/assets/traveldesk/viceregal-lodge-turned.jpg",
+  "Tara Devi Temple": "/assets/traveldesk/tara_devi_temple.jpg",
+  "Jakhu Temple": "/assets/traveldesk/jakhu-mandir.jpg",
+  "The Army Heritage Museum": "/assets/traveldesk/Army_Heritage_Museum_garden_in_Annadale,_Shimla.jpg",
+  "Sri Sankat Mochan & Shiv Temple": "/assets/traveldesk/Sankat_Mochan_Temple_Main.jpg",
+  "Mashobra": "/assets/traveldesk/mashobra.jpg",
+  "Craignano": "/assets/traveldesk/craignano-nature-park-shimla-himachal-pradesh-2-attr-hero.jpg",
+  "Naldehra": "/assets/traveldesk/naldehra-shimla-himachal-pradesh-3-attr-hero.jpg",
+  "Tattapani & Sunni": "/assets/traveldesk/tattapani-hot-spring-bath.jpg",
+  "Chini Bungalow / Indira Tourist Park": "/assets/traveldesk/chinibunglow.jpg",
+  "The Toy Train Route": "/assets/traveldesk/toy-train.jpg",
+  "The Stretch": "/assets/traveldesk/toy-train.jpg",
+  "Excursion Routing": "/assets/traveldesk/toy-train.jpg",
+  "City Activities": "/assets/traveldesk/the_mall.jpg",
+};
+
+const randomFallbackImages = [
+  "/assets/traveldesk/craignano-nature-park-shimla-himachal-pradesh-2-attr-hero.jpg",
+  "/assets/traveldesk/mashobra.jpg",
+  "/assets/traveldesk/the_ridge_shima.jpeg",
+  "/assets/traveldesk/naldehra-shimla-himachal-pradesh-3-attr-hero.jpg",
+  "/assets/traveldesk/Christ-Church-Shimla-scaled.jpg",
+  "/assets/traveldesk/viceregal-lodge-turned.jpg",
+  "/assets/traveldesk/tattapani-hot-spring-bath.jpg",
+];
+
+const getDestinationImage = (name: string, index: number) => {
+  if (destinationImageMap[name]) {
+    return destinationImageMap[name];
+  }
+  return randomFallbackImages[index % randomFallbackImages.length];
+};
+
 const categories = [
   {
     id: "walk-around",
     title: "Walk Around The Town",
     icon: <Navigation size={20} />,
     images: [
-      "/assets/tours/shimla_city.png",
-      "/assets/tours/forest.png",
-      "/assets/tours/himalayas.png"
+      "/assets/traveldesk/Christ-Church-Shimla-scaled.jpg",
+      "/assets/traveldesk/the_mall.jpg",
+      "/assets/traveldesk/the_ridge_shima.jpeg",
+      "/assets/traveldesk/531957817Lakkar_Bazaar_Main.jpg"
     ],
     destinations: [
       {
@@ -78,9 +120,10 @@ const categories = [
     title: "Shimla From Dawn-To-Dusk",
     icon: <Sunrise size={20} />,
     images: [
-      "/assets/tours/himalayas.png",
-      "/assets/tours/shimla_city.png",
-      "/assets/tours/forest.png"
+      "/assets/traveldesk/viceregal-lodge-turned.jpg",
+      "/assets/traveldesk/jakhu-mandir.jpg",
+      "/assets/traveldesk/kamna_devi_temple.jpg",
+      "/assets/traveldesk/Army_Heritage_Museum_garden_in_Annadale,_Shimla.jpg"
     ],
     destinations: [
       {
@@ -148,9 +191,10 @@ const categories = [
     title: "River Valley",
     icon: <Compass size={20} />,
     images: [
-      "/assets/tours/forest.png",
-      "/assets/tours/himalayas.png",
-      "/assets/tours/shimla_city.png"
+      "/assets/traveldesk/mashobra.jpg",
+      "/assets/traveldesk/naldehra-shimla-himachal-pradesh-3-attr-hero.jpg",
+      "/assets/traveldesk/tattapani-hot-spring-bath.jpg",
+      "/assets/traveldesk/craignano-nature-park-shimla-himachal-pradesh-2-attr-hero.jpg"
     ],
     destinations: [
       {
@@ -199,9 +243,9 @@ const categories = [
     title: "Misty Meadows",
     icon: <Mountain size={20} />,
     images: [
-      "/assets/tours/himalayas.png",
-      "/assets/tours/forest.png",
-      "/assets/tours/shimla_city.png"
+      "/assets/traveldesk/chinibunglow.jpg",
+      "/assets/traveldesk/craignano-nature-park-shimla-himachal-pradesh-2-attr-hero.jpg",
+      "/assets/traveldesk/mashobra.jpg"
     ],
     destinations: [
       {
@@ -268,9 +312,9 @@ const categories = [
     title: "Himalayan Heights",
     icon: <MapIcon size={20} />,
     images: [
-      "/assets/tours/forest.png",
-      "/assets/tours/himalayas.png",
-      "/assets/tours/shimla_city.png"
+      "/assets/traveldesk/viceregal-lodge-turned.jpg",
+      "/assets/traveldesk/mashobra.jpg",
+      "/assets/traveldesk/tattapani-hot-spring-bath.jpg"
     ],
     destinations: [
       {
@@ -307,9 +351,8 @@ const categories = [
     title: "Shimla-On-Wheels",
     icon: <Train size={20} />,
     images: [
-      "/assets/tours/shimla_city.png",
-      "/assets/tours/forest.png",
-      "/assets/tours/himalayas.png"
+      "/assets/traveldesk/toy-train.jpg",
+      "/assets/traveldesk/the_ridge_shima.jpeg"
     ],
     destinations: [
       {
@@ -345,9 +388,8 @@ const categories = [
     title: "Other Recreations",
     icon: <Gamepad2 size={20} />,
     images: [
-      "/assets/tours/shimla_city.png",
-      "/assets/tours/himalayas.png",
-      "/assets/tours/forest.png"
+      "/assets/traveldesk/the_mall.jpg",
+      "/assets/traveldesk/531957817Lakkar_Bazaar_Main.jpg"
     ],
     destinations: [
       {
@@ -456,7 +498,7 @@ export default function TravelDeskViewer() {
                 </div>
                 {/* Overlay Title */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
-                  <h2 className="text-3xl md:text-5xl font-bold text-white p-8">
+                  <h2 className="text-3xl md:text-5xl font-bold text-white p-8 font-serif">
                     {activeCategory.title}
                   </h2>
                 </div>
@@ -464,37 +506,51 @@ export default function TravelDeskViewer() {
             </div>
 
             {/* Destinations Accordion List */}
-            <div className="space-y-4">
+            <div className="space-y-6">
               {activeCategory.destinations.map((dest, i) => {
                 const isExpanded = expandedCards[dest.name];
+                const destImg = getDestinationImage(dest.name, i);
                 
                 return (
                   <motion.div 
                     key={i} 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1, duration: 0.4 }}
-                    className={`bg-white rounded-2xl shadow-sm border transition-all duration-300 overflow-hidden ${
-                      isExpanded ? "border-brand-green-300 ring-2 ring-brand-green-50" : "border-brand-green-100 hover:border-brand-green-200"
+                    transition={{ delay: i * 0.08, duration: 0.4 }}
+                    className={`bg-white rounded-2xl shadow-sm border transition-all duration-300 overflow-hidden group ${
+                      isExpanded ? "border-brand-green-400 ring-2 ring-brand-green-100" : "border-brand-green-100 hover:border-brand-green-300"
                     }`}
                   >
-                    {/* Accordion Header (Summary) */}
-                    <button 
-                      onClick={() => toggleCard(dest.name)}
-                      className="w-full text-left p-6 flex items-start justify-between bg-white hover:bg-gray-50/50 transition-colors"
-                    >
-                      <div className="pr-4">
-                        <h3 className="text-xl font-bold text-brand-green-900 mb-2">
-                          {dest.name}
-                        </h3>
-                        <p className="text-gray-600 line-clamp-2 md:line-clamp-none">
-                          {dest.summary}
-                        </p>
+                    {/* Card Header Flex with Photo */}
+                    <div className="flex flex-col sm:flex-row items-stretch">
+                      {/* Destination Image Thumbnail */}
+                      <div className="relative w-full sm:w-48 md:w-56 h-48 sm:h-auto shrink-0 overflow-hidden bg-gray-100">
+                        <img 
+                          src={destImg} 
+                          alt={dest.name} 
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                        />
+                        <div className="absolute inset-0 bg-black/10 sm:hidden" />
                       </div>
-                      <div className="shrink-0 mt-1 bg-brand-yellow-50 p-2 rounded-full text-brand-green-700">
-                        {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                      </div>
-                    </button>
+
+                      {/* Accordion Button / Content */}
+                      <button 
+                        onClick={() => toggleCard(dest.name)}
+                        className="flex-1 text-left p-5 md:p-6 flex items-start justify-between bg-white hover:bg-gray-50/60 transition-colors"
+                      >
+                        <div className="pr-3">
+                          <h3 className="text-xl font-bold text-brand-green-900 mb-2 group-hover:text-brand-green-700 transition-colors">
+                            {dest.name}
+                          </h3>
+                          <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 md:line-clamp-none">
+                            {dest.summary}
+                          </p>
+                        </div>
+                        <div className="shrink-0 mt-1 bg-brand-yellow-50 p-2 rounded-full text-brand-green-700">
+                          {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                        </div>
+                      </button>
+                    </div>
 
                     {/* Accordion Body (Deep Lore & Data) */}
                     <AnimatePresence>
@@ -505,10 +561,10 @@ export default function TravelDeskViewer() {
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                         >
-                          <div className="px-6 pb-6 pt-2 border-t border-gray-100 bg-gray-50/30">
-                            <ul className="space-y-4 mt-4">
+                          <div className="px-6 pb-6 pt-3 border-t border-gray-100 bg-gray-50/50">
+                            <ul className="space-y-3.5 mt-2">
                               {dest.details.map((detail, j) => (
-                                <li key={j} className="flex items-start text-gray-700 leading-relaxed">
+                                <li key={j} className="flex items-start text-gray-700 text-sm leading-relaxed">
                                   {getIconForType(detail.type)}
                                   <span className="ml-3 font-medium text-gray-800">
                                     {detail.text}
