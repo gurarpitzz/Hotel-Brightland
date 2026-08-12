@@ -217,9 +217,10 @@ export default function Footer() {
             exit={{ opacity: 0, scale: 0.5 }}
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="fixed bottom-6 right-6 z-40 p-3.5 bg-brand-green-700 hover:bg-brand-green-800 text-white rounded-full shadow-2xl border-2 border-brand-yellow-400/80 transition-all transform hover:scale-110 focus:outline-none"
+            title="Back to top"
+            className="fixed bottom-36 md:bottom-24 right-4 md:right-6 z-50 p-3.5 bg-brand-green-800 hover:bg-brand-green-900 text-brand-yellow-300 rounded-full shadow-2xl border-2 border-brand-yellow-400 transition-all transform hover:scale-110 focus:outline-none flex items-center justify-center"
           >
-            <ArrowUp className="w-5 h-5" />
+            <ArrowUp className="w-6 h-6 stroke-[3]" />
           </motion.button>
         )}
       </AnimatePresence>
