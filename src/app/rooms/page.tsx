@@ -13,7 +13,6 @@ const rooms = [
     name: "Imperial Rooms (Non Valley View)",
     price: 3500,
     badgeText: "Budget Friendly",
-    description: "Comfortable and cozy rooms perfect for budget-conscious travelers who still want to experience the premium hospitality of Brightland Hotel. Featuring elegant wooden interiors and modern amenities.",
     features: [
       "Queen Size Bed",
       "Attached Bathroom",
@@ -41,7 +40,6 @@ const rooms = [
     name: "Corporate Rooms",
     price: 4500,
     badgeText: "Business Ready",
-    description: "Designed for the modern business traveler. These rooms offer a perfect blend of comfort and functionality with a dedicated workspace, ensuring a productive yet relaxing stay.",
     features: [
       "King Size Bed",
       "Work Desk & Chair",
@@ -71,7 +69,6 @@ const rooms = [
     name: "Royal Rooms",
     price: 5500,
     badgeText: "Popular",
-    description: "Experience royal comfort in these spacious rooms featuring classic decor, stunning valley views, and premium furnishings. Perfect for couples and small families.",
     features: [
       "King Size Bed",
       "Panoramic Valley Views",
@@ -101,7 +98,6 @@ const rooms = [
     name: "Presidential Rooms",
     price: 7500,
     badgeText: "Luxury",
-    description: "The epitome of luxury at Brightland Hotel. Indulge in expansive spaces, opulent interiors, and the finest panoramic views of the Shimla mountains from your private viewpoint.",
     features: [
       "Super King Size Bed",
       "180° Mountain Views",
@@ -132,7 +128,6 @@ const rooms = [
     name: "Regal Suites",
     price: 9500,
     badgeText: "Family Suite",
-    description: "Ideal for families or groups, the Regal Suites offer separate living and sleeping areas, ensuring privacy and ample space for everyone to relax after a day of exploring Shimla.",
     features: [
       "Two King Size Beds",
       "Separate Living Room",
