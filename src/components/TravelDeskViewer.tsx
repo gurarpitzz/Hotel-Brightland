@@ -50,6 +50,17 @@ const getDestinationImage = (name: string, index: number) => {
   return randomFallbackImages[index % randomFallbackImages.length];
 };
 
+const destinationObjectPosition: Record<string, string> = {
+  "Jakhu Temple": "object-top",
+  "Christ Church": "object-top",
+  "Viceregal Lodge (IIAS)": "object-top",
+  "Tara Devi Temple": "object-top",
+};
+
+const getDestinationObjectPosition = (name: string) => {
+  return destinationObjectPosition[name] || "object-center";
+};
+
 const categories = [
   {
     id: "walk-around",
@@ -527,7 +538,7 @@ export default function TravelDeskViewer() {
                         <img 
                           src={destImg} 
                           alt={dest.name} 
-                          className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" 
+                          className={`w-full h-full object-cover ${getDestinationObjectPosition(dest.name)} transition-transform duration-500 group-hover:scale-105`} 
                         />
                         <div className="absolute inset-0 bg-black/5 sm:hidden" />
                       </div>
