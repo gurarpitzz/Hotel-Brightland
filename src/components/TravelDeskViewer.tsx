@@ -29,8 +29,8 @@ const destinationImageMap: Record<string, string> = {
   "Tattapani & Sunni": "/assets/traveldesk/tattapani-hot-spring-bath.jpg",
   "Chini Bungalow / Indira Tourist Park": "/assets/traveldesk/chinibunglow.jpg",
   "The Toy Train Route": "/assets/traveldesk/toy-train.jpg",
-  "The Stretch": "/assets/traveldesk/toy-train.jpg",
-  "Excursion Routing": "/assets/traveldesk/toy-train.jpg",
+  "The Stretch": "/assets/traveldesk/the_ridge_shima.jpeg",
+  "Excursion Routing": "/assets/traveldesk/craignano-nature-park-shimla-himachal-pradesh-2-attr-hero.jpg",
   "City Activities": "/assets/traveldesk/the_mall.jpg",
 };
 
@@ -39,9 +39,8 @@ const randomFallbackImages = [
   "/assets/traveldesk/mashobra.jpg",
   "/assets/traveldesk/the_ridge_shima.jpeg",
   "/assets/traveldesk/naldehra-shimla-himachal-pradesh-3-attr-hero.jpg",
-  "/assets/traveldesk/Christ-Church-Shimla-scaled.jpg",
-  "/assets/traveldesk/viceregal-lodge-turned.jpg",
   "/assets/traveldesk/tattapani-hot-spring-bath.jpg",
+  "/assets/traveldesk/the_mall.jpg",
 ];
 
 const getDestinationImage = (name: string, index: number) => {
