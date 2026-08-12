@@ -295,8 +295,8 @@ export default function BookingCart() {
                 {/* WhatsApp Action Button */}
                 <div className="pb-6">
                   {isCheckoutDisabled ? (
-                    <div className="flex items-center justify-center rounded-xl border border-transparent bg-gray-300 px-4 py-4 text-xs font-bold text-gray-600 cursor-not-allowed text-center leading-snug shadow-sm">
-                      {getCheckoutDisabledMessage()}
+                    <div className="flex items-center justify-center rounded-xl border border-red-700 bg-red-600 px-4 py-4 text-xs font-bold text-white cursor-not-allowed text-center leading-snug shadow-md">
+                      ⚠️ {getCheckoutDisabledMessage()}
                     </div>
                   ) : (
                     <a
