@@ -1,11 +1,10 @@
 "use client";
 
 import { useBooking } from "@/context/BookingContext";
-import { X, Calendar as CalendarIcon, Users, CreditCard, ChevronDown, ExternalLink } from "lucide-react";
+import { X, Calendar as CalendarIcon, Users, CreditCard, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { format, parseISO } from "date-fns";
 import React, { useState } from "react";
-import Link from "next/link";
 
 export default function BookingCart() {
   const { booking, setBooking, isCartOpen, setIsCartOpen, calculateTotal, generateWhatsAppLink } = useBooking();
@@ -204,40 +203,34 @@ export default function BookingCart() {
 
               {/* Checkout Footer */}
               <div className="border-t border-brand-green-200 bg-white px-4 py-6 sm:px-6">
-                           {/* Terms & Conditions Box with Direct Redirection */}
-                <div className="mb-5 border-t border-gray-200 pt-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-gray-800 uppercase tracking-wider">
-                      Booking Terms & Conditions
-                    </span>
-                    <Link
-                      href="/terms"
-                      target="_blank"
-                      onClick={() => setIsCartOpen(false)}
-                      className="text-xs font-bold text-brand-green-700 hover:text-brand-green-900 underline flex items-center gap-1"
-                    >
-                      <span>Read Full Terms</span>
-                      <ExternalLink size={13} />
-                    </Link>
-                  </div>
-
-                  <div className="text-xs text-gray-700 border border-gray-200 rounded-xl p-3.5 bg-gray-50 leading-relaxed space-y-2 shadow-inner">
-                    <p><strong>1. Deposit:</strong> Advance deposit required to confirm booking.</p>
-                    <p><strong>2. Check-In / Out:</strong> Check-in 1:00 PM | Check-out 11:00 AM.</p>
-                    <p><strong>3. Cancellation:</strong> Full refund if cancelled 7+ days before arrival.</p>
-
-                    <div className="pt-2 border-t border-gray-200">
-                      <Link
-                        href="/terms"
-                        target="_blank"
-                        onClick={() => setIsCartOpen(false)}
-                        className="w-full inline-flex items-center justify-center gap-1.5 text-xs font-bold text-brand-green-800 bg-brand-yellow-100 hover:bg-brand-yellow-200 py-2.5 px-3 rounded-lg transition-colors border border-brand-yellow-300"
+                
+                {/* Accordion Terms & Conditions Box */}
+                <div className="mb-5">
+                  <button 
+                    onClick={() => setIsTCOpen(!isTCOpen)}
+                    className="flex items-center justify-between w-full text-left text-xs font-semibold text-gray-700 uppercase tracking-wider hover:text-brand-green-800 transition-colors"
+                  >
+                    <span>Booking Terms & Conditions</span>
+                    <ChevronDown className={`w-4 h-4 transform transition-transform ${isTCOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {isTCOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
                       >
-                        <span>Click here to view full Terms & Conditions</span>
-                        <ExternalLink size={14} />
-                      </Link>
-                    </div>
-                  </div>
+                        <div className="mt-3 text-[11px] text-gray-600 border border-gray-200 rounded-lg p-3 bg-gray-50 leading-relaxed shadow-inner">
+                          <p className="mb-2"><strong>1. Booking & Deposit:</strong> A minimum advance deposit is required to confirm your booking. The remaining balance must be paid upon check-in.</p>
+                          <p className="mb-2"><strong>2. Check-In & Check-Out:</strong> Standard check-in time is 1:00 PM and check-out is 11:00 AM. Early check-in or late check-out is subject to availability and may incur additional charges.</p>
+                          <p className="mb-2"><strong>3. Cancellation Policy:</strong> Cancellations made 7 days prior to arrival will receive a full refund. Cancellations made within 7 days are non-refundable.</p>
+                          <p className="mb-2"><strong>4. Identification:</strong> All guests (including children) must present a valid government-issued ID upon arrival.</p>
+                          <p><strong>5. Damages:</strong> Any damages to hotel property caused by the guest will be billed directly to the guest's account.</p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 <div className="mt-4">
@@ -252,7 +245,7 @@ export default function BookingCart() {
                       rel="noopener noreferrer"
                       className="flex items-center justify-center rounded-xl border border-transparent bg-brand-green-700 px-4 py-4 text-sm font-bold text-white shadow-lg hover:bg-brand-green-800 transition-all transform hover:scale-[1.02] text-center leading-snug"
                     >
-                      Continue to WhatsApp to Book Room &rarr;
+                      Read all terms and conditions continue to chat to Book Room
                     </a>
                   )}
                 </div>
