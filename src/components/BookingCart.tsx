@@ -51,7 +51,7 @@ const termsAndConditions = [
 export default function BookingCart() {
   const { booking, setBooking, isCartOpen, setIsCartOpen, calculateTotal, generateWhatsAppLink } = useBooking();
   const { nights, roomsRequired, extraBeds, baseRatePerRoom, roomCharges, extraBedCharges, total } = calculateTotal();
-  const [isTCOpen, setIsTCOpen] = useState(true);
+  const [isTCOpen, setIsTCOpen] = useState(false);
   const [isAgreedToTerms, setIsAgreedToTerms] = useState(false);
 
   if (!isCartOpen) return null;
@@ -96,173 +96,161 @@ export default function BookingCart() {
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="w-screen max-w-md"
           >
-            <div className="flex h-full flex-col overflow-y-scroll bg-brand-yellow-50 shadow-xl border-l-4 border-brand-green-700">
-              <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
-                <div className="flex items-start justify-between">
-                  <h2 className="text-2xl font-bold text-brand-green-900 font-cursive tracking-wider">
-                    Your Booking
-                  </h2>
-                  <div className="ml-3 flex h-7 items-center">
-                    <button
-                      type="button"
-                      onClick={() => setIsCartOpen(false)}
-                      className="relative -m-2 p-2 text-brand-green-800 hover:text-brand-green-900"
-                    >
-                      <span className="absolute -inset-0.5" />
-                      <span className="sr-only">Close panel</span>
-                      <X className="h-6 w-6" aria-hidden="true" />
-                    </button>
+            <div className="flex h-full flex-col bg-brand-yellow-50 shadow-xl border-l-4 border-brand-green-700">
+              {/* Drawer Header */}
+              <div className="px-4 py-5 sm:px-6 bg-white border-b border-brand-green-100 flex items-center justify-between shrink-0">
+                <h2 className="text-2xl font-bold text-brand-green-900 font-cursive tracking-wider">
+                  Your Booking
+                </h2>
+                <button
+                  type="button"
+                  onClick={() => setIsCartOpen(false)}
+                  className="p-2 text-brand-green-800 hover:text-brand-green-900 rounded-full hover:bg-gray-100 transition-colors"
+                >
+                  <X className="h-6 w-6" aria-hidden="true" />
+                </button>
+              </div>
+
+              {/* Main Unified Scrollable Content Area */}
+              <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 space-y-6">
+                {/* Booking Details Form */}
+                <div className="rounded-xl border border-brand-green-200 bg-white p-6 shadow-sm">
+                  {/* Room Type */}
+                  <div className="mb-6 border-b border-gray-100 pb-4">
+                    <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">Room Selected</h3>
+                    <p className="text-xl font-bold text-brand-green-800 capitalize">
+                      {booking.roomType ? `${booking.roomType} Room` : "No Room Selected"}
+                    </p>
                   </div>
-                </div>
 
-                <div className="mt-8">
-                  <div className="flow-root">
-                    <div className="rounded-xl border border-brand-green-200 bg-white p-6 shadow-sm">
-                      {/* Room Type */}
-                      <div className="mb-6 border-b border-gray-100 pb-4">
-                        <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">Room Selected</h3>
-                        <p className="text-xl font-bold text-brand-green-800 capitalize">
-                          {booking.roomType ? `${booking.roomType} Room` : "No Room Selected"}
+                  {/* Guest Name */}
+                  <div className="mb-6 border-b border-gray-100 pb-4 flex items-start space-x-3">
+                    <Users className="text-brand-green-700 mt-1" size={20} />
+                    <div className="w-full">
+                      <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Primary Guest</h3>
+                      <div>
+                        <label className="block text-xs font-semibold text-gray-700 mb-1">Full Name *</label>
+                        <input 
+                          type="text" 
+                          required
+                          placeholder="Enter your name"
+                          className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
+                          value={booking.guestName || ""}
+                          onChange={(e) => setBooking(prev => ({ ...prev, guestName: e.target.value }))}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Dates with Inputs */}
+                  <div className="mb-6 border-b border-gray-100 pb-4 flex items-start space-x-3">
+                    <CalendarIcon className="text-brand-green-700 mt-1" size={20} />
+                    <div className="w-full">
+                      <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Stay Dates</h3>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs font-semibold text-gray-700 mb-1">Check-in</label>
+                          <input 
+                            type="date" 
+                            className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
+                            value={booking.checkIn ? format(booking.checkIn, "yyyy-MM-dd") : ""}
+                            onChange={handleCheckInChange}
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-semibold text-gray-700 mb-1">Check-out</label>
+                          <input 
+                            type="date" 
+                            className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
+                            value={booking.checkOut ? format(booking.checkOut, "yyyy-MM-dd") : ""}
+                            onChange={handleCheckOutChange}
+                          />
+                        </div>
+                      </div>
+                      {nights > 0 && (
+                        <p className="text-sm text-brand-green-700 mt-3 font-medium bg-brand-green-50 inline-block px-2 py-0.5 rounded">
+                          {nights} Night{nights > 1 ? 's' : ''} Stay
                         </p>
-                      </div>
+                      )}
+                    </div>
+                  </div>
 
-                      {/* Guest Name */}
-                      <div className="mb-6 border-b border-gray-100 pb-4 flex items-start space-x-3">
-                        <Users className="text-brand-green-700 mt-1" size={20} />
-                        <div className="w-full">
-                          <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Primary Guest</h3>
-                          <div>
-                            <label className="block text-xs font-semibold text-gray-700 mb-1">Full Name *</label>
-                            <input 
-                              type="text" 
-                              required
-                              placeholder="Enter your name"
-                              className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
-                              value={booking.guestName || ""}
-                              onChange={(e) => setBooking(prev => ({ ...prev, guestName: e.target.value }))}
-                            />
-                          </div>
+                  {/* Guests with Inputs */}
+                  <div className="mb-6 border-b border-gray-100 pb-4 flex items-start space-x-3">
+                    <Users className="text-brand-green-700 mt-1" size={20} />
+                    <div className="w-full">
+                      <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Guests</h3>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs font-semibold text-gray-700 mb-1">Adults</label>
+                          <input 
+                            type="number" 
+                            min="1"
+                            className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
+                            value={booking.adults}
+                            onChange={(e) => setBooking(prev => ({ ...prev, adults: parseInt(e.target.value) || 0 }))}
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-semibold text-gray-700 mb-1">Children (5+ yrs)</label>
+                          <input 
+                            type="number" 
+                            min="0"
+                            className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
+                            value={booking.children}
+                            onChange={(e) => setBooking(prev => ({ ...prev, children: parseInt(e.target.value) || 0 }))}
+                          />
                         </div>
                       </div>
+                      <p className="text-[10px] text-gray-500 mt-2 italic">Children below 5 years stay free without an extra bed.</p>
+                    </div>
+                  </div>
 
-                      {/* Dates with Inputs */}
-                      <div className="mb-6 border-b border-gray-100 pb-4 flex items-start space-x-3">
-                        <CalendarIcon className="text-brand-green-700 mt-1" size={20} />
-                        <div className="w-full">
-                          <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Stay Dates</h3>
-                          <div className="grid grid-cols-2 gap-4">
-                            <div>
-                              <label className="block text-xs font-semibold text-gray-700 mb-1">Check-in</label>
-                              <input 
-                                type="date" 
-                                className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
-                                value={booking.checkIn ? format(booking.checkIn, "yyyy-MM-dd") : ""}
-                                onChange={handleCheckInChange}
-                              />
-                            </div>
-                            <div>
-                              <label className="block text-xs font-semibold text-gray-700 mb-1">Check-out</label>
-                              <input 
-                                type="date" 
-                                className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
-                                value={booking.checkOut ? format(booking.checkOut, "yyyy-MM-dd") : ""}
-                                onChange={handleCheckOutChange}
-                              />
-                            </div>
+                  {/* Pricing Breakdown */}
+                  <div className="flex items-start space-x-3">
+                    <CreditCard className="text-brand-green-700 mt-1" size={20} />
+                    <div className="w-full">
+                      <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Estimated Charges</h3>
+                      {booking.roomType && booking.adults >= 1 ? (
+                        <div className="bg-gray-50 rounded-lg p-3 w-full border border-gray-100">
+                          <div className="flex justify-between text-sm text-gray-600 mb-1">
+                            <span>Rooms Required</span>
+                            <span className="font-medium text-gray-900">{roomsRequired}</span>
                           </div>
-                          {nights > 0 && (
-                            <p className="text-sm text-brand-green-700 mt-3 font-medium bg-brand-green-50 inline-block px-2 py-0.5 rounded">
-                              {nights} Night{nights > 1 ? 's' : ''} Stay
-                            </p>
+                          <div className="flex justify-between text-sm text-gray-600 mb-1">
+                            <span>Extra Beds Required</span>
+                            <span className="font-medium text-gray-900">{extraBeds}</span>
+                          </div>
+                          <div className="my-2 border-t border-gray-200"></div>
+                          <div className="flex justify-between text-sm text-gray-600 mb-1">
+                            <span>Room Charges</span>
+                            <span>₹{roomCharges}</span>
+                          </div>
+                          {extraBedCharges > 0 && (
+                            <div className="flex justify-between text-sm text-gray-600 mb-2">
+                              <span>Extra Bed Charges</span>
+                              <span>₹{extraBedCharges}</span>
+                            </div>
                           )}
-                        </div>
-                      </div>
-
-                      {/* Guests with Inputs */}
-                      <div className="mb-6 border-b border-gray-100 pb-4 flex items-start space-x-3">
-                        <Users className="text-brand-green-700 mt-1" size={20} />
-                        <div className="w-full">
-                          <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Guests</h3>
-                          <div className="grid grid-cols-2 gap-4">
-                            <div>
-                              <label className="block text-xs font-semibold text-gray-700 mb-1">Adults</label>
-                              <input 
-                                type="number" 
-                                min="1"
-                                className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
-                                value={booking.adults}
-                                onChange={(e) => setBooking(prev => ({ ...prev, adults: parseInt(e.target.value) || 0 }))}
-                              />
-                            </div>
-                            <div>
-                              <label className="block text-xs font-semibold text-gray-700 mb-1">Children (5+ yrs)</label>
-                              <input 
-                                type="number" 
-                                min="0"
-                                className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
-                                value={booking.children}
-                                onChange={(e) => setBooking(prev => ({ ...prev, children: parseInt(e.target.value) || 0 }))}
-                              />
-                            </div>
+                          <div className="flex justify-between text-lg font-bold text-brand-green-900 pt-2 border-t border-gray-200 mt-2">
+                            <span>Total Estimate</span>
+                            <span>₹{total}</span>
                           </div>
-                          <p className="text-[10px] text-gray-500 mt-2 italic">Children below 5 years stay free without an extra bed.</p>
                         </div>
-                      </div>
-
-                      {/* Pricing Breakdown */}
-                      <div className="flex items-start space-x-3">
-                        <CreditCard className="text-brand-green-700 mt-1" size={20} />
-                        <div className="w-full">
-                          <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Estimated Charges</h3>
-                          {booking.roomType && booking.adults >= 1 ? (
-                            <div className="bg-gray-50 rounded-lg p-3 w-full border border-gray-100">
-                              <div className="flex justify-between text-sm text-gray-600 mb-1">
-                                <span>Rooms Required</span>
-                                <span className="font-medium text-gray-900">{roomsRequired}</span>
-                              </div>
-                              <div className="flex justify-between text-sm text-gray-600 mb-1">
-                                <span>Extra Beds Required</span>
-                                <span className="font-medium text-gray-900">{extraBeds}</span>
-                              </div>
-                              <div className="my-2 border-t border-gray-200"></div>
-                              <div className="flex justify-between text-sm text-gray-600 mb-1">
-                                <span>Room Charges</span>
-                                <span>₹{roomCharges}</span>
-                              </div>
-                              {extraBedCharges > 0 && (
-                                <div className="flex justify-between text-sm text-gray-600 mb-2">
-                                  <span>Extra Bed Charges</span>
-                                  <span>₹{extraBedCharges}</span>
-                                </div>
-                              )}
-                              <div className="flex justify-between text-lg font-bold text-brand-green-900 pt-2 border-t border-gray-200 mt-2">
-                                <span>Total Estimate</span>
-                                <span>₹{total}</span>
-                              </div>
-                            </div>
-                          ) : (
-                            <p className="text-sm text-red-500 italic">Please select a room and at least 1 adult to see pricing.</p>
-                          )}
-                        </div>
-                      </div>
-
+                      ) : (
+                        <p className="text-sm text-red-500 italic">Please select a room and at least 1 adult to see pricing.</p>
+                      )}
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Checkout Footer */}
-              <div className="border-t border-brand-green-200 bg-white px-4 py-6 sm:px-6">
-                
-                {/* Scrollable Terms & Conditions Box with Mandatory Checkbox */}
-                <div className="mb-5 border-t border-gray-200 pt-4">
+                {/* Terms Accordion & Mandatory Checkbox */}
+                <div className="rounded-xl border border-brand-green-200 bg-white p-5 shadow-sm">
                   <button 
                     onClick={() => setIsTCOpen(!isTCOpen)}
-                    className="flex items-center justify-between w-full text-left text-xs font-bold text-gray-800 uppercase tracking-wider hover:text-brand-green-800 transition-colors mb-1"
+                    className="flex items-center justify-between w-full text-left text-xs font-bold text-gray-800 uppercase tracking-wider hover:text-brand-green-800 transition-colors"
                   >
-                    <span className="flex items-center gap-1.5">
-                      <span>Hotel Rules & Terms & Conditions ({termsAndConditions.length})</span>
-                    </span>
+                    <span>Hotel Rules & Terms & Conditions ({termsAndConditions.length})</span>
                     <ChevronDown className={`w-4 h-4 transform transition-transform ${isTCOpen ? 'rotate-180' : ''}`} />
                   </button>
 
@@ -274,8 +262,8 @@ export default function BookingCart() {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        <div className="mt-2 text-xs text-gray-700 border border-gray-300 rounded-xl p-3.5 bg-white leading-relaxed max-h-60 overflow-y-auto space-y-3 shadow-inner">
-                          <p className="font-semibold text-brand-green-900 text-xs border-b border-gray-100 pb-2">
+                        <div className="mt-3 text-xs text-gray-700 border border-gray-300 rounded-xl p-3.5 bg-gray-50 leading-relaxed max-h-56 overflow-y-auto space-y-3 shadow-inner">
+                          <p className="font-semibold text-brand-green-900 text-xs border-b border-gray-200 pb-2">
                             Please scroll through and review all 39 hotel rules and regulations:
                           </p>
                           <ol className="list-decimal pl-4 space-y-2.5">
@@ -291,7 +279,7 @@ export default function BookingCart() {
                   </AnimatePresence>
 
                   {/* Mandatory Checkbox */}
-                  <label className="flex items-start gap-2.5 mt-3 p-3 bg-brand-yellow-50 border border-brand-yellow-200 rounded-xl cursor-pointer select-none hover:bg-brand-yellow-100/80 transition-colors">
+                  <label className="flex items-start gap-3 mt-4 p-3 bg-brand-yellow-50 border border-brand-yellow-200 rounded-xl cursor-pointer select-none hover:bg-brand-yellow-100/80 transition-colors">
                     <input
                       type="checkbox"
                       checked={isAgreedToTerms}
@@ -304,9 +292,10 @@ export default function BookingCart() {
                   </label>
                 </div>
 
-                <div className="mt-4">
+                {/* WhatsApp Action Button */}
+                <div className="pb-6">
                   {isCheckoutDisabled ? (
-                    <div className="flex items-center justify-center rounded-xl border border-transparent bg-gray-300 px-4 py-4 text-xs font-bold text-gray-600 cursor-not-allowed text-center leading-snug">
+                    <div className="flex items-center justify-center rounded-xl border border-transparent bg-gray-300 px-4 py-4 text-xs font-bold text-gray-600 cursor-not-allowed text-center leading-snug shadow-sm">
                       {getCheckoutDisabledMessage()}
                     </div>
                   ) : (
@@ -319,19 +308,16 @@ export default function BookingCart() {
                       Continue to WhatsApp to Book Room &rarr;
                     </a>
                   )}
-                </div>
-                <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                  <p>
-                    or{" "}
+
+                  <div className="mt-4 flex justify-center text-center text-sm text-gray-500">
                     <button
                       type="button"
                       onClick={() => setIsCartOpen(false)}
                       className="font-medium text-brand-green-700 hover:text-brand-green-600"
                     >
-                      Continue Browsing
-                      <span aria-hidden="true"> &rarr;</span>
+                      Continue Browsing &rarr;
                     </button>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
