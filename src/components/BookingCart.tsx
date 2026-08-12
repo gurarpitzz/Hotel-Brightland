@@ -250,7 +250,7 @@ export default function BookingCart() {
                     onClick={() => setIsTCOpen(!isTCOpen)}
                     className="flex items-center justify-between w-full text-left text-xs font-bold text-gray-800 uppercase tracking-wider hover:text-brand-green-800 transition-colors"
                   >
-                    <span>Hotel Rules & Terms & Conditions ({termsAndConditions.length})</span>
+                    <span>Hotel Rules & Terms & Conditions</span>
                     <ChevronDown className={`w-4 h-4 transform transition-transform ${isTCOpen ? 'rotate-180' : ''}`} />
                   </button>
 
@@ -264,7 +264,7 @@ export default function BookingCart() {
                       >
                         <div className="mt-3 text-xs text-gray-700 border border-gray-300 rounded-xl p-3.5 bg-gray-50 leading-relaxed max-h-56 overflow-y-auto space-y-3 shadow-inner">
                           <p className="font-semibold text-brand-green-900 text-xs border-b border-gray-200 pb-2">
-                            Please scroll through and review all 39 hotel rules and regulations:
+                            Please scroll through and review all hotel rules and regulations:
                           </p>
                           <ol className="list-decimal pl-4 space-y-2.5">
                             {termsAndConditions.map((term, index) => (
@@ -279,15 +279,15 @@ export default function BookingCart() {
                   </AnimatePresence>
 
                   {/* Mandatory Checkbox */}
-                  <label className="flex items-start gap-3 mt-4 p-3 bg-brand-yellow-50 border border-brand-yellow-200 rounded-xl cursor-pointer select-none hover:bg-brand-yellow-100/80 transition-colors">
+                  <label className="flex items-start gap-3 mt-4 p-3.5 bg-amber-50 border border-amber-200 rounded-xl cursor-pointer select-none hover:bg-amber-100/80 transition-colors">
                     <input
                       type="checkbox"
                       checked={isAgreedToTerms}
                       onChange={(e) => setIsAgreedToTerms(e.target.checked)}
-                      className="mt-0.5 h-4 w-4 rounded border-gray-300 text-brand-green-700 focus:ring-brand-green-500 cursor-pointer shrink-0"
+                      className="mt-0.5 h-4 w-4 rounded border-gray-400 text-brand-green-700 focus:ring-brand-green-500 cursor-pointer shrink-0"
                     />
-                    <span className="text-xs font-medium text-brand-green-950 leading-snug">
-                      I have read, understood, and unconditionally accept all <strong className="font-bold text-brand-green-900">39 Hotel Rules & Terms and Conditions</strong>.
+                    <span className="text-xs font-semibold text-gray-900 leading-snug">
+                      I have read, understood, and accept all <strong className="font-bold text-brand-green-900">Hotel Rules & Terms and Conditions</strong>.
                     </span>
                   </label>
                 </div>
