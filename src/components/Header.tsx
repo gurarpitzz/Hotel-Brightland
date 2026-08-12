@@ -1,15 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, Tag } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useBooking } from "@/context/BookingContext";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOfferDropdownOpen, setIsOfferDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const { setIsCartOpen } = useBooking();
 
@@ -25,6 +27,17 @@ export default function Header() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOfferDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const navLinks = [
@@ -80,14 +93,75 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center">
+          {/* Desktop CTA with Oberoi-style Dropdown Popover */}
+          <div className="hidden md:block relative" ref={dropdownRef}>
             <button
-              onClick={() => setIsCartOpen(true)}
-              className="bg-brand-green-700 hover:bg-brand-green-800 text-white px-6 py-2.5 rounded-full font-bold text-sm transition-colors shadow-md"
+              onClick={() => setIsOfferDropdownOpen(!isOfferDropdownOpen)}
+              className="bg-brand-green-700 hover:bg-brand-green-800 text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow-md flex items-center gap-2"
             >
-              Book via WhatsApp (Save 15%)
+              <span>Book via WhatsApp (Save 15%)</span>
+              <ChevronDown 
+                size={16} 
+                className={`transition-transform duration-200 ${isOfferDropdownOpen ? "rotate-180" : ""}`} 
+              />
             </button>
+
+            {/* Oberoi-style Dropdown Card */}
+            {isOfferDropdownOpen && (
+              <div className="absolute right-0 top-full mt-3 w-80 sm:w-96 rounded-2xl overflow-hidden shadow-2xl z-50 border border-brand-green-800/20 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="relative h-[380px] w-full p-6 flex flex-col justify-between text-white">
+                  <Image
+                    src="/assets/View from Hotel/View  (6).jpg"
+                    alt="Brightland Hotel Scenic Valley View"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  {/* Overlay Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-green-950 via-brand-green-950/70 to-black/40" />
+
+                  {/* Top Badge & Close Button */}
+                  <div className="relative z-10 flex justify-between items-center">
+                    <span className="bg-brand-yellow-400 text-brand-green-950 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
+                      <Tag size={12} />
+                      Direct Booking Offer
+                    </span>
+                    <button
+                      onClick={() => setIsOfferDropdownOpen(false)}
+                      className="text-white/80 hover:text-white bg-black/40 hover:bg-black/60 p-1.5 rounded-full transition-colors backdrop-blur-sm"
+                      aria-label="Close offer dropdown"
+                    >
+                      <X size={18} />
+                    </button>
+                  </div>
+
+                  {/* Content & Action */}
+                  <div className="relative z-10 space-y-3">
+                    <div className="space-y-1">
+                      <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-serif">
+                        ENJOY <span className="text-brand-yellow-400">15% SAVINGS</span>
+                      </h3>
+                      <div className="w-14 h-1 bg-brand-yellow-400 rounded-full" />
+                    </div>
+
+                    <p className="text-sm text-gray-200 leading-relaxed font-normal">
+                      Book directly with Brightland Hotel via WhatsApp to receive an exclusive 15% discount on all room & suite reservations, plus instant support.
+                    </p>
+
+                    <button
+                      onClick={() => {
+                        setIsOfferDropdownOpen(false);
+                        setIsCartOpen(true);
+                      }}
+                      className="w-full mt-2 bg-brand-green-700 hover:bg-brand-green-800 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 text-sm border border-brand-green-500/30"
+                    >
+                      <span>Book via WhatsApp Now</span>
+                      <ChevronRight size={18} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -123,15 +197,58 @@ export default function Header() {
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
-                setIsCartOpen(true);
+                setIsOfferDropdownOpen(!isOfferDropdownOpen);
               }}
-              className="w-full bg-brand-green-700 hover:bg-brand-green-800 text-white px-6 py-3 rounded-full font-bold text-center shadow-md"
+              className="w-full bg-brand-green-700 hover:bg-brand-green-800 text-white px-6 py-3 rounded-full font-bold text-center shadow-md flex items-center justify-center gap-2"
             >
-              Book via WhatsApp (Save 15%)
+              <span>Book via WhatsApp (Save 15%)</span>
+              <ChevronDown size={16} />
             </button>
+
+            {isOfferDropdownOpen && (
+              <div className="mt-3 rounded-2xl overflow-hidden shadow-xl border border-brand-green-800/20 relative h-[340px] p-5 flex flex-col justify-between text-white">
+                <Image
+                  src="/assets/View from Hotel/View  (6).jpg"
+                  alt="Brightland Hotel Scenic View"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-green-950 via-brand-green-950/70 to-black/40" />
+
+                <div className="relative z-10 flex justify-between items-center">
+                  <span className="bg-brand-yellow-400 text-brand-green-950 font-extrabold text-xs px-2.5 py-0.5 rounded-full uppercase">
+                    Direct Offer
+                  </span>
+                  <button onClick={() => setIsOfferDropdownOpen(false)} className="text-white/80 p-1">
+                    <X size={18} />
+                  </button>
+                </div>
+
+                <div className="relative z-10 space-y-2">
+                  <h3 className="text-xl font-bold text-white">
+                    ENJOY <span className="text-brand-yellow-400">15% SAVINGS</span>
+                  </h3>
+                  <p className="text-xs text-gray-200">
+                    Book directly via WhatsApp for an exclusive 15% discount on all bookings.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setIsOfferDropdownOpen(false);
+                      setIsMobileMenuOpen(false);
+                      setIsCartOpen(true);
+                    }}
+                    className="w-full bg-brand-green-700 hover:bg-brand-green-800 text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-1"
+                  >
+                    <span>Book via WhatsApp</span>
+                    <ChevronRight size={14} />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
     </header>
   );
 }
+
