@@ -135,10 +135,11 @@ export default function Header() {
                 >
                   <div className="relative h-[380px] w-full p-6 flex flex-col justify-between text-white">
                     <Image
-                      src="/assets/View from Hotel/View  (6).jpg"
-                      alt="Brightland Hotel Scenic Valley View"
+                      src="/assets/View from Hotel/slide-show-03.gif"
+                      alt="Brightland Hotel Scenic View"
                       fill
                       className="object-cover"
+                      unoptimized
                       priority
                     />
                     {/* Overlay Gradient */}
@@ -238,10 +239,11 @@ export default function Header() {
                   className="mt-3 rounded-2xl overflow-hidden shadow-xl border border-brand-green-800/20 relative h-[340px] p-5 flex flex-col justify-between text-white"
                 >
                   <Image
-                    src="/assets/View from Hotel/View  (6).jpg"
+                    src="/assets/View from Hotel/slide-show-03.gif"
                     alt="Brightland Hotel Scenic View"
                     fill
                     className="object-cover"
+                    unoptimized
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-green-950 via-brand-green-950/70 to-black/40" />
 
