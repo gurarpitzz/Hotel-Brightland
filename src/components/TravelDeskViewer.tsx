@@ -522,15 +522,15 @@ export default function TravelDeskViewer() {
                     }`}
                   >
                     {/* Card Header Flex with Photo */}
-                    <div className="flex flex-col sm:flex-row items-stretch">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-stretch">
                       {/* Destination Image Thumbnail */}
-                      <div className="relative w-full sm:w-48 md:w-56 h-48 sm:h-auto shrink-0 overflow-hidden bg-gray-100">
+                      <div className="relative w-full sm:w-48 md:w-52 h-44 sm:h-36 md:h-40 shrink-0 overflow-hidden bg-gray-100">
                         <img 
                           src={destImg} 
                           alt={dest.name} 
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                          className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" 
                         />
-                        <div className="absolute inset-0 bg-black/10 sm:hidden" />
+                        <div className="absolute inset-0 bg-black/5 sm:hidden" />
                       </div>
 
                       {/* Accordion Button / Content */}
