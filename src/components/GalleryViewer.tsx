@@ -117,7 +117,7 @@ export default function GalleryViewer({ images }: { images: string[] }) {
             transition={{ duration: 0.5 }}
             className="max-w-5xl mx-auto"
           >
-            <div className="relative bg-black rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gray-900">
               <div className="overflow-hidden" ref={emblaRef}>
                 <div className="flex">
                   {images.map((src, idx) => (
@@ -126,7 +126,8 @@ export default function GalleryViewer({ images }: { images: string[] }) {
                         src={src}
                         alt={`Slide ${idx + 1}`}
                         fill
-                        className="object-contain"
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 80vw"
                       />
                     </div>
                   ))}
@@ -136,24 +137,24 @@ export default function GalleryViewer({ images }: { images: string[] }) {
               {/* Chevrons */}
               <button
                 onClick={scrollPrev}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-brand-green-700/90 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-all"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-brand-green-700/90 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-all z-10"
               >
                 <ChevronLeft size={32} />
               </button>
               <button
                 onClick={scrollNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-brand-green-700/90 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-all"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-brand-green-700/90 text-white rounded-full flex items-center justify-center backdrop-blur-sm transition-all z-10"
               >
                 <ChevronRight size={32} />
               </button>
 
               {/* Progress Bar / Dots */}
-              <div className="absolute bottom-6 left-0 right-0 flex justify-center px-4 flex-wrap gap-1">
+              <div className="absolute bottom-6 left-0 right-0 flex justify-center px-4 flex-wrap gap-1 z-10">
                 {images.map((_, idx) => (
                   <div
                     key={idx}
                     className={`h-1.5 rounded-full transition-all ${
-                      idx === selectedIndex ? "w-8 bg-brand-yellow-100" : "w-2 bg-white/30"
+                      idx === selectedIndex ? "w-8 bg-brand-yellow-100" : "w-2 bg-white/40"
                     }`}
                   />
                 ))}
@@ -197,12 +198,13 @@ export default function GalleryViewer({ images }: { images: string[] }) {
               <ChevronRight size={40} />
             </button>
 
-            <div className="relative w-full max-w-6xl h-[85vh]">
+            <div className="relative w-full max-w-6xl h-[85vh] rounded-2xl overflow-hidden">
               <Image
                 src={images[selectedImageIndex]}
                 alt={`Lightbox Image ${selectedImageIndex + 1}`}
                 fill
-                className="object-contain"
+                className="object-cover"
+                sizes="100vw"
               />
             </div>
             
