@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=$(pwd)
+    - export DEPLOYPATH=/home1/tstpllmy/public_html/brightlandhotel-ajeetgraphics-prod
     - /bin/cp -R out/* $DEPLOYPATH/ 2>/dev/null || /bin/cp -R webapp/out/* $DEPLOYPATH/ 2>/dev/null
     - /bin/cp out/.htaccess $DEPLOYPATH/ 2>/dev/null || /bin/cp webapp/out/.htaccess $DEPLOYPATH/ 2>/dev/null
