@@ -67,6 +67,18 @@ export default function Header() {
     { name: "Travel Desk", href: "/travel-desk" },
   ];
 
+  // Prevent background scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <header 
       className={`sticky top-0 z-40 w-full transition-all duration-300 ${
@@ -202,9 +214,9 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-6 space-y-1 shadow-lg absolute w-full">
+        <div className="md:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-24 space-y-1 shadow-2xl fixed inset-x-0 top-16 sm:top-20 bottom-0 z-50 overflow-y-auto">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -219,7 +231,7 @@ export default function Header() {
               {link.name}
             </Link>
           ))}
-          <div className="pt-4 px-3">
+          <div className="pt-4 px-3 pb-8">
             <button
               onClick={() => {
                 setIsOfferDropdownOpen(!isOfferDropdownOpen);
@@ -227,7 +239,7 @@ export default function Header() {
               className="w-full bg-brand-green-700 hover:bg-brand-green-800 text-white px-6 py-3 rounded-full font-bold text-center shadow-md flex items-center justify-center gap-2"
             >
               <span>Book via WhatsApp (Save 15%)</span>
-              <ChevronDown size={16} />
+              <ChevronDown size={16} className={`transition-transform duration-300 ${isOfferDropdownOpen ? "rotate-180" : ""}`} />
             </button>
 
             <AnimatePresence>
@@ -236,7 +248,7 @@ export default function Header() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  className="mt-3 rounded-2xl overflow-hidden shadow-xl border border-brand-green-800/20 relative h-[340px] p-5 flex flex-col justify-between text-white"
+                  className="mt-3 rounded-2xl overflow-hidden shadow-xl border border-brand-green-800/20 relative h-[360px] p-5 flex flex-col justify-between text-white"
                 >
                   <Image
                     src="/assets/View from Hotel/slide-show-03.gif"
@@ -257,11 +269,11 @@ export default function Header() {
                   </div>
 
                   <div className="relative z-10 space-y-2">
-                    <h3 className="text-xl font-bold text-white">
+                    <h3 className="text-xl font-bold text-white font-serif">
                       ENJOY <span className="text-brand-yellow-400">15% SAVINGS</span>
                     </h3>
-                    <p className="text-xs text-gray-200">
-                      Book directly via WhatsApp for an exclusive 15% discount on all bookings.
+                    <p className="text-xs text-gray-200 leading-relaxed">
+                      Book directly via WhatsApp for an exclusive 15% discount on all room reservations.
                     </p>
                     <button
                       onClick={() => {
@@ -269,7 +281,7 @@ export default function Header() {
                         setIsMobileMenuOpen(false);
                         setIsCartOpen(true);
                       }}
-                      className="w-full bg-brand-green-700 hover:bg-brand-green-800 text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-1"
+                      className="w-full mt-1 bg-brand-green-700 hover:bg-brand-green-800 text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-1 shadow-lg"
                     >
                       <span>Book via WhatsApp</span>
                       <ChevronRight size={14} />
