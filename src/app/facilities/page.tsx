@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Utensils, TreePine, Car, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { Utensils, TreePine, Car, Clock, ChevronLeft, ChevronRight, FileText, ExternalLink } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import React, { useCallback } from "react";
@@ -157,17 +157,19 @@ export default function FacilitiesPage() {
                     {facility.description}
                   </p>
 
-                  {/* PDF Embed for Restaurant */}
+                  {/* PDF Menu Button for Restaurant */}
                   {facility.pdfEmbed && (
-                    <div className="mt-8 rounded-xl overflow-hidden border border-brand-green-200 shadow-md bg-white">
-                      <div className="bg-brand-green-900 text-white py-2 px-4 font-semibold text-sm tracking-wide">
-                        View Our Menu
-                      </div>
-                      <iframe 
-                        src={`${facility.pdfEmbed}#view=FitH`} 
-                        className="w-full h-[400px]" 
-                        title={`${facility.title} Menu`}
-                      />
+                    <div className="pt-4">
+                      <a
+                        href={facility.pdfEmbed}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-brand-green-700 hover:bg-brand-green-800 text-white px-6 py-3.5 rounded-full font-bold transition-all shadow-md transform hover:scale-105 active:scale-95 text-base"
+                      >
+                        <FileText className="w-5 h-5" />
+                        Click Here to View Our Menu
+                        <ExternalLink className="w-4 h-4 ml-1 opacity-80" />
+                      </a>
                     </div>
                   )}
                 </motion.div>
