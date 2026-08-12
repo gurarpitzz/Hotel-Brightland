@@ -28,6 +28,11 @@ const greatVibes = Great_Vibes({
 export const metadata: Metadata = {
   title: "Brightland Hotel, Shimla | Official Website",
   description: "Book direct and save up to 15%. Brightland Hotel offers prime Shimla location, family-friendly rooms with mountain views, and easy access to local attractions.",
+  icons: {
+    icon: "/assets/logo/logo.png",
+    shortcut: "/assets/logo/logo.png",
+    apple: "/assets/logo/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -41,6 +46,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} h-full antialiased`}
     >
       <head>
+        <link rel="icon" href="/assets/logo/logo.png" type="image/png" />
+        <link rel="shortcut icon" href="/assets/logo/logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/assets/logo/logo.png" />
         <link rel="preload" as="image" href="/assets/logo/logo.png" />
       </head>
       <body className="min-h-full flex flex-col pb-16 md:pb-0">
