@@ -184,8 +184,7 @@ export default function RoomsPage() {
               {/* Details Section */}
               <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between">
                 <div>
-                  <h2 className="text-3xl font-bold text-brand-green-900 mb-3">{room.name}</h2>
-                  <p className="text-gray-600 mb-6 text-base leading-relaxed">{room.description}</p>
+                  <h2 className="text-3xl font-bold text-brand-green-900 mb-6">{room.name}</h2>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 mb-8">
                     {room.features.map((feature, idx) => (
