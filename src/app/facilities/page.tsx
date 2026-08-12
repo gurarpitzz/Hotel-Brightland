@@ -21,7 +21,7 @@ const facilities = [
   },
   {
     title: "The Terrace Garden",
-    description: "Step into our lush, beautifully manicured Terrace Garden—a serene oasis suspended above the bustling world below. Surrounded by the majestic Shimla mountains, it is the ultimate sanctuary for morning meditation, afternoon high tea, or an intimate evening under the stars. Breathe in the crisp Himalayan air as you unwind amidst vibrant blooms and panoramic valley views.",
+    description: "Step into our lush, beautifully manicured Terrace Garden, a serene oasis suspended above the bustling world below. Surrounded by the majestic Shimla mountains, it is the ultimate sanctuary for morning meditation, afternoon high tea, or an intimate evening under the stars. Breathe in the crisp Himalayan air as you unwind amidst vibrant blooms and panoramic valley views.",
     icon: <TreePine className="w-8 h-8 text-brand-green-700" />,
     images: [
       "/assets/Terrace Garden/Garden (4).JPG",

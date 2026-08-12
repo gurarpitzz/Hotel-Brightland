@@ -109,7 +109,7 @@ export default function Home() {
             
             <div className="space-y-6 text-gray-700 text-lg leading-relaxed text-justify md:text-center max-w-4xl mx-auto">
               <p>
-                As one of Shimla&apos;s most prestigious and historic properties, Brightland Hotel offers an unparalleled experience in the former summer capital of Imperial India. Open year-round, our estate provides a sanctuary for every season—whether you are seeking a romantic honeymoon, a distinguished corporate retreat, or a deeply relaxing mountain getaway. Step into our thoughtfully curated, luxuriously appointed suites and indulge in the finest authentic Indian cuisine.
+                As one of Shimla&apos;s most prestigious and historic properties, Brightland Hotel offers an unparalleled experience in the former summer capital of Imperial India. Open year-round, our estate provides a sanctuary for every season, whether you are seeking a romantic honeymoon, a distinguished corporate retreat, or a deeply relaxing mountain getaway. Step into our thoughtfully curated, luxuriously appointed suites and indulge in the finest authentic Indian cuisine.
               </p>
               <p>
                 Lose yourself in the mesmerizing, ever-changing moods of the Himalayas. Awaken to the scent of whispering pines, watch the floating mists roll through the valleys, and cozy up as snowflakes gently blanket the slate roofs. By dusk, watch the horizon come alive as the distant twinkling lights of Tara Devi, Chail, Subathu, and Kasauli illuminate the mountain sky.
@@ -130,10 +130,10 @@ export default function Home() {
               </div>
               <h3 className="text-3xl font-bold text-brand-green-900">A Heritage Woven in Legend</h3>
               <p className="text-gray-700 text-lg leading-relaxed">
-                Our legacy runs deep. Brightland is the proud successor to the legendary Imperial, Chambers, and Central Hotels—once housed within the sprawling Wyming Estate of the Murree Hills. Today, we are passionately managed by third and fourth-generation hoteliers who carry forward an unbroken tradition of excellence.
+                Our legacy runs deep. Brightland is the proud successor to the legendary Imperial, Chambers, and Central Hotels, once housed within the sprawling Wyming Estate of the Murree Hills. Today, we are passionately managed by third and fourth-generation hoteliers who carry forward an unbroken tradition of excellence.
               </p>
               <p className="text-brand-green-800 font-bold text-xl mt-4 italic">
-                At Brightland, hospitality is not just a service—it is a cherished way of life.
+                At Brightland, hospitality is not just a service, it is a cherished way of life.
               </p>
             </motion.div>
             
