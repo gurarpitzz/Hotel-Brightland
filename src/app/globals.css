@@ -9,23 +9,25 @@
   --color-brand-green-700: #047857; /* Tailwind Emerald 700 */
   --color-brand-green-800: #065f46; /* Tailwind Emerald 800 */
   --color-brand-green-900: #022c22;
-  --color-brand-yellow-50: #fffde7; /* Mild yellow */
+  --color-brand-green-950: #011a13;
+
+  --color-brand-yellow-50: #fffde7; /* Mild yellow background */
   --color-brand-yellow-100: #fff9c4;
   --color-brand-yellow-200: #fff59d;
+  --color-brand-yellow-300: #fde047;
+  --color-brand-yellow-400: #facc15;
+  --color-brand-yellow-500: #eab308;
   --color-brand-yellow-600: #fbc02d;
+  --color-brand-yellow-700: #d97706;
+  --color-brand-yellow-800: #92400e;
+  --color-brand-yellow-900: #78350f;
+
   --font-cursive: var(--font-great-vibes);
 }
 
 :root {
   --background: var(--color-brand-yellow-50);
   --foreground: var(--color-brand-green-900);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--color-brand-green-900);
-    --foreground: var(--color-brand-yellow-50);
-  }
 }
 
 body {
