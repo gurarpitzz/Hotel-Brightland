@@ -60,11 +60,49 @@ const seasons = [
 
 export default function ContactClient() {
   return (
-    <div className="bg-brand-yellow-50 min-h-screen pb-20 text-brand-dark">
+    <div className="bg-brand-yellow-50 min-h-screen pb-20">
       
+      {/* Embedded High-Priority CSS Overrides */}
+      <style jsx global>{`
+        .contact-page-wrapper {
+          color: #022c22 !important;
+        }
+        .contact-card-white {
+          background-color: #ffffff !important;
+          color: #022c22 !important;
+        }
+        .contact-card-white h1,
+        .contact-card-white h2,
+        .contact-card-white h3,
+        .contact-card-white h4,
+        .contact-card-white p,
+        .contact-card-white span,
+        .contact-card-white label,
+        .contact-card-white div {
+          color: #022c22 !important;
+        }
+        .contact-heading-dark {
+          color: #022c22 !important;
+        }
+        .contact-sub-emerald {
+          color: #047857 !important;
+        }
+        .contact-sub-gray {
+          color: #4b5563 !important;
+        }
+        .contact-input-field {
+          color: #111827 !important;
+          background-color: #ffffff !important;
+          border-color: #d1d5db !important;
+        }
+        .contact-input-field::placeholder {
+          color: #6b7280 !important;
+          opacity: 1 !important;
+        }
+      `}</style>
+
       {/* Hero Header */}
       <section className="relative bg-brand-green-900 text-white py-16 md:py-24 overflow-hidden shadow-lg">
-        {/* Background Decorative Pattern */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fef08a_1px,transparent_1px)] [background-size:16px_16px]" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -92,12 +130,11 @@ export default function ContactClient() {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 space-y-16 contact-page-wrapper">
 
         {/* Direct WhatsApp Deals Banner */}
         <AnimatedScaleUp>
           <div className="bg-gradient-to-r from-emerald-800 via-brand-green-900 to-emerald-950 text-white rounded-3xl p-6 sm:p-10 shadow-2xl border-2 border-emerald-500/40 relative overflow-hidden">
-            {/* Background Accent */}
             <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
@@ -141,7 +178,7 @@ export default function ContactClient() {
 
         {/* Section: A Hotel for All Seasons */}
         <AnimatedFadeUp>
-          <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-gray-200 space-y-10">
+          <div className="contact-card-white rounded-3xl p-8 sm:p-12 shadow-xl border border-gray-200 space-y-10">
             
             <div className="text-center max-w-3xl mx-auto space-y-4">
               <span 
@@ -152,7 +189,7 @@ export default function ContactClient() {
               </span>
               <h2 
                 style={{ color: "#022c22" }} 
-                className="text-3xl sm:text-4xl font-extrabold font-serif tracking-tight"
+                className="text-3xl sm:text-4xl font-extrabold font-serif tracking-tight contact-heading-dark"
               >
                 A Hotel For All Seasons
               </h2>
@@ -183,10 +220,10 @@ export default function ContactClient() {
                       </span>
                     </div>
                     <div>
-                      <h3 style={{ color: "#022c22" }} className="font-extrabold text-lg">{item.season}</h3>
-                      <p style={{ color: "#047857" }} className="text-xs font-bold mt-0.5">{item.highlight}</p>
+                      <h3 style={{ color: "#022c22" }} className="font-extrabold text-lg contact-heading-dark">{item.season}</h3>
+                      <p style={{ color: "#047857" }} className="text-xs font-bold mt-0.5 contact-sub-emerald">{item.highlight}</p>
                     </div>
-                    <p style={{ color: "#374151" }} className="text-xs leading-relaxed font-medium">
+                    <p style={{ color: "#374151" }} className="text-xs leading-relaxed font-medium contact-sub-gray">
                       {item.description}
                     </p>
                   </div>
@@ -197,7 +234,7 @@ export default function ContactClient() {
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ color: "#047857" }}
-                      className="text-xs font-extrabold flex items-center gap-1 group/btn"
+                      className="text-xs font-extrabold flex items-center gap-1 group/btn contact-sub-emerald"
                     >
                       <span>Inquire for {item.name}</span>
                       <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
@@ -215,43 +252,43 @@ export default function ContactClient() {
           
           {/* Phone Numbers */}
           <AnimatedFadeUp delay={0.1}>
-            <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-200 h-full flex flex-col justify-between space-y-6 hover:border-emerald-400 transition-colors">
+            <div className="contact-card-white rounded-3xl p-8 shadow-xl border border-gray-200 h-full flex flex-col justify-between space-y-6 hover:border-emerald-400 transition-colors">
               <div className="space-y-4">
                 <div style={{ backgroundColor: "#d1fae5", color: "#047857" }} className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-inner">
                   <PhoneCall size={28} />
                 </div>
                 <div>
-                  <h3 style={{ color: "#022c22" }} className="text-2xl font-extrabold">Phone & WhatsApp</h3>
-                  <p style={{ color: "#4b5563" }} className="text-xs font-medium mt-1">Direct lines for reservations and reception</p>
+                  <h3 style={{ color: "#022c22" }} className="text-2xl font-extrabold contact-heading-dark">Phone & WhatsApp</h3>
+                  <p style={{ color: "#4b5563" }} className="text-xs font-medium mt-1 contact-sub-gray">Direct lines for reservations and reception</p>
                 </div>
 
                 <div className="space-y-3 pt-2 text-sm">
                   <div style={{ backgroundColor: "#ecfdf5", borderColor: "#a7f3d0" }} className="p-4 rounded-2xl border">
-                    <p style={{ color: "#022c22" }} className="font-black text-xl tracking-wide">0177-2658275</p>
-                    <p style={{ color: "#047857" }} className="text-xs font-bold flex items-center gap-1.5 mt-1">
+                    <p style={{ color: "#022c22" }} className="font-black text-xl tracking-wide contact-heading-dark">0177-2658275</p>
+                    <p style={{ color: "#047857" }} className="text-xs font-bold flex items-center gap-1.5 mt-1 contact-sub-emerald">
                       <Clock size={14} className="shrink-0" /> 
                       Reservations (10:00 AM – 6:00 PM)
                     </p>
                   </div>
 
                   <div className="space-y-2 px-1 pt-1">
-                    <p style={{ color: "#047857" }} className="text-xs font-black uppercase tracking-wider">Reception Desk</p>
-                    <a href="tel:01772803659" style={{ color: "#022c22" }} className="font-extrabold text-base hover:text-emerald-700 block transition-colors">
+                    <p style={{ color: "#047857" }} className="text-xs font-black uppercase tracking-wider contact-sub-emerald">Reception Desk</p>
+                    <a href="tel:01772803659" style={{ color: "#022c22" }} className="font-extrabold text-base hover:text-emerald-700 block transition-colors contact-heading-dark">
                       0177-2803659
                     </a>
-                    <a href="tel:01772813659" style={{ color: "#022c22" }} className="font-extrabold text-base hover:text-emerald-700 block transition-colors">
+                    <a href="tel:01772813659" style={{ color: "#022c22" }} className="font-extrabold text-base hover:text-emerald-700 block transition-colors contact-heading-dark">
                       0177-2813659
                     </a>
                   </div>
 
                   <div className="pt-3 border-t border-gray-200">
-                    <p style={{ color: "#047857" }} className="text-xs font-black uppercase tracking-wider mb-1">WhatsApp Direct</p>
+                    <p style={{ color: "#047857" }} className="text-xs font-black uppercase tracking-wider mb-1 contact-sub-emerald">WhatsApp Direct</p>
                     <a 
                       href="https://wa.me/918219200074" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       style={{ color: "#047857" }}
-                      className="font-extrabold text-base hover:underline flex items-center gap-1.5"
+                      className="font-extrabold text-base hover:underline flex items-center gap-1.5 contact-sub-emerald"
                     >
                       <MessageCircle size={18} />
                       +91 8219200074
@@ -264,29 +301,29 @@ export default function ContactClient() {
 
           {/* Email Address */}
           <AnimatedFadeUp delay={0.2}>
-            <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-200 h-full flex flex-col justify-between space-y-6 hover:border-emerald-400 transition-colors">
+            <div className="contact-card-white rounded-3xl p-8 shadow-xl border border-gray-200 h-full flex flex-col justify-between space-y-6 hover:border-emerald-400 transition-colors">
               <div className="space-y-4">
                 <div style={{ backgroundColor: "#d1fae5", color: "#047857" }} className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-inner">
                   <Mail size={28} />
                 </div>
                 <div>
-                  <h3 style={{ color: "#022c22" }} className="text-2xl font-extrabold">Email Inquiry</h3>
-                  <p style={{ color: "#4b5563" }} className="text-xs font-medium mt-1">Send us an official booking email or query</p>
+                  <h3 style={{ color: "#022c22" }} className="text-2xl font-extrabold contact-heading-dark">Email Inquiry</h3>
+                  <p style={{ color: "#4b5563" }} className="text-xs font-medium mt-1 contact-sub-gray">Send us an official booking email or query</p>
                 </div>
 
                 <div className="space-y-4 pt-2">
                   <div style={{ backgroundColor: "#ecfdf5", borderColor: "#a7f3d0" }} className="p-4 rounded-2xl border">
-                    <p style={{ color: "#047857" }} className="text-xs font-black uppercase tracking-wider mb-1.5">Official Email Address</p>
+                    <p style={{ color: "#047857" }} className="text-xs font-black uppercase tracking-wider mb-1.5 contact-sub-emerald">Official Email Address</p>
                     <a 
                       href="mailto:brightlandhotel@gmail.com" 
                       style={{ color: "#022c22" }}
-                      className="text-base sm:text-lg font-black hover:text-emerald-700 transition-colors break-all block"
+                      className="text-base sm:text-lg font-black hover:text-emerald-700 transition-colors break-all block contact-heading-dark"
                     >
                       brightlandhotel@gmail.com
                     </a>
                   </div>
 
-                  <p style={{ color: "#4b5563" }} className="text-xs leading-relaxed font-medium">
+                  <p style={{ color: "#4b5563" }} className="text-xs leading-relaxed font-medium contact-sub-gray">
                     We ensure quick responses to all email inquiries regarding custom family packages, corporate stay bookings, and travel desk bookings.
                   </p>
                 </div>
@@ -305,19 +342,19 @@ export default function ContactClient() {
 
           {/* Address & Location */}
           <AnimatedFadeUp delay={0.3}>
-            <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-200 h-full flex flex-col justify-between space-y-6 hover:border-emerald-400 transition-colors">
+            <div className="contact-card-white rounded-3xl p-8 shadow-xl border border-gray-200 h-full flex flex-col justify-between space-y-6 hover:border-emerald-400 transition-colors">
               <div className="space-y-4">
                 <div style={{ backgroundColor: "#d1fae5", color: "#047857" }} className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-inner">
                   <MapPin size={28} />
                 </div>
                 <div>
-                  <h3 style={{ color: "#022c22" }} className="text-2xl font-extrabold">Hotel Address</h3>
-                  <p style={{ color: "#4b5563" }} className="text-xs font-medium mt-1">Prime central Shimla location</p>
+                  <h3 style={{ color: "#022c22" }} className="text-2xl font-extrabold contact-heading-dark">Hotel Address</h3>
+                  <p style={{ color: "#4b5563" }} className="text-xs font-medium mt-1 contact-sub-gray">Prime central Shimla location</p>
                 </div>
 
                 <div className="space-y-3 pt-2 text-sm">
-                  <p style={{ color: "#1f2937" }} className="font-semibold leading-relaxed">
-                    <span style={{ color: "#022c22" }} className="font-extrabold text-base block">Brightland Hotel Shimla</span>
+                  <p style={{ color: "#1f2937" }} className="font-semibold leading-relaxed contact-sub-gray">
+                    <span style={{ color: "#022c22" }} className="font-extrabold text-base block contact-heading-dark">Brightland Hotel Shimla</span>
                     Cosy Nook Estate,<br />
                     Near Army Training Command,<br />
                     Adjacent The Mall, Shimla - 171 003<br />
@@ -325,8 +362,8 @@ export default function ContactClient() {
                   </p>
 
                   <div className="pt-3 border-t border-gray-200">
-                    <p style={{ color: "#047857" }} className="text-xs font-black uppercase tracking-wider">Geo Coordinates</p>
-                    <p style={{ color: "#022c22" }} className="font-mono text-xs font-bold mt-0.5">31.1051° N, 77.1672° E</p>
+                    <p style={{ color: "#047857" }} className="text-xs font-black uppercase tracking-wider contact-sub-emerald">Geo Coordinates</p>
+                    <p style={{ color: "#022c22" }} className="font-mono text-xs font-bold mt-0.5 contact-heading-dark">31.1051° N, 77.1672° E</p>
                   </div>
                 </div>
               </div>
@@ -351,7 +388,7 @@ export default function ContactClient() {
           
           {/* Quick Inquiry Form */}
           <AnimatedFadeUp>
-            <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-gray-200 space-y-6">
+            <div className="contact-card-white rounded-3xl p-8 sm:p-10 shadow-xl border border-gray-200 space-y-6">
               <div>
                 <span 
                   style={{ color: "#022c22", backgroundColor: "#d1fae5", borderColor: "#a7f3d0" }} 
@@ -361,11 +398,11 @@ export default function ContactClient() {
                 </span>
                 <h3 
                   style={{ color: "#022c22" }} 
-                  className="text-2xl sm:text-3xl font-extrabold mt-3 font-serif"
+                  className="text-2xl sm:text-3xl font-extrabold mt-3 font-serif contact-heading-dark"
                 >
                   Send Us A Direct Message
                 </h3>
-                <p style={{ color: "#4b5563" }} className="text-xs sm:text-sm mt-1 font-medium">
+                <p style={{ color: "#4b5563" }} className="text-xs sm:text-sm mt-1 font-medium contact-sub-gray">
                   Fill in your details below to open an instant WhatsApp message with our reservation team.
                 </p>
               </div>
@@ -394,7 +431,7 @@ export default function ContactClient() {
                       required 
                       placeholder="e.g. Rahul Sharma" 
                       style={{ color: "#111827", backgroundColor: "#ffffff", borderColor: "#d1d5db" }}
-                      className="w-full px-4 py-3 rounded-xl border focus:outline-none text-sm font-medium"
+                      className="w-full px-4 py-3 rounded-xl border focus:outline-none text-sm font-medium contact-input-field"
                     />
                   </div>
                   <div>
@@ -405,7 +442,7 @@ export default function ContactClient() {
                       required 
                       placeholder="+91 98765 43210" 
                       style={{ color: "#111827", backgroundColor: "#ffffff", borderColor: "#d1d5db" }}
-                      className="w-full px-4 py-3 rounded-xl border focus:outline-none text-sm font-medium"
+                      className="w-full px-4 py-3 rounded-xl border focus:outline-none text-sm font-medium contact-input-field"
                     />
                   </div>
                 </div>
@@ -417,7 +454,7 @@ export default function ContactClient() {
                       type="date" 
                       name="date" 
                       style={{ color: "#111827", backgroundColor: "#ffffff", borderColor: "#d1d5db" }}
-                      className="w-full px-4 py-3 rounded-xl border focus:outline-none text-sm font-medium"
+                      className="w-full px-4 py-3 rounded-xl border focus:outline-none text-sm font-medium contact-input-field"
                     />
                   </div>
                   <div>
@@ -425,7 +462,7 @@ export default function ContactClient() {
                     <select 
                       name="guests" 
                       style={{ color: "#111827", backgroundColor: "#ffffff", borderColor: "#d1d5db" }}
-                      className="w-full px-4 py-3 rounded-xl border focus:outline-none text-sm font-medium"
+                      className="w-full px-4 py-3 rounded-xl border focus:outline-none text-sm font-medium contact-input-field"
                     >
                       <option value="1-2 Guests">1 - 2 Guests</option>
                       <option value="3-4 Guests (Family)">3 - 4 Guests (Family)</option>
@@ -441,7 +478,7 @@ export default function ContactClient() {
                     rows={3} 
                     placeholder="Tell us about your trip plans or room preference..." 
                     style={{ color: "#111827", backgroundColor: "#ffffff", borderColor: "#d1d5db" }}
-                    className="w-full px-4 py-3 rounded-xl border focus:outline-none text-sm font-medium resize-none"
+                    className="w-full px-4 py-3 rounded-xl border focus:outline-none text-sm font-medium resize-none contact-input-field"
                   />
                 </div>
 
@@ -459,15 +496,15 @@ export default function ContactClient() {
 
           {/* Interactive Google Map Embed */}
           <AnimatedFadeUp delay={0.2}>
-            <div className="bg-white rounded-3xl p-4 sm:p-6 shadow-xl border border-gray-200 flex flex-col justify-between space-y-4 h-full">
+            <div className="contact-card-white rounded-3xl p-4 sm:p-6 shadow-xl border border-gray-200 flex flex-col justify-between space-y-4 h-full">
               <div className="px-2">
                 <h3 
                   style={{ color: "#022c22" }} 
-                  className="text-2xl font-extrabold font-serif"
+                  className="text-2xl font-extrabold font-serif contact-heading-dark"
                 >
                   Interactive Location Map
                 </h3>
-                <p style={{ color: "#4b5563" }} className="text-xs font-medium mt-0.5">
+                <p style={{ color: "#4b5563" }} className="text-xs font-medium mt-0.5 contact-sub-gray">
                   Located near Army Training Command & adjacent to The Mall, Shimla
                 </p>
               </div>
@@ -486,13 +523,13 @@ export default function ContactClient() {
               </div>
 
               <div className="px-2 pt-1 flex items-center justify-between text-xs">
-                <span style={{ color: "#022c22" }} className="font-extrabold">📍 Central Mall Road Access</span>
+                <span style={{ color: "#022c22" }} className="font-extrabold contact-heading-dark">📍 Central Mall Road Access</span>
                 <a 
                   href="https://maps.app.goo.gl/aBS4dAoDwjUdKePy5" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   style={{ color: "#047857" }}
-                  className="font-black hover:underline"
+                  className="font-black hover:underline contact-sub-emerald"
                 >
                   Open in Google Maps App →
                 </a>
