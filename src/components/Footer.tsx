@@ -102,7 +102,6 @@ export default function Footer() {
                 <div>
                   <p className="text-[11px] text-brand-green-200 uppercase tracking-wider font-bold mb-0.5">Email</p>
                   <a href="mailto:brightlandhotel@gmail.com" className="text-xs hover:text-white transition-colors block">brightlandhotel@gmail.com</a>
-                  <a href="mailto:mail@brightlandhotel.com" className="text-xs hover:text-white transition-colors block mt-0.5">mail@brightlandhotel.com</a>
                 </div>
               </div>
             </div>
@@ -143,6 +142,12 @@ export default function Footer() {
                 <Link href="/gallery" className="hover:text-brand-yellow-400 transition-colors flex items-center gap-2 group">
                   <ChevronRight size={14} className="text-brand-yellow-400 group-hover:translate-x-1 transition-transform" />
                   <span>Photo Gallery</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-brand-yellow-400 transition-colors flex items-center gap-2 group">
+                  <ChevronRight size={14} className="text-brand-yellow-400 group-hover:translate-x-1 transition-transform" />
+                  <span>Contact Us</span>
                 </Link>
               </li>
               <li>

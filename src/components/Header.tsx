@@ -65,6 +65,7 @@ export default function Header() {
     { name: "Gallery", href: "/gallery" },
     { name: "Policy", href: "/policy" },
     { name: "Travel Desk", href: "/travel-desk" },
+    { name: "Contact Us", href: "/contact" },
   ];
 
   // Prevent background scrolling when mobile menu is open
