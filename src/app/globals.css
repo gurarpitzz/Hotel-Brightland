@@ -26,14 +26,45 @@
 }
 
 :root {
-  --background: var(--color-brand-yellow-50);
-  --foreground: var(--color-brand-green-900);
+  --background: #fffde7;
+  --foreground: #022c22;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #fffde7;
+  color: #022c22;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+}
+
+/* Force High Contrast Dark Colors for White Cards & Form Controls */
+.bg-white {
+  background-color: #ffffff !important;
+  color: #022c22 !important;
+}
+
+.bg-white input,
+.bg-white select,
+.bg-white textarea {
+  color: #111827 !important;
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+.bg-white input::placeholder,
+.bg-white textarea::placeholder {
+  color: #6b7280 !important;
+  opacity: 1 !important;
+}
+
+.bg-white input:focus,
+.bg-white select:focus,
+.bg-white textarea:focus {
+  border-color: #047857 !important;
+}
+
+/* Explicit Dark Green Utilities */
+.text-brand-dark {
+  color: #022c22 !important;
 }
