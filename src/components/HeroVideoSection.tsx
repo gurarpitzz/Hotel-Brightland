@@ -128,6 +128,9 @@ export default function HeroVideoSection({
           </div>
         </div>
 
+        {/* Click Block & Cover Mask to Prevent Native YouTube UI / Pause Overlays */}
+        <div className="absolute inset-0 z-10 bg-transparent cursor-pointer" />
+
         {/* Subtle Bottom Vignette Gradient (no green tint) for clear button visibility */}
         <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-1000 ${showContent ? "opacity-100" : "opacity-0 pointer-events-none"}`} />
 
