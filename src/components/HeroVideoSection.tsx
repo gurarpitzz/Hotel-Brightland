@@ -120,8 +120,8 @@ export default function HeroVideoSection({
       >
         {/* YouTube Background Embed with Aspect Ratio Scaling */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
-          <div className="relative w-[500%] h-[120%] sm:w-[180%] sm:h-[180%] lg:w-[125%] lg:h-[125%] min-w-full min-h-full">
-            <div id="hero-yt-player" className="w-full h-full object-cover" />
+          <div className="relative w-[350vw] h-[350vh] sm:w-[180%] sm:h-[180%] lg:w-[125%] lg:h-[125%] min-w-full min-h-full flex items-center justify-center">
+            <div id="hero-yt-player" className="w-full h-full scale-[1.3] sm:scale-100 transform origin-center" />
           </div>
         </div>
 
