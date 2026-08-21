@@ -115,12 +115,11 @@ export default function HeroVideoSection({
     <div className="flex flex-col">
       <section 
         ref={containerRef}
-        onClick={handleContainerClick}
-        className="relative min-h-[75vh] sm:min-h-screen w-full bg-black overflow-hidden cursor-pointer"
+        className="relative min-h-[75vh] sm:min-h-screen w-full bg-black overflow-hidden pointer-events-none"
       >
         {/* YouTube Background Embed with Aspect Ratio Scaling */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
-          <div className="relative w-[300vw] h-[300vh] sm:w-[180%] sm:h-[180%] lg:w-[125%] lg:h-[125%] min-w-full min-h-full flex items-center justify-center">
+          <div className="relative w-[300vw] h-[300vh] sm:w-[180%] sm:h-[180%] lg:w-[125%] lg:h-[125%] min-w-full min-h-full flex items-center justify-center pointer-events-none">
             <div
               id="hero-yt-player"
               className="w-[177.77vh] min-w-full h-[56.25vw] min-h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none"
@@ -128,14 +127,11 @@ export default function HeroVideoSection({
           </div>
         </div>
 
-        {/* Click Block & Cover Mask to Prevent Native YouTube UI / Pause Overlays */}
-        <div className="absolute inset-0 z-10 bg-transparent cursor-pointer" />
-
         {/* Subtle Bottom Vignette Gradient (no green tint) for clear button visibility */}
-        <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-1000 ${showContent ? "opacity-100" : "opacity-0 pointer-events-none"}`} />
+        <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-1000 ${showContent ? "opacity-100" : "opacity-0"}`} />
 
         {/* Audio Mute / Unmute Floating Toggle */}
-        <div className="absolute top-24 right-4 sm:right-8 z-30 flex items-center gap-2">
+        <div className="absolute top-24 right-4 sm:right-8 z-30 flex items-center gap-2 pointer-events-auto">
           {isMuted && !hasInteracted && (
             <motion.div
               initial={{ opacity: 0, x: 10 }}
@@ -168,7 +164,7 @@ export default function HeroVideoSection({
           animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 20 }}
           transition={{ duration: 1 }}
           style={{ display: showContent ? "flex" : "none" }}
-          className="relative z-20 inset-0 flex-col justify-end pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-36"
+          className="relative z-20 inset-0 flex-col justify-end pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-36 pointer-events-auto"
         >
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
