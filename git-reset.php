@@ -27,15 +27,10 @@ $cmd4 = "cd $repoPath && (/bin/cp -rf out/* ./ 2>&1 || /bin/cp -rf webapp/out/* 
 echo "Command 4: $cmd4\n";
 echo shell_exec($cmd4) . "\n\n";
 
-// 5. Clean tracked and untracked changes so Git working tree is 100% clean
-$cmd5 = "cd $repoPath && $gitBin reset --hard HEAD 2>&1 && $gitBin clean -fd 2>&1";
+// 5. Status check
+$cmd5 = "cd $repoPath && $gitBin status 2>&1";
 echo "Command 5: $cmd5\n";
 echo shell_exec($cmd5) . "\n\n";
-
-// 6. Status check
-$cmd6 = "cd $repoPath && $gitBin status 2>&1";
-echo "Command 6: $cmd6\n";
-echo shell_exec($cmd6) . "\n\n";
 
 echo "=== Done! The site has been updated and deployed directly. Refresh your browser! ===";
 ?>
