@@ -17,10 +17,12 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <HeroVideoSection trustIndicators={trustIndicators} />
 
-      {/* About & Legacy Section */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-yellow-50 rounded-l-full opacity-50 -z-10 transform translate-x-1/3"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Wrapped Heritage, Legacy & Location Section with Custom Pine Background */}
+      <section className="py-20 relative overflow-hidden bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/assets/heritage-bg.jpg')" }}>
+        {/* Soft Warm Semi-transparent Overlay for Text Legibility & Contrast */}
+        <div className="absolute inset-0 bg-amber-50/75 backdrop-blur-[2px] z-0" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -28,14 +30,14 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="text-center max-w-4xl mx-auto mb-16"
           >
-            <h2 className="text-4xl font-extrabold text-brand-green-900 mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-brand-green-950 mb-4 tracking-tight drop-shadow-sm font-cursive">
               A Timeless Escape in the Heart of Shimla
             </h2>
-            <h3 className="text-xl text-brand-green-700 font-medium mb-8 italic">
+            <h3 className="text-xl md:text-2xl text-brand-green-800 font-bold mb-8 italic">
               Where Imperial Heritage Meets Modern Luxury
             </h3>
             
-            <div className="space-y-6 text-gray-700 text-lg leading-relaxed text-justify md:text-center max-w-4xl mx-auto">
+            <div className="space-y-6 text-brand-green-950 text-lg md:text-xl font-medium leading-relaxed text-justify md:text-center max-w-4xl mx-auto bg-white/60 p-6 md:p-8 rounded-3xl backdrop-blur-sm border border-brand-green-100 shadow-sm">
               <p>
                 As one of Shimla&apos;s most prestigious and historic properties, Brightland Hotel offers an unparalleled experience in the former summer capital of Imperial India. Open year-round, our estate provides a sanctuary for every season, whether you are seeking a romantic honeymoon, a distinguished corporate retreat, or a deeply relaxing mountain getaway. Step into our thoughtfully curated, luxuriously appointed suites and indulge in the finest authentic Indian cuisine.
               </p>
@@ -45,7 +47,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center bg-brand-yellow-50 rounded-3xl p-8 md:p-12 border border-brand-yellow-100 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center bg-white/80 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-brand-green-200 shadow-md mb-20">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -53,14 +55,14 @@ export default function Home() {
               transition={{ duration: 0.7 }}
               className="space-y-4"
             >
-              <div className="inline-block bg-brand-green-800 text-brand-yellow-200 font-bold px-4 py-2 rounded-full text-sm mb-2 shadow-sm">
+              <div className="inline-block bg-brand-green-800 text-brand-yellow-200 font-extrabold px-4 py-2 rounded-full text-sm mb-2 shadow-sm">
                 Established 1959
               </div>
-              <h3 className="text-3xl font-bold text-brand-green-900">A Heritage Woven in Legend</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">
+              <h3 className="text-3xl md:text-4xl font-bold text-brand-green-950">A Heritage Woven in Legend</h3>
+              <p className="text-brand-green-950 text-base md:text-lg font-medium leading-relaxed">
                 Our legacy runs deep. Brightland is the proud successor to the legendary Imperial, Chambers, and Central Hotels, once housed within the sprawling Wyming Estate of the Murree Hills. Today, we are passionately managed by third and fourth-generation hoteliers who carry forward an unbroken tradition of excellence.
               </p>
-              <p className="text-brand-green-800 font-bold text-xl mt-4 italic">
+              <p className="text-brand-green-900 font-black text-xl mt-4 italic">
                 At Brightland, hospitality is not just a service, it is a cherished way of life.
               </p>
             </motion.div>
@@ -70,7 +72,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7 }}
-              className="relative h-72 md:h-full w-full rounded-2xl overflow-hidden shadow-lg border-4 border-white"
+              className="relative h-72 md:h-96 w-full rounded-2xl overflow-hidden shadow-lg border-4 border-white"
             >
               <Image 
                 src="/assets/Hotel building/Hotel building (1).jpg" 
@@ -79,57 +81,56 @@ export default function Home() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-brand-green-900/20"></div>
-              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-md">
-                <p className="text-brand-green-900 font-extrabold">The Best Address in Shimla</p>
-                <p className="text-gray-600 text-sm font-medium">Since 1959</p>
+              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-xl shadow-md border border-brand-green-100">
+                <p className="text-brand-green-950 font-black">The Best Address in Shimla</p>
+                <p className="text-brand-green-800 text-xs font-bold">Since 1959</p>
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
 
-      {/* Location Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-12 items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="flex-1 space-y-6"
-          >
-            <h2 className="text-3xl font-bold text-brand-green-800">The Perfect Starting Point</h2>
-            <p className="text-gray-600 text-lg">
-              Strategically positioned to offer the absolute best of both worlds: deep, tranquil mountain serenity combined with effortless walking access to Shimla&apos;s most iconic attractions.
-            </p>
-            <ul className="space-y-3 text-gray-600">
-              <li className="flex items-center space-x-3">
-                <div className="w-2 h-2 rounded-full bg-brand-green-700" />
-                <span>5 minutes from Old ISBT</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <div className="w-2 h-2 rounded-full bg-brand-green-700" />
-                <span>15 minutes walk to the historic Toy Train</span>
-              </li>
-            </ul>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex-1 w-full h-[400px] relative rounded-2xl overflow-hidden shadow-xl border border-brand-green-100"
-          >
-            <iframe 
-              src="https://maps.google.com/maps?q=Brightland+Hotel,+Shimla&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </motion.div>
+          {/* Location Section */}
+          <div className="flex flex-col md:flex-row gap-12 items-center bg-white/80 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-brand-green-200 shadow-md">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+              className="flex-1 space-y-6"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-green-950">The Perfect Starting Point</h2>
+              <p className="text-brand-green-950 text-base md:text-lg font-medium leading-relaxed">
+                Strategically positioned to offer the absolute best of both worlds: deep, tranquil mountain serenity combined with effortless walking access to Shimla&apos;s most iconic attractions.
+              </p>
+              <ul className="space-y-3 text-brand-green-950 font-bold">
+                <li className="flex items-center space-x-3">
+                  <div className="w-3 h-3 rounded-full bg-brand-green-700" />
+                  <span>5 minutes from Old ISBT</span>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <div className="w-3 h-3 rounded-full bg-brand-green-700" />
+                  <span>15 minutes walk to the historic Toy Train</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="flex-1 w-full h-[380px] relative rounded-2xl overflow-hidden shadow-xl border-4 border-white"
+            >
+              <iframe 
+                src="https://maps.google.com/maps?q=Brightland+Hotel,+Shimla&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </motion.div>
+          </div>
         </div>
       </section>
     </div>
