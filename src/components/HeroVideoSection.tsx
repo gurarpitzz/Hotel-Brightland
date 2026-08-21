@@ -100,12 +100,24 @@ export default function HeroVideoSection({
     }
   };
 
+  const [showContent, setShowContent] = useState(true);
+
+  useEffect(() => {
+    // Hide overlay text & CTA after 5 seconds
+    const timer = setTimeout(() => {
+      setShowContent(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="flex flex-col">
       <section 
         ref={containerRef}
         onClick={handleContainerClick}
-        className="relative min-h-[90vh] sm:min-h-screen w-full bg-brand-green-950 overflow-hidden cursor-pointer"
+        onMouseEnter={() => setShowContent(true)}
+        className="relative min-h-[90vh] sm:min-h-screen w-full bg-black overflow-hidden cursor-pointer"
       >
         {/* YouTube Background Embed with Aspect Ratio Scaling */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
@@ -114,8 +126,8 @@ export default function HeroVideoSection({
           </div>
         </div>
 
-        {/* Dark Vignette Overlay for Crisp Readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-green-950 via-brand-green-950/50 to-brand-green-950/30" />
+        {/* Subtle Bottom Vignette Gradient (no green tint) for clear button visibility */}
+        <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-1000 ${showContent ? "opacity-100" : "opacity-0 pointer-events-none"}`} />
 
         {/* Audio Mute / Unmute Floating Toggle */}
         <div className="absolute top-24 right-4 sm:right-8 z-30 flex items-center gap-2">
@@ -146,13 +158,17 @@ export default function HeroVideoSection({
           </button>
         </div>
 
-        {/* Hero Content Overlay */}
-        <div className="relative z-20 inset-0 flex flex-col justify-end pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-36">
+        {/* Hero Content Overlay with 5s Auto-Fade */}
+        <motion.div 
+          animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 20 }}
+          transition={{ duration: 1 }}
+          className={`relative z-20 inset-0 flex flex-col justify-end pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-36 ${showContent ? "" : "pointer-events-none"}`}
+        >
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 shadow-sm leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 shadow-sm leading-tight drop-shadow-md"
           >
             Experience the True <br className="hidden sm:block" />
             <span className="text-brand-yellow-100">Beauty of Shimla</span>
@@ -162,7 +178,7 @@ export default function HeroVideoSection({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg sm:text-xl text-gray-200 max-w-2xl mb-8 leading-relaxed"
+            className="text-lg sm:text-xl text-gray-200 max-w-2xl mb-8 leading-relaxed drop-shadow"
           >
             Enjoy premium comfort, breathtaking mountain views, and exceptional hospitality at Brightland Hotel. Just minutes away from Shimla's finest attractions.
           </motion.p>
@@ -190,7 +206,7 @@ export default function HeroVideoSection({
               Book Directly
             </button>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Trust Indicators */}
