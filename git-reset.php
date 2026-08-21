@@ -23,7 +23,7 @@ echo "Command 3: $cmd3\n";
 echo shell_exec($cmd3) . "\n\n";
 
 // 4. Copy fresh static build files into root
-$cmd4 = "cd $repoPath && cp -rf out/* ./ 2>&1";
+$cmd4 = "cd $repoPath && (/bin/cp -rf out/* ./ 2>&1 || /bin/cp -rf webapp/out/* ./ 2>&1)";
 echo "Command 4: $cmd4\n";
 echo shell_exec($cmd4) . "\n\n";
 
