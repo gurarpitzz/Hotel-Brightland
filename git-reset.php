@@ -17,10 +17,20 @@ $cmd2 = "cd $repoPath && $gitBin clean -fd 2>&1";
 echo "Command 2: $cmd2\n";
 echo shell_exec($cmd2) . "\n\n";
 
-// 3. Status check
-$cmd3 = "cd $repoPath && $gitBin status 2>&1";
+// 3. Pull latest code from GitHub
+$cmd3 = "cd $repoPath && $gitBin pull origin main 2>&1";
 echo "Command 3: $cmd3\n";
 echo shell_exec($cmd3) . "\n\n";
 
-echo "=== Done! You can now click 'Update from Remote' in cPanel Git Version Control ===";
+// 4. Copy fresh static build files into root
+$cmd4 = "cd $repoPath && cp -rf out/* ./ 2>&1";
+echo "Command 4: $cmd4\n";
+echo shell_exec($cmd4) . "\n\n";
+
+// 5. Status check
+$cmd5 = "cd $repoPath && $gitBin status 2>&1";
+echo "Command 5: $cmd5\n";
+echo shell_exec($cmd5) . "\n\n";
+
+echo "=== Done! The site has been updated and deployed directly. Refresh your browser! ===";
 ?>
