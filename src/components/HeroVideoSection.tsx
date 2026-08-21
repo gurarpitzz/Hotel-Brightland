@@ -116,7 +116,6 @@ export default function HeroVideoSection({
       <section 
         ref={containerRef}
         onClick={handleContainerClick}
-        onMouseEnter={() => setShowContent(true)}
         className="relative min-h-[90vh] sm:min-h-screen w-full bg-black overflow-hidden cursor-pointer"
       >
         {/* YouTube Background Embed with Aspect Ratio Scaling */}
