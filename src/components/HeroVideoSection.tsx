@@ -53,7 +53,7 @@ export default function HeroVideoSection({
           modestbranding: 1,
           showinfo: 0,
           rel: 0,
-          mute: 0, // Request sound by default
+          mute: 1, // Mute on initial load to guarantee instant autoplay without browser block
           enablejsapi: 1,
           playsinline: 1,
           disablekb: 1,
@@ -61,19 +61,9 @@ export default function HeroVideoSection({
         },
         events: {
           onReady: (event: any) => {
+            event.target.mute();
             event.target.playVideo();
-            // Try playing unmuted first. Browsers may block sound autoplay until user gesture.
-            event.target.unMute();
-            event.target.setVolume(100);
-            
-            // Check if player got muted by browser autoplay policy
-            setTimeout(() => {
-              if (event.target.isMuted()) {
-                setIsMuted(true);
-              } else {
-                setIsMuted(false);
-              }
-            }, 500);
+            setIsMuted(true);
           },
           onStateChange: (event: any) => {
             // Loop automatically when ended
