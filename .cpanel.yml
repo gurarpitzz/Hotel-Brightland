@@ -2,8 +2,11 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home1/tstpllmy/public_html/brightlandhotel-ajeetgraphics-prod
+    - /usr/local/cpanel/3rdparty/bin/git -C $DEPLOYPATH reset --hard HEAD 2>/dev/null || true
+    - /usr/local/cpanel/3rdparty/bin/git -C $DEPLOYPATH clean -fd 2>/dev/null || true
     - /bin/cp -rf out/* $DEPLOYPATH/ 2>/dev/null || /bin/cp -rf webapp/out/* $DEPLOYPATH/ 2>/dev/null
     - /bin/cp -f out/.htaccess $DEPLOYPATH/ 2>/dev/null || /bin/cp -f webapp/out/.htaccess $DEPLOYPATH/ 2>/dev/null
     - /bin/chmod 755 $DEPLOYPATH
     - find $DEPLOYPATH -type d -exec chmod 755 {} \; 2>/dev/null || true
     - find $DEPLOYPATH -type f -exec chmod 644 {} \; 2>/dev/null || true
+

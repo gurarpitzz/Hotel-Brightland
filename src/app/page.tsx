@@ -1,14 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
-import { useBooking } from "@/context/BookingContext";
+import HeroVideoSection from "@/components/HeroVideoSection";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Home() {
-  const { setIsCartOpen } = useBooking();
-
   const trustIndicators = [
     "Family Friendly",
     "Prime Shimla Location",
@@ -19,75 +15,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <section className="relative min-h-screen w-full bg-brand-green-900">
-        <Image
-          src="/assets/Hotel building/Hotel building (5).jpg"
-          alt="Brightland Hotel Building"
-          fill
-          className="object-cover opacity-70"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-green-900/90 to-transparent" />
-        <div className="absolute inset-0 flex flex-col justify-end pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 shadow-sm"
-          >
-            Experience the True <br className="hidden sm:block" />
-            <span className="text-brand-yellow-100">Beauty of Shimla</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg sm:text-xl text-gray-200 max-w-2xl mb-8"
-          >
-            Enjoy premium comfort, breathtaking mountain views, and exceptional hospitality at Brightland Hotel. Just minutes away from Shimla's finest attractions.
-          </motion.p>
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap gap-4"
-          >
-            <Link
-              href="/rooms"
-              className="bg-brand-green-700 hover:bg-brand-green-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-colors shadow-lg"
-            >
-              Explore Rooms
-            </Link>
-            <button
-              onClick={() => setIsCartOpen(true)}
-              className="bg-white hover:bg-brand-yellow-50 text-brand-green-900 px-8 py-4 rounded-full font-bold text-lg transition-colors shadow-lg"
-            >
-              Book Directly
-            </button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Trust Indicators */}
-      <section className="bg-brand-yellow-50 py-8 border-b border-brand-green-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-6 md:gap-12">
-            {trustIndicators.map((indicator, index) => (
-              <motion.div 
-                key={index} 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex items-center space-x-2"
-              >
-                <CheckCircle2 className="text-brand-green-700" size={24} />
-                <span className="text-brand-green-900 font-medium">{indicator}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HeroVideoSection trustIndicators={trustIndicators} />
 
       {/* About & Legacy Section */}
       <section className="py-20 bg-white relative overflow-hidden">
