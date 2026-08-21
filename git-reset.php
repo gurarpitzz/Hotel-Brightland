@@ -27,8 +27,8 @@ $cmd4 = "cd $repoPath && (/bin/cp -rf out/* ./ 2>&1 || /bin/cp -rf webapp/out/* 
 echo "Command 4: $cmd4\n";
 echo shell_exec($cmd4) . "\n\n";
 
-// 5. Hard reset again so Git working tree is clean for cPanel UI
-$cmd5 = "cd $repoPath && $gitBin reset --hard HEAD 2>&1";
+// 5. Clean tracked and untracked changes so Git working tree is 100% clean
+$cmd5 = "cd $repoPath && $gitBin reset --hard HEAD 2>&1 && $gitBin clean -fd 2>&1";
 echo "Command 5: $cmd5\n";
 echo shell_exec($cmd5) . "\n\n";
 
