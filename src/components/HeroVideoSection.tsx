@@ -161,7 +161,8 @@ export default function HeroVideoSection({
         <motion.div 
           animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 20 }}
           transition={{ duration: 1 }}
-          className={`relative z-20 inset-0 flex flex-col justify-end pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-36 ${showContent ? "" : "pointer-events-none"}`}
+          style={{ display: showContent ? "flex" : "none" }}
+          className="relative z-20 inset-0 flex-col justify-end pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-36"
         >
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
