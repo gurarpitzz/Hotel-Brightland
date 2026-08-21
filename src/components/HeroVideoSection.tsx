@@ -121,7 +121,7 @@ export default function HeroVideoSection({
         {/* YouTube Background Embed with Aspect Ratio Scaling */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
           <div className="relative w-[300vw] h-[300vh] sm:w-[180%] sm:h-[180%] lg:w-[125%] lg:h-[125%] min-w-full min-h-full flex items-center justify-center">
-            <iframe
+            <div
               id="hero-yt-player"
               className="w-[177.77vh] min-w-full h-[56.25vw] min-h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none"
             />
