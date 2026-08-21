@@ -116,12 +116,12 @@ export default function HeroVideoSection({
       <section 
         ref={containerRef}
         onClick={handleContainerClick}
-        className="relative h-[65vh] sm:min-h-screen w-full bg-black overflow-hidden cursor-pointer"
+        className="relative min-h-[75vh] sm:min-h-screen w-full bg-black overflow-hidden cursor-pointer"
       >
         {/* YouTube Background Embed with Aspect Ratio Scaling */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
-          <div className="relative w-[350vw] h-[350vh] sm:w-[180%] sm:h-[180%] lg:w-[125%] lg:h-[125%] min-w-full min-h-full flex items-center justify-center">
-            <div id="hero-yt-player" className="w-full h-full scale-[1.3] sm:scale-100 transform origin-center" />
+          <div className="relative w-[450%] h-[250%] sm:w-[180%] sm:h-[180%] lg:w-[125%] lg:h-[125%] min-w-full min-h-full flex items-center justify-center">
+            <div id="hero-yt-player" className="w-full h-full scale-[1.6] sm:scale-100 transform origin-center" />
           </div>
         </div>
 
