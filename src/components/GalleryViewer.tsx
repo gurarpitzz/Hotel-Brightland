@@ -172,7 +172,7 @@ export default function GalleryViewer({ images }: { images: string[] }) {
         )}
       </AnimatePresence>
 
-      {/* Fullscreen Lightbox Modal with homebg.png background when clicking Collage Grid */}
+      {/* Fullscreen Lightbox Modal with longbg.png background when clicking Collage Grid */}
       <AnimatePresence>
         {selectedImageIndex !== null && (
           <motion.div
@@ -180,7 +180,7 @@ export default function GalleryViewer({ images }: { images: string[] }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-cover bg-center flex items-center justify-center p-4 sm:p-8"
-            style={{ backgroundImage: "url('/assets/homebg.png')" }}
+            style={{ backgroundImage: "url('/assets/longbg.png')" }}
           >
             {/* Dark backing overlay behind image */}
             <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />

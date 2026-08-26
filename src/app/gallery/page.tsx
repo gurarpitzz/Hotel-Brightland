@@ -65,7 +65,7 @@ export default function GalleryPage() {
   return (
     <div 
       className="bg-[#faf8f0] bg-cover bg-top bg-no-repeat min-h-screen pb-24"
-      style={{ backgroundImage: "url('/assets/homebg.png')" }}
+      style={{ backgroundImage: "url('/assets/longbg.png')" }}
     >
       
       <PageHeaderBanner
