@@ -148,7 +148,10 @@ export default function HeroVideoSection({
             isVideoPlaying ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
           style={{ backgroundImage: "url('/assets/Hotel building/Hotel building (5).jpg')" }}
-        />
+        >
+          {/* Green Gradient Tint Overlay on Poster Image - Fades away smoothly as soon as video plays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-green-950/80 via-brand-green-900/50 to-brand-green-950/40" />
+        </div>
 
         {/* Full-width transparent interactive overlay receiving all pointer clicks */}
         <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-auto" />
