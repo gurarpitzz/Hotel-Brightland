@@ -207,8 +207,21 @@ export default function Footer() {
         </div>
       </div>
       
+      {/* Refined Antique Gold Divider Motif Line */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+        <div className="flex items-center gap-4">
+          <div className="flex-1 h-[1px] bg-[#c9a227]/30" />
+          <div className="text-[#c9a227] text-xs opacity-80 flex items-center gap-1.5">
+            <span>❖</span>
+            <span className="text-[9px]">♦</span>
+            <span>❖</span>
+          </div>
+          <div className="flex-1 h-[1px] bg-[#c9a227]/30" />
+        </div>
+      </div>
+
       {/* Copyright Line */}
-      <div className="mt-16 pt-8 border-t border-brand-green-800 text-center text-xs text-brand-green-300 px-4">
+      <div className="pt-6 text-center text-xs text-brand-green-300 px-4">
         Copyright © {new Date().getFullYear()} brightlandhotel.com | All Rights Reserved.
       </div>
 

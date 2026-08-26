@@ -35,23 +35,23 @@ export default function Home() {
               className="lg:col-span-6 space-y-6"
             >
               <div className="space-y-2">
-                {/* SINCE 1959 with orange underline accent */}
+                {/* SINCE 1959 with subtle antique gold underline accent */}
                 <div className="inline-block relative">
                   <span className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-[#2d4a3e]">
                     SINCE 1959
                   </span>
-                  <div className="w-12 h-[2px] bg-[#d97706] mt-1 rounded-full" />
+                  <div className="w-10 h-[1.5px] bg-[#c9a227] mt-1 rounded-full opacity-80" />
                 </div>
 
                 <h2 className="text-4xl sm:text-5xl md:text-[54px] font-normal font-serif text-[#1b3d2f] leading-[1.15] tracking-tight pt-1">
                   The Heritage of Brightland
                 </h2>
 
-                {/* Elegant Ornamental Divider Motif with Orange Accent */}
+                {/* Refined Antique Gold Divider Motif */}
                 <div className="flex items-center gap-3 pt-3 pb-1">
-                  <div className="flex-1 h-[1px] bg-[#d97706]/40" />
-                  <div className="text-[#d97706] text-xs">❖ ❖ ❖</div>
-                  <div className="flex-1 h-[1px] bg-[#d97706]/40" />
+                  <div className="flex-1 h-[1px] bg-[#c9a227]/30" />
+                  <div className="text-[#c9a227] text-[10px] opacity-75">❖ ❖ ❖</div>
+                  <div className="flex-1 h-[1px] bg-[#c9a227]/30" />
                 </div>
               </div>
 
