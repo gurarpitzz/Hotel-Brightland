@@ -30,10 +30,10 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-brand-green-900 text-brand-yellow-50 pt-16 pb-12 mt-auto">
-      {/* Prominent Deep Organic Wave Divider */}
+      {/* Perfectly Symmetrical Smooth Curved Wave Divider */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none -translate-y-[99%]">
-        <svg className="relative block w-full h-[60px] md:h-[100px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
-          <path d="M0,45 C280,125 560,5 840,90 C1120,135 1300,40 1440,25 L1440,120 L0,120 Z" fill="#022c22"></path>
+        <svg className="relative block w-full h-[40px] md:h-[65px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+          <path d="M0,50 C360,0 720,100 1080,50 C1260,25 1380,35 1440,50 L1440,100 L0,100 Z" fill="#022c22"></path>
         </svg>
       </div>
 
