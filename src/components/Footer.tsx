@@ -29,13 +29,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-brand-green-900 text-brand-yellow-50 pt-16 pb-12 mt-auto">
-      {/* Perfectly Symmetrical Smooth Curved Wave Divider */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none -translate-y-[99%]">
-        <svg className="relative block w-full h-[40px] md:h-[65px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
-          <path d="M0,50 C360,0 720,100 1080,50 C1260,25 1380,35 1440,50 L1440,100 L0,100 Z" fill="#022c22"></path>
-        </svg>
-      </div>
+    <footer 
+      className="relative bg-cover bg-center bg-no-repeat text-brand-yellow-50 pt-16 pb-12 mt-auto border-t-2 border-[#d97706]/40 overflow-hidden"
+      style={{ backgroundImage: "url('/assets/footerbg.png')" }}
+    >
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
