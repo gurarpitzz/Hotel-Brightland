@@ -41,6 +41,8 @@ export default function HeroVideoSection({
     }
   }, []);
 
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
   useEffect(() => {
     if (isApiLoaded && !playerRef.current) {
       playerRef.current = new window.YT.Player("hero-yt-player", {
@@ -66,6 +68,9 @@ export default function HeroVideoSection({
             setIsMuted(true);
           },
           onStateChange: (event: any) => {
+            if (event.data === window.YT.PlayerState.PLAYING) {
+              setIsVideoPlaying(true);
+            }
             // Loop automatically when ended
             if (event.data === window.YT.PlayerState.ENDED) {
               event.target.playVideo();
@@ -117,6 +122,14 @@ export default function HeroVideoSection({
         ref={containerRef}
         className="relative min-h-[75vh] sm:min-h-screen w-full bg-black overflow-hidden pointer-events-none"
       >
+        {/* Fallback / Loading Poster Image until video starts playing */}
+        <div 
+          className={`absolute inset-0 bg-cover bg-center z-10 transition-opacity duration-1000 ${
+            isVideoPlaying ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+          style={{ backgroundImage: "url('/assets/Hotel building/Hotel building (5).jpg')" }}
+        />
+
         {/* YouTube Background Embed with Aspect Ratio Scaling */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
           <div className="relative w-[300vw] h-[300vh] sm:w-[180%] sm:h-[180%] lg:w-[125%] lg:h-[125%] min-w-full min-h-full flex items-center justify-center pointer-events-none">
