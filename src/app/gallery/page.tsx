@@ -8,7 +8,20 @@ export const metadata = {
   description: "Browse our comprehensive photo gallery of Brightland Hotel in Shimla, featuring our premium rooms, multi-cuisine restaurant, and breathtaking mountain views.",
 };
 
-// Recursive function to get all image paths inside public/assets
+// Allowed hotel categories (excludes Sightseeing / Travel desk images)
+const ALLOWED_HOTEL_FOLDERS = [
+  "rooms",
+  "restaurant",
+  "terrace garden",
+  "hotel building",
+  "reception",
+  "view from hotel",
+  "views",
+  "lobby",
+  "dining"
+];
+
+// Recursive function to get all hotel image paths inside public/assets
 function getAssetImages(dir: string, baseDir: string): string[] {
   let images: string[] = [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -16,15 +29,22 @@ function getAssetImages(dir: string, baseDir: string): string[] {
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      if (entry.name.toLowerCase() !== "logo") {
+      const folderName = entry.name.toLowerCase();
+      // Exclude logo and sightseeing/travel desk folders
+      if (folderName !== "logo" && (ALLOWED_HOTEL_FOLDERS.some(f => folderName.includes(f)) || dir === baseDir)) {
         images = [...images, ...getAssetImages(fullPath, baseDir)];
       }
     } else {
       const ext = path.extname(entry.name).toLowerCase();
       if ([".jpg", ".jpeg", ".png", ".gif", ".webp"].includes(ext)) {
-        // We only want the relative URL path starting from /assets/
+        // Check if parent directory path matches hotel categories
         const relativePath = fullPath.replace(baseDir, "").replace(/\\/g, "/");
-        images.push(`/assets${relativePath}`);
+        const lowerRel = relativePath.toLowerCase();
+        
+        // Ensure no sight seeing or travel desk images are intermixed
+        if (!lowerRel.includes("sight") && !lowerRel.includes("travel") && !lowerRel.includes("shimla sights")) {
+          images.push(`/assets${relativePath}`);
+        }
       }
     }
   }
@@ -35,25 +55,27 @@ function getAssetImages(dir: string, baseDir: string): string[] {
 import PageHeaderBanner from "@/components/PageHeaderBanner";
 
 export default function GalleryPage() {
-  // Read all assets at request/build time
+  // Read all hotel assets at request/build time
   const assetsDir = path.join(process.cwd(), "public", "assets");
   let images: string[] = [];
   
   try {
     images = getAssetImages(assetsDir, assetsDir);
-    // Sort to keep folders somewhat grouped
     images.sort();
   } catch (error) {
     console.error("Error reading assets directory:", error);
   }
 
   return (
-    <div className="bg-brand-yellow-50 min-h-screen pb-16">
+    <div 
+      className="bg-[#faf8f0] bg-cover bg-top bg-no-repeat min-h-screen pb-24"
+      style={{ backgroundImage: "url('/assets/longbg.png')" }}
+    >
       
       <PageHeaderBanner
         tagline="Visual Journey"
         title="Photo Gallery"
-        description={`Take a visual tour of Brightland Hotel. Explore our ${images.length} photos showcasing our rooms, facilities, and beautiful Shimla surroundings.`}
+        description="Take a visual tour of Brightland Hotel. We are showcasing our rooms and suites, Restaurant, Terrace Garden, mountain views from Hotel, etc."
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
