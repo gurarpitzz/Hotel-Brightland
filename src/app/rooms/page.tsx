@@ -157,7 +157,10 @@ import PageHeaderBanner from "@/components/PageHeaderBanner";
 
 export default function RoomsPage() {
   return (
-    <div className="bg-brand-yellow-50 min-h-screen pb-16">
+    <div 
+      className="bg-[#faf8f0] bg-repeat min-h-screen pb-24"
+      style={{ backgroundImage: "url('/assets/homebg.png')" }}
+    >
       
       <PageHeaderBanner
         tagline="Our Collection"
@@ -167,50 +170,94 @@ export default function RoomsPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="space-y-16">
-          {rooms.map((room, index) => (
-            <AnimatedFadeUp key={room.id} delay={index * 0.1} className="bg-white rounded-2xl shadow-sm border border-brand-green-100 overflow-hidden flex flex-col md:flex-row">
-              {/* Carousel Section */}
-              <div className="w-full md:w-1/2 md:max-w-md lg:max-w-lg p-2">
-                <RoomCarousel images={room.images} badgeText={room.badgeText} />
-              </div>
-              
-              {/* Details Section */}
-              <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between">
-                <div>
-                  <h2 className="text-3xl font-bold text-brand-green-900 mb-6">{room.name}</h2>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 mb-8">
-                    {room.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start text-sm text-brand-green-800">
-                        <CheckCircle2 size={18} className="text-brand-green-700 mr-2 shrink-0 mt-0.5" />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-4 mb-8">
-                    {room.amenities.map((amenity, idx) => (
-                      <div key={idx} className="flex items-center space-x-2 text-sm text-gray-600 bg-gray-50 px-3 py-1.5 rounded-md">
-                        <span className="text-brand-green-700">{amenity.icon}</span>
-                        <span>{amenity.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+        <div className="space-y-16 lg:space-y-24">
+          {rooms.map((room, index) => {
+            const isEven = index % 2 === 0;
 
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-gray-100 pt-6">
-                  <div className="mb-4 sm:mb-0">
-                    <p className="text-sm text-gray-500 uppercase tracking-wide">Starting from</p>
-                    <p className="text-3xl font-bold text-brand-green-900">
-                      ₹{room.price} <span className="text-base font-normal text-gray-500">/ night</span>
-                    </p>
-                  </div>
-                  <RoomBookButton roomType={room.name} baseRate={room.price} />
+            // Separate main room title from subtitle bracket if present
+            const nameParts = room.name.split(" (");
+            const mainTitle = nameParts[0];
+            const subTitle = nameParts[1] ? nameParts[1].replace(")", "") : null;
+
+            return (
+              <AnimatedFadeUp 
+                key={room.id} 
+                delay={index * 0.1} 
+                className={`bg-[#faf8f0]/95 backdrop-blur-md rounded-md shadow-md border border-[#c9a227]/25 overflow-hidden flex flex-col ${
+                  isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                } transition-all duration-300 hover:border-[#c9a227]/50`}
+              >
+                {/* Carousel Section (45% Width) */}
+                <div className="w-full lg:w-[45%] p-3 lg:p-4 flex flex-col justify-center">
+                  <RoomCarousel images={room.images} badgeText={room.badgeText} />
                 </div>
-              </div>
-            </AnimatedFadeUp>
-          ))}
+                
+                {/* Details Section (55% Width) */}
+                <div className="w-full lg:w-[55%] p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
+                  <div>
+                    {/* Eyebrow Label */}
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-[#c9a227]">
+                        THE BRIGHTLAND COLLECTION
+                      </span>
+                    </div>
+
+                    {/* Room Title & Subtitle Hierarchy */}
+                    <div className="mb-4">
+                      <h2 className="text-3xl sm:text-4xl font-serif text-brand-green-900 font-normal tracking-tight">
+                        {mainTitle}
+                      </h2>
+                      {subTitle && (
+                        <p className="text-sm font-serif italic text-brand-green-800/80 mt-0.5">
+                          {subTitle}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Thin Antique Brass Accent Line */}
+                    <div className="w-16 h-[1px] bg-[#c9a227]/50 mb-6" />
+
+                    {/* ROOM FEATURES Section Header */}
+                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2d4a3e] mb-4">
+                      ROOM FEATURES
+                    </p>
+
+                    {/* Features Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-6 mb-6">
+                      {room.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-center text-xs sm:text-sm text-[#3a4a40] font-medium">
+                          <CheckCircle2 size={15} className="text-[#c9a227] mr-2 shrink-0" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Secondary Amenities Pill Row */}
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 py-3 border-t border-b border-[#c9a227]/15 mb-6 text-[11px] uppercase tracking-wider text-brand-green-800 font-semibold">
+                      {room.amenities.map((amenity, idx) => (
+                        <span key={idx} className="flex items-center gap-1.5">
+                          <span className="text-[#c9a227]">{amenity.icon}</span>
+                          <span>{amenity.label}</span>
+                          {idx < room.amenities.length - 1 && <span className="text-[#c9a227]/40 ml-2">·</span>}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Pricing & Booking Button Area */}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-2 gap-4">
+                    <div>
+                      <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-0.5">From</p>
+                      <p className="text-3xl font-serif font-bold text-brand-green-950 tracking-tight">
+                        ₹{room.price.toLocaleString('en-IN')} <span className="text-xs font-sans font-normal text-gray-500">/ night</span>
+                      </p>
+                    </div>
+                    <RoomBookButton roomType={room.name} baseRate={room.price} />
+                  </div>
+                </div>
+              </AnimatedFadeUp>
+            );
+          })}
         </div>
 
       </div>

@@ -29,9 +29,10 @@ export default function RoomBookButton({ roomType, baseRate }: RoomBookButtonPro
   return (
     <button 
       onClick={handleBookNow}
-      className="bg-brand-green-700 hover:bg-brand-green-800 text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-md transform hover:scale-105 active:scale-95"
+      className="bg-brand-green-900 hover:bg-brand-green-950 text-brand-yellow-50 hover:text-[#c9a227] px-7 py-3 rounded-md font-semibold text-xs uppercase tracking-[0.18em] transition-all shadow-sm border border-[#c9a227]/40 hover:border-[#c9a227] flex items-center justify-center gap-2 group"
     >
-      Book this Room
+      <span>RESERVE THIS ROOM</span>
+      <span className="group-hover:translate-x-1 transition-transform">→</span>
     </button>
   );
 }
