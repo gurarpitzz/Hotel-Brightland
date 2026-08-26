@@ -70,11 +70,9 @@ import PageHeaderBanner from "@/components/PageHeaderBanner";
 export default function TariffPage() {
   return (
     <div 
-      className="relative bg-[#faf8f0] bg-cover bg-top bg-no-repeat min-h-screen pb-24 overflow-hidden"
+      className="bg-[#faf8f0] bg-cover bg-top bg-no-repeat min-h-screen pb-24"
       style={{ backgroundImage: "url('/assets/longbg.png')" }}
     >
-      {/* Soft White Creamish Opaque Layer */}
-      <div className="absolute inset-0 bg-[#faf8f0]/75 backdrop-blur-[1px] pointer-events-none z-0" />
       
       <PageHeaderBanner
         tagline="Approved by H.P. Tourism"
@@ -82,47 +80,47 @@ export default function TariffPage() {
         description="View our transparent FIT tariffs per day for our various rooms and luxury suites in the heart of Shimla."
       />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Room Rates Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        {/* Room Rates Grid - Increased card size & padding */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 mb-16">
           {roomRates.map((room, idx) => (
             <AnimatedFadeUp 
               key={idx} 
               delay={idx * 0.08}
-              className={`relative bg-[#faf8f0]/95 backdrop-blur-md rounded-md p-7 shadow-md border ${
-                room.popular ? "border-[#c9a227] ring-2 ring-[#c9a227]/30" : "border-[#c9a227]/25"
-              } transition-all duration-300 hover:border-[#c9a227] flex flex-col justify-between`}
+              className={`relative bg-[#faf8f0]/95 backdrop-blur-md rounded-md p-8 sm:p-9 shadow-lg border ${
+                room.popular ? "border-[#c9a227] ring-2 ring-[#c9a227]/40" : "border-[#c9a227]/30"
+              } transition-all duration-300 hover:border-[#c9a227] hover:shadow-xl flex flex-col justify-between`}
             >
               {room.tagline && (
-                <div className="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/40 px-3.5 py-0.5 rounded-sm text-[11px] font-semibold capitalize tracking-wider shadow-md">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/50 px-4 py-1 rounded-sm text-xs font-semibold capitalize tracking-wider shadow-md">
                   {room.tagline}
                 </div>
               )}
 
               <div>
-                <div className="flex items-center justify-between mb-1 mt-1">
-                  <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#c9a227]">
+                <div className="flex items-center justify-between mb-2 mt-1">
+                  <span className="text-[11px] uppercase font-bold tracking-[0.22em] text-[#c9a227]">
                     THE BRIGHTLAND TARIFF
                   </span>
                 </div>
 
-                <div className="mb-4">
-                  <h3 className="text-2xl font-serif text-brand-green-900 font-normal tracking-tight">{room.name}</h3>
-                  <p className="text-xs font-serif italic text-brand-green-800/80">{room.view}</p>
+                <div className="mb-5">
+                  <h3 className="text-2xl sm:text-3xl font-serif text-brand-green-900 font-normal tracking-tight">{room.name}</h3>
+                  <p className="text-sm font-serif italic text-brand-green-800/80 mt-0.5">{room.view}</p>
                 </div>
 
-                <div className="w-12 h-[1px] bg-[#c9a227]/50 mb-5" />
+                <div className="w-16 h-[1px] bg-[#c9a227]/50 mb-6" />
 
-                <div className="mb-4">
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-0.5">European Plan (Room charges only)</p>
-                  <p className="text-3xl font-serif font-bold text-brand-green-950 tracking-tight">
+                <div className="mb-5">
+                  <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-1">European Plan (Room charges only)</p>
+                  <p className="text-3xl sm:text-4xl font-serif font-bold text-brand-green-950 tracking-tight">
                     Rs. {room.price} <span className="text-xs font-sans font-normal text-gray-500">+ GST per day ({room.pax})</span>
                   </p>
                 </div>
 
-                <div className="bg-[#0a2318]/5 border border-[#c9a227]/20 rounded p-3 mb-6">
-                  <p className="text-[11px] text-[#2d4a3e] font-semibold">
+                <div className="bg-[#0a2318]/5 border border-[#c9a227]/25 rounded-sm p-4 mb-8">
+                  <p className="text-xs text-[#2d4a3e] font-semibold leading-relaxed">
                     <span className="text-[#c9a227] font-bold">Extra PAX:</span> {room.extraBed}
                   </p>
                 </div>
@@ -130,7 +128,7 @@ export default function TariffPage() {
 
               <Link 
                 href="/rooms" 
-                className="w-full bg-brand-green-900 hover:bg-brand-green-950 text-brand-yellow-50 hover:text-[#c9a227] py-2.5 rounded-md font-semibold text-xs uppercase tracking-[0.18em] transition-all shadow-sm border border-[#c9a227]/40 hover:border-[#c9a227] flex items-center justify-center gap-2 group text-center"
+                className="w-full bg-brand-green-900 hover:bg-brand-green-950 text-brand-yellow-50 hover:text-[#c9a227] py-3.5 rounded-md font-semibold text-xs uppercase tracking-[0.2em] transition-all shadow-md border border-[#c9a227]/40 hover:border-[#c9a227] flex items-center justify-center gap-2 group text-center"
               >
                 <span>EXPLORE ROOM</span>
                 <span className="group-hover:translate-x-1 transition-transform">→</span>

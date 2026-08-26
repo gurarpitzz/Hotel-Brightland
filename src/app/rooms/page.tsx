@@ -201,11 +201,9 @@ import PageHeaderBanner from "@/components/PageHeaderBanner";
 export default function RoomsPage() {
   return (
     <div 
-      className="relative bg-[#faf8f0] bg-cover bg-top bg-no-repeat min-h-screen pb-24 overflow-hidden"
+      className="bg-[#faf8f0] bg-cover bg-top bg-no-repeat min-h-screen pb-24"
       style={{ backgroundImage: "url('/assets/longbg.png')" }}
     >
-      {/* Soft White Creamish Opaque Layer */}
-      <div className="absolute inset-0 bg-[#faf8f0]/75 backdrop-blur-[1px] pointer-events-none z-0" />
       
       <PageHeaderBanner
         tagline="Our Collection"
