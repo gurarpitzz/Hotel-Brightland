@@ -4,8 +4,7 @@ import { useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { 
-  MapPin, Clock, Calendar, Car, Shield, Navigation, 
-  Map as MapIcon, Compass, Sunrise, Mountain, Train, Gamepad2, Info,
+  MapPin, Navigation, Map as MapIcon, Compass, Sunrise, Mountain, Train, Gamepad2,
   Ruler, Landmark, ScrollText, Ticket, ChevronDown, ChevronUp
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -27,10 +26,18 @@ const destinationImageMap: Record<string, string> = {
   "Craignano": "/assets/traveldesk/craignano-nature-park-shimla-himachal-pradesh-2-attr-hero.jpg",
   "Naldehra": "/assets/traveldesk/naldehra-shimla-himachal-pradesh-3-attr-hero.jpg",
   "Tattapani & Sunni": "/assets/traveldesk/tattapani-hot-spring-bath.jpg",
+  "Green Valley": "/assets/traveldesk/fagu.jpg",
+  "Kalyani Helipad": "/assets/traveldesk/kalyani helipad.jpg",
+  "Kufri": "/assets/traveldesk/kufri.jpg",
   "Chini Bungalow / Indira Tourist Park": "/assets/traveldesk/chinibunglow.jpg",
+  "Fagu": "/assets/traveldesk/fagu.jpg",
+  "Narkanda": "/assets/traveldesk/NARKANDA.jpg",
+  "Patiala Royal Heritage Route": "/assets/traveldesk/patiala royal heritage.jpg",
+  "Chail": "/assets/traveldesk/kufri.jpg",
+  "Sadhupul & Dochi": "/assets/traveldesk/dochi.jpg",
   "The Toy Train Route": "/assets/traveldesk/toy-train.jpg",
-  "The Stretch": "/assets/traveldesk/the_ridge_shima.jpeg",
-  "Excursion Routing": "/assets/traveldesk/craignano-nature-park-shimla-himachal-pradesh-2-attr-hero.jpg",
+  "The Stretch": "/assets/traveldesk/streatch.jpg",
+  "Excursion Routing": "/assets/traveldesk/excursion.jpg",
   "City Activities": "/assets/traveldesk/the_mall.jpg",
 };
 
@@ -65,7 +72,7 @@ const categories = [
   {
     id: "walk-around",
     title: "Walk Around The Town",
-    icon: <Navigation size={20} />,
+    icon: <Navigation size={18} />,
     images: [
       "/assets/traveldesk/Christ-Church-Shimla-scaled.jpg",
       "/assets/traveldesk/the_mall.jpg",
@@ -128,7 +135,7 @@ const categories = [
   {
     id: "dawn-to-dusk",
     title: "Shimla From Dawn-To-Dusk",
-    icon: <Sunrise size={20} />,
+    icon: <Sunrise size={18} />,
     images: [
       "/assets/traveldesk/viceregal-lodge-turned.jpg",
       "/assets/traveldesk/jakhu-mandir.jpg",
@@ -199,7 +206,7 @@ const categories = [
   {
     id: "river-valley",
     title: "River Valley",
-    icon: <Compass size={20} />,
+    icon: <Compass size={18} />,
     images: [
       "/assets/traveldesk/mashobra.jpg",
       "/assets/traveldesk/naldehra-shimla-himachal-pradesh-3-attr-hero.jpg",
@@ -251,11 +258,12 @@ const categories = [
   {
     id: "misty-meadows",
     title: "Misty Meadows",
-    icon: <Mountain size={20} />,
+    icon: <Mountain size={18} />,
     images: [
-      "/assets/traveldesk/chinibunglow.jpg",
-      "/assets/traveldesk/craignano-nature-park-shimla-himachal-pradesh-2-attr-hero.jpg",
-      "/assets/traveldesk/mashobra.jpg"
+      "/assets/traveldesk/kufri.jpg",
+      "/assets/traveldesk/NARKANDA.jpg",
+      "/assets/traveldesk/fagu.jpg",
+      "/assets/traveldesk/kalyani helipad.jpg"
     ],
     destinations: [
       {
@@ -320,11 +328,11 @@ const categories = [
   {
     id: "himalayan-heights",
     title: "Himalayan Heights",
-    icon: <MapIcon size={20} />,
+    icon: <MapIcon size={18} />,
     images: [
-      "/assets/traveldesk/viceregal-lodge-turned.jpg",
-      "/assets/traveldesk/mashobra.jpg",
-      "/assets/traveldesk/tattapani-hot-spring-bath.jpg"
+      "/assets/traveldesk/patiala royal heritage.jpg",
+      "/assets/traveldesk/dochi.jpg",
+      "/assets/traveldesk/kufri.jpg"
     ],
     destinations: [
       {
@@ -359,10 +367,11 @@ const categories = [
   {
     id: "shimla-on-wheels",
     title: "Shimla-On-Wheels",
-    icon: <Train size={20} />,
+    icon: <Train size={18} />,
     images: [
       "/assets/traveldesk/toy-train.jpg",
-      "/assets/traveldesk/the_ridge_shima.jpeg"
+      "/assets/traveldesk/streatch.jpg",
+      "/assets/traveldesk/excursion.jpg"
     ],
     destinations: [
       {
@@ -396,7 +405,7 @@ const categories = [
   {
     id: "recreations",
     title: "Other Recreations",
-    icon: <Gamepad2 size={20} />,
+    icon: <Gamepad2 size={18} />,
     images: [
       "/assets/traveldesk/the_mall.jpg",
       "/assets/traveldesk/531957817Lakkar_Bazaar_Main.jpg"
@@ -420,17 +429,17 @@ const categories = [
 const getIconForType = (type: string) => {
   switch (type) {
     case "location":
-      return <MapPin size={16} className="text-blue-500 mt-1 shrink-0" />;
+      return <MapPin size={15} className="text-[#c9a227] mt-0.5 shrink-0" />;
     case "distance":
-      return <Ruler size={16} className="text-orange-500 mt-1 shrink-0" />;
+      return <Ruler size={15} className="text-[#c9a227] mt-0.5 shrink-0" />;
     case "history":
-      return <Landmark size={16} className="text-amber-700 mt-1 shrink-0" />;
+      return <Landmark size={15} className="text-[#c9a227] mt-0.5 shrink-0" />;
     case "mythology":
-      return <ScrollText size={16} className="text-purple-600 mt-1 shrink-0" />;
+      return <ScrollText size={15} className="text-[#c9a227] mt-0.5 shrink-0" />;
     case "activity":
-      return <Ticket size={16} className="text-green-600 mt-1 shrink-0" />;
+      return <Ticket size={15} className="text-[#c9a227] mt-0.5 shrink-0" />;
     default:
-      return <MapPin size={16} className="text-brand-green-600 mt-1 shrink-0" />;
+      return <MapPin size={15} className="text-[#c9a227] mt-0.5 shrink-0" />;
   }
 };
 
@@ -455,28 +464,33 @@ export default function TravelDeskViewer() {
     <div className="w-full mx-auto flex flex-col lg:flex-row gap-8 pb-16">
       {/* Sidebar Navigation */}
       <div className="w-full lg:w-1/3 xl:w-1/4 shrink-0 z-10">
-        <div className="bg-white rounded-3xl p-4 shadow-sm border border-brand-green-100 lg:sticky lg:top-24">
-          <h2 className="text-xl font-bold text-brand-green-900 mb-4 px-4 pt-2">Tour Categories</h2>
-          <div className="flex lg:flex-col overflow-x-auto lg:overflow-visible space-x-2 lg:space-x-0 lg:space-y-2 pb-2 lg:pb-0 scrollbar-hide">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => {
-                  setActiveTab(category.id);
-                  setExpandedCards({}); // Reset expansions on tab change
-                }}
-                className={`flex items-center whitespace-nowrap lg:whitespace-normal text-left px-4 py-3 rounded-xl transition-all duration-200 shrink-0 ${
-                  activeTab === category.id
-                    ? "bg-brand-green-700 text-white shadow-md font-medium"
-                    : "text-gray-600 hover:bg-brand-yellow-50 hover:text-brand-green-800"
-                }`}
-              >
-                <span className={`mr-3 ${activeTab === category.id ? "text-brand-yellow-200" : "text-brand-green-600"}`}>
-                  {category.icon}
-                </span>
-                {category.title}
-              </button>
-            ))}
+        <div className="bg-[#faf8f0]/95 backdrop-blur-md rounded-md p-4 shadow-md border border-[#c9a227]/30 lg:sticky lg:top-24">
+          <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#c9a227] mb-3 px-3 pt-1 border-b border-[#c9a227]/20 pb-2">
+            Tour Categories
+          </h2>
+          <div className="flex lg:flex-col overflow-x-auto lg:overflow-visible space-x-2 lg:space-x-0 lg:space-y-1.5 pb-2 lg:pb-0 scrollbar-hide">
+            {categories.map((category) => {
+              const isActive = activeTab === category.id;
+              return (
+                <button
+                  key={category.id}
+                  onClick={() => {
+                    setActiveTab(category.id);
+                    setExpandedCards({});
+                  }}
+                  className={`flex items-center whitespace-nowrap lg:whitespace-normal text-left px-3.5 py-2.5 rounded transition-all duration-200 shrink-0 text-xs uppercase tracking-wider font-semibold ${
+                    isActive
+                      ? "bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/40 shadow-sm"
+                      : "text-brand-green-900 hover:bg-brand-green-950/10 hover:text-[#c9a227]"
+                  }`}
+                >
+                  <span className={`mr-2.5 ${isActive ? "text-[#c9a227]" : "text-[#c9a227]/70"}`}>
+                    {category.icon}
+                  </span>
+                  {category.title}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -493,7 +507,7 @@ export default function TravelDeskViewer() {
             className="w-full"
           >
             {/* Auto-playing Image Carousel */}
-            <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-brand-green-100 mb-8">
+            <div className="bg-[#faf8f0]/95 backdrop-blur-md rounded-md overflow-hidden shadow-md border border-[#c9a227]/30 mb-8">
               <div className="relative h-64 md:h-80 w-full overflow-hidden" ref={emblaRef}>
                 <div className="flex h-full">
                   {activeCategory.images.map((src, idx) => (
@@ -506,16 +520,21 @@ export default function TravelDeskViewer() {
                     </div>
                   ))}
                 </div>
-                {/* Overlay Title */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
-                  <h2 className="text-3xl md:text-5xl font-bold text-white p-8 font-serif">
-                    {activeCategory.title}
-                  </h2>
+                {/* Overlay Title Banner */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex items-end p-6 md:p-8">
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#c9a227]">
+                      SHIMLA TOUR EXCURSION
+                    </span>
+                    <h2 className="text-3xl md:text-4xl font-serif text-white font-normal tracking-tight mt-1">
+                      {activeCategory.title}
+                    </h2>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Destinations Accordion List */}
+            {/* Destinations List - Formatted with Room Cards styling */}
             <div className="space-y-6">
               {activeCategory.destinations.map((dest, i) => {
                 const isExpanded = expandedCards[dest.name];
@@ -524,45 +543,49 @@ export default function TravelDeskViewer() {
                 return (
                   <motion.div 
                     key={i} 
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.08, duration: 0.4 }}
-                    className={`bg-white rounded-2xl shadow-sm border transition-all duration-300 overflow-hidden group ${
-                      isExpanded ? "border-brand-green-400 ring-2 ring-brand-green-100" : "border-brand-green-100 hover:border-brand-green-300"
-                    }`}
+                    className="bg-[#faf8f0]/95 backdrop-blur-md rounded-md shadow-md border border-[#c9a227]/25 hover:border-[#c9a227]/50 hover:shadow-lg transition-all duration-300 overflow-hidden group"
                   >
-                    {/* Card Header Flex with Photo */}
+                    {/* Card Split Layout (Image Thumbnail + Details Header) */}
                     <div className="flex flex-col sm:flex-row items-center sm:items-stretch">
                       {/* Destination Image Thumbnail */}
-                      <div className="relative w-full sm:w-48 md:w-52 h-44 sm:h-36 md:h-40 shrink-0 overflow-hidden bg-gray-100">
+                      <div className="relative w-full sm:w-52 md:w-60 h-48 sm:h-auto shrink-0 overflow-hidden bg-brand-green-950/20 border-b sm:border-b-0 sm:border-r border-[#c9a227]/20">
                         <img 
                           src={destImg} 
                           alt={dest.name} 
                           className={`w-full h-full object-cover ${getDestinationObjectPosition(dest.name)} transition-transform duration-500 group-hover:scale-105`} 
                         />
-                        <div className="absolute inset-0 bg-black/5 sm:hidden" />
+                        <div className="absolute top-3 left-3 bg-brand-green-950/85 backdrop-blur-sm border border-[#c9a227]/40 text-[#c9a227] px-2.5 py-0.5 text-[10px] font-bold tracking-widest uppercase rounded-sm shadow-sm">
+                          Spot #{i + 1}
+                        </div>
                       </div>
 
-                      {/* Accordion Button / Content */}
+                      {/* Accordion Button / Content Header */}
                       <button 
                         onClick={() => toggleCard(dest.name)}
-                        className="flex-1 text-left p-5 md:p-6 flex items-start justify-between bg-white hover:bg-gray-50/60 transition-colors"
+                        className="flex-1 text-left p-5 sm:p-6 flex items-start justify-between bg-transparent hover:bg-black/5 transition-colors"
                       >
-                        <div className="pr-3">
-                          <h3 className="text-xl font-bold text-brand-green-900 mb-2 group-hover:text-brand-green-700 transition-colors">
+                        <div className="pr-4">
+                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c9a227]">
+                            {activeCategory.title}
+                          </span>
+                          <h3 className="text-2xl font-serif text-brand-green-900 font-normal tracking-tight mt-0.5 mb-1.5 group-hover:text-brand-green-950 transition-colors">
                             {dest.name}
                           </h3>
-                          <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 md:line-clamp-none">
+                          <div className="w-12 h-[1px] bg-[#c9a227]/40 mb-2.5" />
+                          <p className="text-[#3a4a40] text-xs sm:text-sm leading-relaxed font-medium">
                             {dest.summary}
                           </p>
                         </div>
-                        <div className="shrink-0 mt-1 bg-brand-yellow-50 p-2 rounded-full text-brand-green-700">
-                          {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                        <div className="shrink-0 mt-1 bg-brand-green-950/90 border border-[#c9a227]/40 p-2 rounded-full text-[#c9a227] shadow-sm">
+                          {isExpanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                         </div>
                       </button>
                     </div>
 
-                    {/* Accordion Body (Deep Lore & Data) */}
+                    {/* Accordion Body (Deep Sightseeing Details & Highlights) */}
                     <AnimatePresence>
                       {isExpanded && (
                         <motion.div
@@ -571,12 +594,15 @@ export default function TravelDeskViewer() {
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                         >
-                          <div className="px-6 pb-6 pt-3 border-t border-gray-100 bg-gray-50/50">
-                            <ul className="space-y-3.5 mt-2">
+                          <div className="px-6 pb-6 pt-4 border-t border-[#c9a227]/20 bg-brand-green-950/5">
+                            <h4 className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2d4a3e] mb-3">
+                              SIGHTSEEING HIGHLIGHTS & KEY DETAILS
+                            </h4>
+                            <ul className="space-y-2.5">
                               {dest.details.map((detail, j) => (
-                                <li key={j} className="flex items-start text-gray-700 text-sm leading-relaxed">
+                                <li key={j} className="flex items-start text-[#3a4a40] text-xs sm:text-sm leading-relaxed font-medium">
                                   {getIconForType(detail.type)}
-                                  <span className="ml-3 font-medium text-gray-800">
+                                  <span className="ml-2.5 text-[#2d4a3e]">
                                     {detail.text}
                                   </span>
                                 </li>
@@ -589,17 +615,6 @@ export default function TravelDeskViewer() {
                   </motion.div>
                 );
               })}
-            </div>
-            
-            {/* Disclaimer / Booking Footer */}
-            <div className="mt-10 bg-brand-yellow-50 rounded-2xl p-8 border border-brand-yellow-200 text-center">
-              <Info className="w-10 h-10 text-brand-green-700 mx-auto mb-4" />
-              <p className="text-gray-800 font-medium mb-6 text-lg max-w-xl mx-auto">
-                Let our travel experts structure your custom <span className="font-bold text-brand-green-900">{activeCategory.title}</span> itinerary. We handle all the logistics, cabs, and guides.
-              </p>
-              <button className="bg-brand-green-700 text-white px-8 py-3.5 rounded-full font-bold shadow-md hover:bg-brand-green-800 transition-colors text-lg">
-                Inquire With Travel Desk
-              </button>
             </div>
           </motion.div>
         </AnimatePresence>
