@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { MapPin, Mail, Phone, PhoneCall, ChevronRight, ArrowUp } from "lucide-react";
+import { MapPin, Mail, Phone, PhoneCall, ChevronRight, ArrowUp, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -67,18 +67,23 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Contact Us */}
+          {/* Column 2: Contact Us - WhatsApp Highlighted, Reservations Standard */}
           <div className="space-y-6">
             <h3 className="text-xl font-bold text-brand-yellow-200 flex items-center mb-6">
               <span className="w-8 h-1 bg-brand-yellow-400 mr-3 rounded-full"></span>
               Contact Us
             </h3>
             <div className="space-y-4">
-              <div className="bg-brand-green-800/50 p-3.5 rounded-xl border border-brand-green-700/50 backdrop-blur-sm transition-colors hover:bg-brand-green-800">
-                <p className="font-bold text-white text-base">0177-2658275</p>
-                <p className="text-[10px] text-brand-green-200 uppercase tracking-wider font-bold mt-0.5">Reservations (10am - 6pm)</p>
+              {/* Reservations - Standard formatting */}
+              <div className="flex items-start space-x-3">
+                <PhoneCall className="text-brand-yellow-400 mt-1 shrink-0" size={16} />
+                <div>
+                  <p className="text-[11px] text-brand-green-200 uppercase tracking-wider font-bold mb-0.5">Reservations (10am - 6pm)</p>
+                  <a href="tel:01772658275" className="text-xs font-semibold hover:text-white transition-colors block">0177-2658275</a>
+                </div>
               </div>
-              
+
+              {/* Reception Desk */}
               <div className="flex items-start space-x-3">
                 <PhoneCall className="text-brand-yellow-400 mt-1 shrink-0" size={16} />
                 <div>
@@ -88,18 +93,27 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3">
-                <Phone className="text-brand-yellow-400 mt-1 shrink-0" size={16} />
-                <div>
-                  <p className="text-[11px] text-brand-green-200 uppercase tracking-wider font-bold mb-0.5">WhatsApp</p>
-                  <a href="https://wa.me/918219200074" target="_blank" rel="noreferrer" className="text-xs hover:text-white transition-colors">+91 8219200074</a>
-                </div>
+              {/* WhatsApp Direct - HIGHLIGHTED CALLOUT BOX */}
+              <div className="bg-[#0a2318] p-3.5 rounded-xl border border-[#c9a227]/40 shadow-sm">
+                <p className="text-[10px] text-[#c9a227] uppercase tracking-wider font-extrabold mb-1 flex items-center gap-1">
+                  <MessageCircle size={13} /> WhatsApp Direct (Save Extra)
+                </p>
+                <a 
+                  href="https://wa.me/918219200074" 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="font-bold text-white text-sm hover:text-[#c9a227] transition-colors block"
+                >
+                  +91 8219200074
+                </a>
               </div>
               
+              {/* Both Email Addresses */}
               <div className="flex items-start space-x-3">
                 <Mail className="text-brand-yellow-400 mt-1 shrink-0" size={16} />
                 <div>
-                  <p className="text-[11px] text-brand-green-200 uppercase tracking-wider font-bold mb-0.5">Email</p>
+                  <p className="text-[11px] text-brand-green-200 uppercase tracking-wider font-bold mb-0.5">Email Inquiry</p>
+                  <a href="mailto:mail@brightlandhotel.com" className="text-xs hover:text-white transition-colors block">mail@brightlandhotel.com</a>
                   <a href="mailto:brightlandhotel@gmail.com" className="text-xs hover:text-white transition-colors block">brightlandhotel@gmail.com</a>
                 </div>
               </div>

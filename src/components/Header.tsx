@@ -129,7 +129,7 @@ export default function Header() {
               onClick={() => setIsOfferDropdownOpen(!isOfferDropdownOpen)}
               className="bg-brand-green-700 hover:bg-brand-green-800 text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow-md flex items-center gap-2"
             >
-              <span>Book via WhatsApp (Save 15%)</span>
+              <span>Book via WhatsApp (Save Extra)</span>
               <ChevronDown 
                 size={16} 
                 className={`transition-transform duration-300 ${isOfferDropdownOpen ? "rotate-180" : ""}`} 
@@ -177,13 +177,13 @@ export default function Header() {
                     <div className="relative z-10 space-y-3">
                       <div className="space-y-1">
                         <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-serif">
-                          ENJOY <span className="text-brand-yellow-400">15% SAVINGS</span>
+                          ENJOY <span className="text-brand-yellow-400">EXTRA SAVINGS</span>
                         </h3>
                         <div className="w-14 h-1 bg-brand-yellow-400 rounded-full" />
                       </div>
 
                       <p className="text-sm text-gray-200 leading-relaxed font-normal">
-                        Book directly with Brightland Hotel via WhatsApp to receive an exclusive 15% discount on all room & suite reservations, plus instant support.
+                        Book directly with Brightland Hotel via WhatsApp to receive an exclusive discount on all room & suite reservations, plus instant support.
                       </p>
 
                       <button
@@ -239,7 +239,7 @@ export default function Header() {
               }}
               className="w-full bg-brand-green-700 hover:bg-brand-green-800 text-white px-6 py-3 rounded-full font-bold text-center shadow-md flex items-center justify-center gap-2"
             >
-              <span>Book via WhatsApp (Save 15%)</span>
+              <span>Book via WhatsApp (Save Extra)</span>
               <ChevronDown size={16} className={`transition-transform duration-300 ${isOfferDropdownOpen ? "rotate-180" : ""}`} />
             </button>
 
@@ -271,10 +271,10 @@ export default function Header() {
 
                   <div className="relative z-10 space-y-2">
                     <h3 className="text-xl font-bold text-white font-serif">
-                      ENJOY <span className="text-brand-yellow-400">15% SAVINGS</span>
+                      ENJOY <span className="text-brand-yellow-400">EXTRA SAVINGS</span>
                     </h3>
                     <p className="text-xs text-gray-200 leading-relaxed">
-                      Book directly via WhatsApp for an exclusive 15% discount on all room reservations.
+                      Book directly via WhatsApp for an exclusive discount on all room reservations.
                     </p>
                     <button
                       onClick={() => {
@@ -297,4 +297,3 @@ export default function Header() {
     </header>
   );
 }
-

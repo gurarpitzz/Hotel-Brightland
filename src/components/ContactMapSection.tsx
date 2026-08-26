@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, MessageCircle, Mail } from "lucide-react";
 
 export default function ContactMapSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -142,7 +142,7 @@ export default function ContactMapSection() {
             )}
           </motion.div>
 
-          {/* Right Side: Map & Address Info (Harsha Layout) */}
+          {/* Right Side: Map & Address Info */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -164,7 +164,7 @@ export default function ContactMapSection() {
               />
             </div>
 
-            {/* Address & Quick Contact Details (Horizontal Grid under map) */}
+            {/* Address & Quick Contact Details */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#6b6b6b] mb-2">
@@ -182,22 +182,41 @@ export default function ContactMapSection() {
                 <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#6b6b6b] mb-2">
                   QUICK CONTACT
                 </p>
-                <div className="space-y-1 text-sm font-medium text-[#1e1e1e]">
-                  <p>
-                    <a href="tel:01772658275" className="hover:text-[#3d2c23] transition-colors">
-                      +91 177 2658275
+                <div className="space-y-2 text-sm font-medium text-[#1e1e1e]">
+                  {/* Reservations - Standard (Unhighlighted) */}
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#6b6b6b]">Reservations (10am - 6pm)</p>
+                    <a href="tel:01772658275" className="hover:text-[#3d2c23] transition-colors block font-semibold">
+                      0177-2658275
                     </a>
-                  </p>
-                  <p>
-                    <a href="https://wa.me/918219200074" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-700 font-bold transition-colors">
-                      +91 8219200074 (WhatsApp)
+                  </div>
+
+                  {/* WhatsApp Direct - HIGHLIGHTED CALLOUT BOX */}
+                  <div className="bg-[#0a2318] text-[#c9a227] p-3 rounded-md border border-[#c9a227]/40 shadow-sm">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#c9a227] mb-0.5">
+                      WhatsApp Direct
+                    </p>
+                    <a 
+                      href="https://wa.me/918219200074" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="font-bold text-white hover:text-[#c9a227] transition-colors flex items-center gap-1.5"
+                    >
+                      <MessageCircle size={15} className="text-[#c9a227]" />
+                      +91 8219200074
                     </a>
-                  </p>
-                  <p>
-                    <a href="mailto:brightlandhotel@gmail.com" className="hover:text-[#3d2c23] transition-colors">
+                  </div>
+
+                  {/* Both Email Addresses */}
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#6b6b6b] mb-0.5">Email Inquiry</p>
+                    <a href="mailto:mail@brightlandhotel.com" className="hover:text-[#3d2c23] transition-colors block text-xs font-semibold">
+                      mail@brightlandhotel.com
+                    </a>
+                    <a href="mailto:brightlandhotel@gmail.com" className="hover:text-[#3d2c23] transition-colors block text-xs font-semibold">
                       brightlandhotel@gmail.com
                     </a>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
