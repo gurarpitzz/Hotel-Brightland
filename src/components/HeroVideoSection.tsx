@@ -235,7 +235,7 @@ export default function HeroVideoSection({
       </section>
 
       {/* Trust Indicators */}
-      <section className="bg-brand-green-900 py-6 border-b border-[#c9a227]/30 relative z-20 text-brand-yellow-50">
+      <section className="bg-brand-green-900 py-6 border-t-2 border-[#f7f3d7]/40 border-b border-[#c9a227]/30 relative z-20 text-brand-yellow-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-6 md:gap-12">
             {trustIndicators.map((indicator, index) => (
