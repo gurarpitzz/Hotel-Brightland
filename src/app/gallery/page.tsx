@@ -8,17 +8,18 @@ export const metadata = {
   description: "Browse our comprehensive photo gallery of Brightland Hotel in Shimla, featuring our premium rooms, multi-cuisine restaurant, and breathtaking mountain views.",
 };
 
-// Allowed hotel categories (excludes Sightseeing / Travel desk images)
+// Strictly allowed hotel subfolders (only hotel property photos)
 const ALLOWED_HOTEL_FOLDERS = [
-  "rooms",
-  "restaurant",
-  "terrace garden",
+  "corporate rooms",
   "hotel building",
+  "imperial rooms",
+  "presidential rooms",
   "reception",
-  "view from hotel",
-  "views",
-  "lobby",
-  "dining"
+  "regal suites",
+  "restaurant",
+  "royal rooms",
+  "terrace garden",
+  "view from hotel"
 ];
 
 // Recursive function to get all hotel image paths inside public/assets
@@ -30,21 +31,16 @@ function getAssetImages(dir: string, baseDir: string): string[] {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       const folderName = entry.name.toLowerCase();
-      // Exclude logo and sightseeing/travel desk folders
-      if (folderName !== "logo" && (ALLOWED_HOTEL_FOLDERS.some(f => folderName.includes(f)) || dir === baseDir)) {
+      // Only traverse subdirectories that match our allowed hotel room & amenity categories
+      if (ALLOWED_HOTEL_FOLDERS.some(f => folderName.includes(f))) {
         images = [...images, ...getAssetImages(fullPath, baseDir)];
       }
-    } else {
+    } else if (dir !== baseDir) {
+      // Only collect image files inside subdirectories, ignoring root level background artwork images
       const ext = path.extname(entry.name).toLowerCase();
       if ([".jpg", ".jpeg", ".png", ".gif", ".webp"].includes(ext)) {
-        // Check if parent directory path matches hotel categories
         const relativePath = fullPath.replace(baseDir, "").replace(/\\/g, "/");
-        const lowerRel = relativePath.toLowerCase();
-        
-        // Ensure no sight seeing or travel desk images are intermixed
-        if (!lowerRel.includes("sight") && !lowerRel.includes("travel") && !lowerRel.includes("shimla sights")) {
-          images.push(`/assets${relativePath}`);
-        }
+        images.push(`/assets${relativePath}`);
       }
     }
   }
