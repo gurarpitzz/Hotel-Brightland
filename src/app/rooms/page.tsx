@@ -158,9 +158,11 @@ import PageHeaderBanner from "@/components/PageHeaderBanner";
 export default function RoomsPage() {
   return (
     <div 
-      className="bg-[#faf8f0] bg-repeat min-h-screen pb-24"
+      className="relative bg-[#faf8f0] bg-repeat min-h-screen pb-24 overflow-hidden"
       style={{ backgroundImage: "url('/assets/homebg.png')" }}
     >
+      {/* 20-25% Green Tint Gradient Overlay to soften repeating background pattern */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a2318]/25 via-[#0f2e21]/18 to-[#0a2318]/25 pointer-events-none z-0" />
       
       <PageHeaderBanner
         tagline="Our Collection"
