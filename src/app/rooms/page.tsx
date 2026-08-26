@@ -158,37 +158,46 @@ export default function RoomsPage() {
   return (
     <div className="bg-brand-yellow-50 min-h-screen pb-16">
       
-      {/* Header Banner Section */}
-      <section className="relative w-full min-h-[380px] md:min-h-[440px] flex items-center justify-center bg-cover bg-center bg-no-repeat mb-12 shadow-md overflow-hidden border-b border-[#c9a227]/30"
+      {/* Full-Height Hero Header Banner Section */}
+      <section 
+        className="relative w-full min-h-[calc(100vh-80px)] flex items-center bg-cover bg-right sm:bg-center bg-no-repeat mb-16 shadow-lg overflow-hidden border-b-2 border-[#c9a227]/40"
         style={{ backgroundImage: "url('/assets/headbanner.png')" }}
       >
-        {/* Subtle Dark Overlay for Text Legibility */}
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] z-0" />
+        {/* Deep Forest Green Gradient Overlay on Left for clear text readability without covering right hotel building */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a2318]/95 via-[#0a2318]/80 to-transparent z-0" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a2318]/60 via-transparent to-black/30 z-0" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center py-16 text-white">
-          <AnimatedFadeUp>
-            {/* Top Ornamental Accent */}
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <div className="w-10 h-[1px] bg-[#c9a227]/80" />
-              <span className="text-[#c9a227] text-xs uppercase tracking-[0.25em] font-medium font-serif italic">Our Collection</span>
-              <div className="w-10 h-[1px] bg-[#c9a227]/80" />
-            </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full py-20 text-white">
+          <div className="max-w-xl text-left">
+            <AnimatedFadeUp>
+              {/* Top Ornamental Accent */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-[1.5px] bg-[#c9a227]" />
+                <span className="text-[#c9a227] text-xs uppercase tracking-[0.25em] font-bold font-serif italic">Our Collection</span>
+              </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-normal text-brand-yellow-50 tracking-tight mb-4 drop-shadow-md">
-              Rooms & Suites
-            </h1>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-normal text-brand-yellow-50 tracking-tight mb-6 drop-shadow-md leading-[1.1]">
+                Rooms &amp; Suites
+              </h1>
 
-            {/* Antique Gold Line & Motif */}
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-[1px] bg-[#c9a227]/60" />
-              <div className="text-[#c9a227] text-xs">❖ ❖ ❖</div>
-              <div className="w-16 h-[1px] bg-[#c9a227]/60" />
-            </div>
+              {/* Antique Gold Line & Motif */}
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-16 h-[1px] bg-[#c9a227]/70" />
+                <div className="text-[#c9a227] text-xs">❖ ❖ ❖</div>
+                <div className="w-24 h-[1px] bg-[#c9a227]/40" />
+              </div>
 
-            <p className="text-base sm:text-lg md:text-xl text-brand-yellow-100/90 max-w-2xl mx-auto font-light leading-relaxed drop-shadow">
-              Discover comfort and elegance in the heart of Shimla. Every room is designed to provide a warm, relaxing atmosphere with beautiful views.
-            </p>
-          </AnimatedFadeUp>
+              <p className="text-base sm:text-lg md:text-xl text-brand-yellow-100/90 font-light leading-relaxed drop-shadow mb-10">
+                Discover comfort and elegance in the heart of Shimla. Every room is designed to provide a warm, relaxing atmosphere with beautiful views.
+              </p>
+
+              {/* Scroll Down Guide */}
+              <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-[#c9a227]/80 font-medium">
+                <span>Scroll to explore rooms</span>
+                <span className="animate-bounce text-base">↓</span>
+              </div>
+            </AnimatedFadeUp>
+          </div>
         </div>
       </section>
 
