@@ -55,6 +55,8 @@ export default function HeroVideoSection({
           modestbranding: 1,
           showinfo: 0,
           rel: 0,
+          fs: 0,
+          autohide: 1,
           mute: 1, // Mute on initial load to guarantee instant autoplay without browser block
           enablejsapi: 1,
           playsinline: 1,
@@ -131,14 +133,17 @@ export default function HeroVideoSection({
         />
 
         {/* YouTube Background Embed with Aspect Ratio Scaling */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
-          <div className="relative w-[300vw] h-[300vh] sm:w-[180%] sm:h-[180%] lg:w-[125%] lg:h-[125%] min-w-full min-h-full flex items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center z-0">
+          <div className="relative w-[300vw] h-[300vh] sm:w-[180%] sm:h-[180%] lg:w-[125%] lg:h-[125%] min-w-full min-h-full flex items-center justify-center pointer-events-none select-none">
             <div
               id="hero-yt-player"
-              className="w-[177.77vh] min-w-full h-[56.25vw] min-h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none"
+              className="w-[177.77vh] min-w-full h-[56.25vw] min-h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none select-none"
             />
           </div>
         </div>
+
+        {/* Transparent Shield & Vignette Overlay to hide control icons and prevent hover states */}
+        <div className="absolute inset-0 z-10 pointer-events-none bg-transparent" />
 
         {/* Subtle Bottom Vignette Gradient (no green tint) for clear button visibility */}
         <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-1000 ${showContent ? "opacity-100" : "opacity-0"}`} />
