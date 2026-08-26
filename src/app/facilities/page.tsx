@@ -77,9 +77,7 @@ const facilities = [
     badgeText: "Complimentary",
     images: [
       "/assets/Hotel building/brightland hotel complex.jpg",
-      "/assets/Hotel building/Hotel building (1).jpg",
-      "/assets/Hotel building/Hotel building (4).JPG",
-      "/assets/Hotel building/Hotel building (5).jpg"
+      "/assets/Hotel building/Hotel building (4).JPG"
     ]
   },
   {
