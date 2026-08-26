@@ -21,8 +21,11 @@ export default function ContactMapSection() {
   };
 
   return (
-    <section className="py-20 bg-[#faf8f5] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section 
+      className="py-24 bg-cover bg-center bg-no-repeat relative overflow-hidden text-[#1e1e1e]"
+      style={{ backgroundImage: "url('/assets/contactbg.png')" }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <motion.div 
@@ -32,10 +35,10 @@ export default function ContactMapSection() {
           transition={{ duration: 0.7 }}
           className="mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-normal font-serif text-[#1e1e1e] mb-3">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-normal font-serif text-[#1b3d2f] mb-3">
             Get in Touch
           </h2>
-          <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#6b6b6b] uppercase">
+          <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#4a5448] uppercase">
             HAVE QUESTIONS? WE&apos;RE HERE TO HELP.
           </p>
         </motion.div>
