@@ -5,7 +5,7 @@ import AmenitiesSection from "@/components/AmenitiesSection";
 import ContactMapSection from "@/components/ContactMapSection";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { MapPin } from "lucide-react";
+import { MapPin, CheckCircle2, Navigation } from "lucide-react";
 
 export default function Home() {
   const trustIndicators = [
@@ -105,59 +105,85 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* The Perfect Starting Point Section - Featuring Himachal Pradesh SVG Map with Shimla Highlighted */}
+          {/* The Perfect Starting Point Card - Formatted matching Room Cards design system */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7 }}
-            className="mt-20 bg-[#faf8f0]/95 backdrop-blur-md rounded-2xl p-6 sm:p-10 border border-[#c9a227]/30 shadow-md flex flex-col lg:flex-row items-center gap-8 lg:gap-12"
+            className="mt-20 bg-[#faf8f0]/95 backdrop-blur-md rounded-md p-6 sm:p-8 shadow-md border border-[#c9a227]/25 hover:border-[#c9a227]/50 hover:shadow-lg transition-all duration-300"
           >
-            {/* Himachal Pradesh District SVG Map Graphic */}
-            <div className="lg:w-1/2 w-full flex flex-col items-center justify-center p-4 bg-[#0a2318]/5 rounded-xl border border-[#c9a227]/20 relative overflow-hidden">
-              <div className="relative w-full max-w-[360px] h-[300px] sm:h-[340px]">
-                <Image 
-                  src="/assets/himachal-map.svg" 
-                  alt="Himachal Pradesh Map with Shimla Highlighted" 
-                  fill 
-                  className="object-contain filter drop-shadow-md"
-                />
-              </div>
-              <div className="mt-3 flex items-center gap-2 bg-[#0a2318] text-[#c9a227] px-3.5 py-1.5 rounded-md text-xs font-bold border border-[#c9a227]/40 shadow-sm">
-                <MapPin className="w-4 h-4 text-[#c9a227] shrink-0" />
-                <span className="tracking-wide">Shimla District, Himachal Pradesh</span>
-              </div>
-            </div>
+            <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+              
+              {/* Left Column: Himachal Pradesh SVG Map Box */}
+              <div className="lg:w-5/12 w-full bg-[#faf8f0] rounded-md p-4 border border-[#c9a227]/25 relative overflow-hidden shadow-inner flex flex-col items-center justify-center">
+                
+                {/* Floating Category Badge */}
+                <div className="mb-3 inline-flex items-center gap-1.5 bg-brand-green-950/90 text-[#c9a227] border border-[#c9a227]/40 px-3 py-1 rounded-sm text-[10px] font-bold uppercase tracking-widest shadow-sm">
+                  <MapPin size={13} className="text-[#c9a227]" />
+                  <span>Shimla District, Himachal Pradesh</span>
+                </div>
 
-            {/* Location Details Text */}
-            <div className="lg:w-1/2 w-full space-y-5">
-              <div className="space-y-1">
-                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#c9a227]">
-                  PRIME CENTRAL LOCATION
-                </span>
-                <h3 className="text-3xl sm:text-4xl font-serif text-[#1b3d2f] font-normal tracking-tight">
-                  The Perfect Starting Point
-                </h3>
+                <div className="relative w-full max-w-[320px] h-[280px] sm:h-[320px]">
+                  <Image 
+                    src="/assets/himachal-map.svg" 
+                    alt="Himachal Pradesh Map with Shimla Highlighted" 
+                    fill 
+                    className="object-contain filter drop-shadow-md"
+                  />
+                </div>
               </div>
 
-              <p className="text-[#3d423a] text-base leading-relaxed">
-                Strategically positioned to offer the absolute best of both worlds: deep, tranquil mountain serenity combined with effortless walking access to Shimla's most iconic attractions.
-              </p>
+              {/* Right Column: Location Details & Distance Features */}
+              <div className="lg:w-7/12 w-full space-y-5">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#c9a227]">
+                    PRIME CENTRAL LOCATION
+                  </span>
+                  <h3 className="text-3xl sm:text-4xl font-serif text-brand-green-900 font-normal tracking-tight mt-1">
+                    The Perfect Starting Point
+                  </h3>
+                  <div className="w-16 h-[1px] bg-[#c9a227]/50 my-3" />
+                </div>
 
-              <ul className="space-y-3 text-sm font-semibold text-[#1b3d2f]">
-                <li className="flex items-center space-x-3 p-3 bg-[#faf8f0] rounded-lg border border-[#c9a227]/25 shadow-sm">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#c9a227] shrink-0" />
-                  <span>5 minutes from Old ISBT</span>
-                </li>
-                <li className="flex items-center space-x-3 p-3 bg-[#faf8f0] rounded-lg border border-[#c9a227]/25 shadow-sm">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#c9a227] shrink-0" />
-                  <span>15 minutes walk to the historic Toy Train</span>
-                </li>
-                <li className="flex items-center space-x-3 p-3 bg-[#faf8f0] rounded-lg border border-[#c9a227]/25 shadow-sm">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#c9a227] shrink-0" />
-                  <span>15 minutes walk to The Mall</span>
-                </li>
-              </ul>
+                {/* Callout Box */}
+                <div className="bg-[#0a2318]/5 border border-[#c9a227]/20 p-4 rounded-md text-xs sm:text-sm text-[#3a4a40] leading-relaxed font-normal">
+                  Strategically positioned to offer the absolute best of both worlds: deep, tranquil mountain serenity combined with effortless walking access to Shimla's most iconic attractions.
+                </div>
+
+                {/* Distance Checkmark List Grid */}
+                <div className="space-y-3 pt-1">
+                  <div className="flex items-center space-x-3 bg-[#faf8f0] p-3 rounded-md border border-[#c9a227]/20 shadow-sm">
+                    <CheckCircle2 className="w-5 h-5 text-[#c9a227] shrink-0" />
+                    <span className="text-xs sm:text-sm font-semibold text-brand-green-900">5 minutes from Old ISBT</span>
+                  </div>
+
+                  <div className="flex items-center space-x-3 bg-[#faf8f0] p-3 rounded-md border border-[#c9a227]/20 shadow-sm">
+                    <CheckCircle2 className="w-5 h-5 text-[#c9a227] shrink-0" />
+                    <span className="text-xs sm:text-sm font-semibold text-brand-green-900">15 minutes walk to the historic Toy Train</span>
+                  </div>
+
+                  <div className="flex items-center space-x-3 bg-[#faf8f0] p-3 rounded-md border border-[#c9a227]/20 shadow-sm">
+                    <CheckCircle2 className="w-5 h-5 text-[#c9a227] shrink-0" />
+                    <span className="text-xs sm:text-sm font-semibold text-brand-green-900">15 minutes walk to The Mall</span>
+                  </div>
+                </div>
+
+                {/* Footer Direction Link */}
+                <div className="pt-2">
+                  <a
+                    href="https://maps.app.goo.gl/aBS4dAoDwjUdKePy5"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs font-bold text-[#c9a227] uppercase tracking-wider hover:underline"
+                  >
+                    <Navigation size={14} />
+                    <span>Get Directions to Brightland Hotel →</span>
+                  </a>
+                </div>
+
+              </div>
+
             </div>
           </motion.div>
 
