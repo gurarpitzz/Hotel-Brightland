@@ -221,7 +221,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright Line */}
-      <div className="pt-6 text-center text-xs text-brand-green-300 px-4">
+      <div className="pt-6 text-center text-xs sm:text-sm font-medium tracking-wider text-brand-yellow-100 opacity-90 px-4 drop-shadow-sm">
         Copyright © {new Date().getFullYear()} brightlandhotel.com | All Rights Reserved.
       </div>
 
