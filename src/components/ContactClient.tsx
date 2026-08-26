@@ -18,6 +18,7 @@ import {
   ShieldCheck
 } from "lucide-react";
 import { AnimatedFadeUp, AnimatedScaleUp } from "@/components/AnimatedWrappers";
+import PageHeaderBanner from "@/components/PageHeaderBanner";
 
 const seasons = [
   {
@@ -101,34 +102,11 @@ export default function ContactClient() {
         }
       `}</style>
 
-      {/* Hero Header */}
-      <section className="relative bg-brand-green-900 text-white py-16 md:py-24 overflow-hidden shadow-lg">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fef08a_1px,transparent_1px)] [background-size:16px_16px]" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <AnimatedFadeUp>
-            <span 
-              style={{ color: "#fde047", backgroundColor: "rgba(250, 204, 21, 0.2)", borderColor: "rgba(250, 204, 21, 0.4)" }} 
-              className="inline-flex items-center gap-2 border px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider mb-4 shadow-sm"
-            >
-              <Sparkles size={14} style={{ color: "#facc15" }} />
-              We Are Here To Assist You
-            </span>
-            <h1 
-              style={{ color: "#fde047" }} 
-              className="text-4xl sm:text-5xl md:text-6xl font-bold font-cursive tracking-wide mb-6"
-            >
-              Contact Brightland Hotel
-            </h1>
-            <p 
-              style={{ color: "#d1fae5" }} 
-              className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
-            >
-              Reach out to us for room reservations, direct booking discount queries, travel guidance, or any special requests.
-            </p>
-          </AnimatedFadeUp>
-        </div>
-      </section>
+      <PageHeaderBanner
+        tagline="We Are Here To Assist You"
+        title="Contact Us"
+        description="Reach out to us for room reservations, direct booking best rate queries, travel guidance, or special requests."
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 space-y-16 contact-page-wrapper">
 

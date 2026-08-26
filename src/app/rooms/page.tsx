@@ -153,58 +153,17 @@ const rooms = [
 ];
 
 import RoomBookButton from "./RoomBookButton";
+import PageHeaderBanner from "@/components/PageHeaderBanner";
 
 export default function RoomsPage() {
   return (
     <div className="bg-brand-yellow-50 min-h-screen pb-16">
       
-      {/* Full-Height Hero Header Banner Section */}
-      <section 
-        className="relative w-full min-h-[calc(100vh-80px)] flex items-end pb-12 sm:pb-16 md:pb-20 bg-cover bg-right sm:bg-center bg-no-repeat mb-16 shadow-lg overflow-hidden border-b-2 border-[#c9a227]/40"
-        style={{ backgroundImage: "url('/assets/headbanner.png')" }}
-      >
-        {/* Deep Forest Green Gradient Overlay on Left for clear text readability without covering right hotel building */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071c13]/95 via-[#0a2318]/85 to-transparent z-0" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a2318]/70 via-transparent to-black/30 z-0" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full text-white">
-          <div className="max-w-md md:max-w-xl text-left">
-            <AnimatedFadeUp>
-              {/* Handwritten Elegant Tagline */}
-              <div className="flex items-center gap-2.5 mb-2.5">
-                <div className="w-10 h-[1.5px] bg-[#c9a227]" />
-                <span className="text-[#c9a227] text-2xl sm:text-3xl font-serif italic font-normal tracking-wide drop-shadow">
-                  Our Collection
-                </span>
-                <div className="w-8 h-[1px] bg-[#c9a227]/40" />
-              </div>
-
-              {/* Increased Size Headline */}
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-serif font-normal text-brand-yellow-50 tracking-tight mb-6 drop-shadow-lg leading-[1.08]">
-                Rooms &amp; Suites
-              </h1>
-
-              {/* Antique Gold Line & Motif */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-16 h-[1.5px] bg-[#c9a227]/80" />
-                <div className="text-[#c9a227] text-sm">❖ ❖ ❖</div>
-                <div className="w-24 h-[1px] bg-[#c9a227]/30" />
-              </div>
-
-              {/* Description Paragraph */}
-              <p className="text-base sm:text-lg md:text-xl text-brand-yellow-100/90 font-light leading-relaxed drop-shadow-md mb-8 max-w-lg">
-                Discover comfort and elegance in the heart of Shimla. Every room is designed to provide a warm, relaxing atmosphere with beautiful views.
-              </p>
-
-              {/* Scroll Down Guide */}
-              <div className="flex items-center gap-2.5 text-xs sm:text-sm uppercase tracking-[0.2em] text-[#c9a227] font-semibold drop-shadow">
-                <span>Scroll to explore rooms</span>
-                <span className="animate-bounce text-base sm:text-lg">↓</span>
-              </div>
-            </AnimatedFadeUp>
-          </div>
-        </div>
-      </section>
+      <PageHeaderBanner
+        tagline="Our Collection"
+        title="Rooms & Suites"
+        description="Discover comfort and elegance in the heart of Shimla. Every room is designed to provide a warm, relaxing atmosphere with beautiful views."
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 

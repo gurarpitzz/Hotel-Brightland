@@ -101,24 +101,19 @@ function FacilityCarousel({ images }: { images: string[] }) {
   );
 }
 
+import PageHeaderBanner from "@/components/PageHeaderBanner";
+
 export default function FacilitiesPage() {
   return (
-    <div className="bg-brand-yellow-50 min-h-screen py-16">
+    <div className="bg-brand-yellow-50 min-h-screen pb-16">
+      
+      <PageHeaderBanner
+        tagline="World-Class Experience"
+        title="Premium Facilities"
+        description="Experience exceptional hospitality with our curated amenities designed to make your Shimla vacation unforgettable."
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-green-900 mb-6 font-cursive tracking-wider">
-            Premium Facilities
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Experience exceptional hospitality with our curated amenities designed to make your Shimla vacation unforgettable.
-          </p>
-        </motion.div>
 
         <div className="space-y-24">
           {facilities.map((facility, index) => {

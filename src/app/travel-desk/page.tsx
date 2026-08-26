@@ -8,19 +8,19 @@ export const metadata = {
   description: "Plan your Shimla sightseeing with the Brightland Hotel Travel Desk. We arrange local tours to Kufri, Naldehra, Jakhu Temple, and provide pickup/drop services.",
 };
 
+import PageHeaderBanner from "@/components/PageHeaderBanner";
+
 export default function TravelDeskPage() {
   return (
-    <div className="bg-brand-yellow-50 min-h-screen py-16">
+    <div className="bg-brand-yellow-50 min-h-screen pb-16">
+      
+      <PageHeaderBanner
+        tagline="Explore Shimla"
+        title="Travel Desk"
+        description="Let us help you explore the beauty of Shimla. Our travel desk offers customized tour packages, sightseeing cabs, and pickup services."
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <AnimatedFadeUp className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-green-900 mb-4">
-            Travel Desk
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Let us help you explore the beauty of Shimla. Our dedicated travel desk offers customized tour packages, sightseeing taxis, and pickup/drop services.
-          </p>
-        </AnimatedFadeUp>
 
         <div className="mb-16">
           <TravelDeskViewer />

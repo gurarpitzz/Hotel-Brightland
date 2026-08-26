@@ -17,24 +17,19 @@ const roomRates = [
   { name: "Presidential Room", pax: "2 PAX", price: "6,000", popular: false },
 ];
 
+import PageHeaderBanner from "@/components/PageHeaderBanner";
+
 export default function TariffPage() {
   return (
-    <div className="bg-brand-yellow-50 min-h-screen py-16">
+    <div className="bg-brand-yellow-50 min-h-screen pb-16">
+      
+      <PageHeaderBanner
+        tagline="Approved by H.P. Tourism"
+        title="Rates & Tariff"
+        description="View our transparent FIT tariffs per day for our various rooms and luxury suites in the heart of Shimla."
+      />
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header Section */}
-        <AnimatedFadeUp className="text-center mb-16">
-          <div className="inline-flex items-center justify-center space-x-2 bg-brand-green-100 text-brand-green-800 px-4 py-1.5 rounded-full text-sm font-bold mb-4 shadow-sm">
-            <Award size={16} />
-            <span>Approved by H.P. Tourism Department</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-green-900 mb-4">
-            Hotel Tariff
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            FIT Tariff In Rupees Per Day. Enjoy our European Plan (E.P.) accommodation in the heart of Shimla.
-          </p>
-        </AnimatedFadeUp>
 
         {/* Room Rates Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">

@@ -285,6 +285,8 @@ const cardVariants: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.4 } }
 };
 
+import PageHeaderBanner from "@/components/PageHeaderBanner";
+
 export default function PolicyPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
@@ -302,31 +304,19 @@ export default function PolicyPage() {
   });
 
   return (
-    <div className="bg-brand-yellow-50 min-h-screen py-12 md:py-16 relative overflow-hidden">
+    <div className="bg-brand-yellow-50 min-h-screen pb-12 md:pb-16 relative overflow-hidden">
       
+      <PageHeaderBanner
+        tagline="Official Guidelines"
+        title="Hotel Policy & Terms"
+        description="All official rules, regulations, and guest policies of Brightland Hotel Shimla. Please review carefully for a seamless stay."
+      />
+
       {/* Decorative background shapes */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-brand-yellow-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-green-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 transform translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10"
-        >
-          <div className="inline-flex items-center justify-center p-3 bg-brand-green-100 rounded-full mb-4">
-            <FileText className="w-8 h-8 text-brand-green-800" />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-green-900 mb-4 font-cursive tracking-wider">
-            Hotel Policy & Terms
-          </h1>
-          <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            All 39 official rules, regulations, and guest policies of Brightland Hotel Shimla. Please review carefully before booking.
-          </p>
-        </motion.div>
 
         {/* Search & Filter Controls */}
         <div className="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-brand-green-100 mb-10 space-y-4 md:space-y-0 md:flex md:items-center md:gap-4">
