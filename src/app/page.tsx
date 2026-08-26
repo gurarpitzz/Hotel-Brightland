@@ -105,7 +105,7 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* The Perfect Starting Point Card - Creamish Dominant with Green & Gold Accents */}
+          {/* The Perfect Starting Point Card - Featuring Brightland Hotel Official Route Map */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -115,21 +115,22 @@ export default function Home() {
           >
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 relative z-10">
               
-              {/* Left Column: Himachal Pradesh SVG Map Box */}
-              <div className="lg:w-5/12 w-full bg-[#faf8f0] rounded-xl p-5 border border-[#c9a227]/30 shadow-inner flex flex-col items-center justify-center relative">
+              {/* Left Column: Brightland Hotel Official Route Location Map Box */}
+              <div className="lg:w-5/12 w-full bg-white rounded-xl p-4 sm:p-5 border border-[#c9a227]/30 shadow-inner flex flex-col items-center justify-center relative">
                 
                 {/* Floating Category Badge */}
-                <div className="mb-4 inline-flex items-center gap-1.5 bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/40 px-3.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm">
+                <div className="mb-3 inline-flex items-center gap-1.5 bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/40 px-3.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm">
                   <MapPin size={13} className="text-[#c9a227]" />
-                  <span>Shimla District, Himachal Pradesh</span>
+                  <span>Brightland Hotel Route Map</span>
                 </div>
 
-                <div className="relative w-full max-w-[320px] h-[280px] sm:h-[320px]">
+                <div className="relative w-full max-w-[340px] h-[280px] sm:h-[320px]">
                   <Image 
-                    src="/assets/himachal-map.svg" 
-                    alt="Himachal Pradesh Map with Shimla Highlighted" 
+                    src="/assets/route-map.png" 
+                    alt="Brightland Hotel Route Location Map" 
                     fill 
-                    className="object-contain filter drop-shadow-md"
+                    className="object-contain filter drop-shadow-sm"
+                    unoptimized
                   />
                 </div>
               </div>
