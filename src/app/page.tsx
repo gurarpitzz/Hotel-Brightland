@@ -5,6 +5,7 @@ import AmenitiesSection from "@/components/AmenitiesSection";
 import ContactMapSection from "@/components/ContactMapSection";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { MapPin } from "lucide-react";
 
 export default function Home() {
   const trustIndicators = [
@@ -122,9 +123,9 @@ export default function Home() {
                   className="object-contain filter drop-shadow-md"
                 />
               </div>
-              <div className="mt-3 flex items-center gap-2 bg-[#0a2318] text-[#c9a227] px-3 py-1 rounded-full text-xs font-bold border border-[#c9a227]/40 shadow-sm">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping" />
-                <span>Shimla District, Himachal Pradesh</span>
+              <div className="mt-3 flex items-center gap-2 bg-[#0a2318] text-[#c9a227] px-3.5 py-1.5 rounded-md text-xs font-bold border border-[#c9a227]/40 shadow-sm">
+                <MapPin className="w-4 h-4 text-[#c9a227] shrink-0" />
+                <span className="tracking-wide">Shimla District, Himachal Pradesh</span>
               </div>
             </div>
 
