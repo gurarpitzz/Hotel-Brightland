@@ -105,24 +105,21 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* The Perfect Starting Point Card - Rich Forest Green & Antique Gold Theme */}
+          {/* The Perfect Starting Point Card - Creamish Dominant with Green & Gold Accents */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7 }}
-            className="mt-20 bg-gradient-to-br from-[#071c13] via-[#0a2318] to-[#0d2e20] text-white rounded-2xl p-6 sm:p-10 shadow-2xl border-2 border-[#c9a227]/40 relative overflow-hidden"
+            className="mt-20 bg-[#faf8f0]/95 backdrop-blur-md rounded-2xl p-6 sm:p-10 shadow-xl border-2 border-[#2d4a3e]/30 hover:border-[#c9a227]/60 transition-all duration-300 relative overflow-hidden"
           >
-            {/* Subtle background glow */}
-            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#c9a227]/10 rounded-full blur-3xl pointer-events-none" />
-
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 relative z-10">
               
               {/* Left Column: Himachal Pradesh SVG Map Box */}
-              <div className="lg:w-5/12 w-full bg-[#faf8f0]/95 rounded-xl p-5 border-2 border-[#c9a227]/40 relative overflow-hidden shadow-2xl flex flex-col items-center justify-center">
+              <div className="lg:w-5/12 w-full bg-[#faf8f0] rounded-xl p-5 border border-[#c9a227]/30 shadow-inner flex flex-col items-center justify-center relative">
                 
                 {/* Floating Category Badge */}
-                <div className="mb-4 inline-flex items-center gap-1.5 bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/50 px-3.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-md">
+                <div className="mb-4 inline-flex items-center gap-1.5 bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/40 px-3.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm">
                   <MapPin size={13} className="text-[#c9a227]" />
                   <span>Shimla District, Himachal Pradesh</span>
                 </div>
@@ -143,32 +140,32 @@ export default function Home() {
                   <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#c9a227]">
                     PRIME CENTRAL LOCATION
                   </span>
-                  <h3 className="text-3xl sm:text-4xl font-serif text-brand-yellow-50 font-normal tracking-tight mt-1">
+                  <h3 className="text-3xl sm:text-4xl font-serif text-brand-green-900 font-normal tracking-tight mt-1">
                     The Perfect Starting Point
                   </h3>
                   <div className="w-16 h-[1.5px] bg-[#c9a227] my-3" />
                 </div>
 
                 {/* Callout Box */}
-                <div className="bg-[#c9a227]/10 border border-[#c9a227]/30 p-4 rounded-xl text-xs sm:text-sm text-brand-yellow-100/90 leading-relaxed font-light backdrop-blur-sm">
+                <div className="bg-[#0a2318]/5 border border-[#c9a227]/25 p-4 rounded-xl text-xs sm:text-sm text-[#3a4a40] leading-relaxed font-normal">
                   Strategically positioned to offer the absolute best of both worlds: deep, tranquil mountain serenity combined with effortless walking access to Shimla's most iconic attractions.
                 </div>
 
                 {/* Distance Checkmark List Grid */}
                 <div className="space-y-3 pt-1">
-                  <div className="flex items-center space-x-3 bg-[#0a2318]/80 backdrop-blur-md p-3.5 rounded-xl border border-[#c9a227]/30 shadow-md hover:border-[#c9a227]/60 transition-colors">
-                    <CheckCircle2 className="w-5 h-5 text-[#c9a227] shrink-0" />
-                    <span className="text-xs sm:text-sm font-bold text-white tracking-wide">5 minutes from Old ISBT</span>
+                  <div className="flex items-center space-x-3 bg-[#faf8f0] p-3.5 rounded-xl border border-[#2d4a3e]/20 shadow-sm hover:border-[#c9a227]/50 transition-colors">
+                    <CheckCircle2 className="w-5 h-5 text-[#2d4a3e] shrink-0" />
+                    <span className="text-xs sm:text-sm font-bold text-brand-green-900">5 minutes from Old ISBT</span>
                   </div>
 
-                  <div className="flex items-center space-x-3 bg-[#0a2318]/80 backdrop-blur-md p-3.5 rounded-xl border border-[#c9a227]/30 shadow-md hover:border-[#c9a227]/60 transition-colors">
-                    <CheckCircle2 className="w-5 h-5 text-[#c9a227] shrink-0" />
-                    <span className="text-xs sm:text-sm font-bold text-white tracking-wide">15 minutes walk to the historic Toy Train</span>
+                  <div className="flex items-center space-x-3 bg-[#faf8f0] p-3.5 rounded-xl border border-[#2d4a3e]/20 shadow-sm hover:border-[#c9a227]/50 transition-colors">
+                    <CheckCircle2 className="w-5 h-5 text-[#2d4a3e] shrink-0" />
+                    <span className="text-xs sm:text-sm font-bold text-brand-green-900">15 minutes walk to the historic Toy Train</span>
                   </div>
 
-                  <div className="flex items-center space-x-3 bg-[#0a2318]/80 backdrop-blur-md p-3.5 rounded-xl border border-[#c9a227]/30 shadow-md hover:border-[#c9a227]/60 transition-colors">
-                    <CheckCircle2 className="w-5 h-5 text-[#c9a227] shrink-0" />
-                    <span className="text-xs sm:text-sm font-bold text-white tracking-wide">15 minutes walk to The Mall</span>
+                  <div className="flex items-center space-x-3 bg-[#faf8f0] p-3.5 rounded-xl border border-[#2d4a3e]/20 shadow-sm hover:border-[#c9a227]/50 transition-colors">
+                    <CheckCircle2 className="w-5 h-5 text-[#2d4a3e] shrink-0" />
+                    <span className="text-xs sm:text-sm font-bold text-brand-green-900">15 minutes walk to The Mall</span>
                   </div>
                 </div>
 
@@ -178,7 +175,7 @@ export default function Home() {
                     href="https://maps.app.goo.gl/aBS4dAoDwjUdKePy5"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-[#c9a227] hover:bg-[#b58f1f] text-brand-green-950 px-6 py-3 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all shadow-lg transform hover:scale-105"
+                    className="inline-flex items-center gap-2 bg-brand-green-900 hover:bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/40 px-6 py-3 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all shadow-md transform hover:scale-105"
                   >
                     <Navigation size={14} />
                     <span>Get Directions to Brightland Hotel →</span>
