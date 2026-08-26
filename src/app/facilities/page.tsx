@@ -13,6 +13,7 @@ const facilities = [
     title: "Indian Cuisine Restaurant",
     subtitle: "A La Carte Dining",
     eyebrow: "THE BRIGHTLAND DINING",
+    mainIcon: <Utensils className="w-6 h-6 text-[#c9a227]" />,
     description: "Embark on a culinary journey at our signature restaurant, where every meal is a celebration of flavor and tradition. Our expert chefs meticulously craft our A La Carte menu featuring authentic Indian delicacies. Sourced from the freshest local ingredients, our dining experience is thoughtfully designed to indulge the senses and cater to every discerning palate.",
     features: [
       "Authentic Indian Delicacies",
@@ -37,6 +38,7 @@ const facilities = [
     title: "The Terrace Garden",
     subtitle: "Panoramic Himalayan Sanctuary",
     eyebrow: "HERITAGE GARDEN",
+    mainIcon: <TreePine className="w-6 h-6 text-[#c9a227]" />,
     description: "Step into our lush, beautifully manicured Terrace Garden, a serene oasis suspended above the bustling world below. Surrounded by the majestic Shimla mountains, it is the ultimate sanctuary for morning meditation, afternoon high tea, or an intimate evening under the stars. Breathe in the crisp Himalayan air as you unwind amidst vibrant blooms and panoramic valley views.",
     features: [
       "Panoramic Valley Views",
@@ -60,6 +62,7 @@ const facilities = [
     title: "Exclusive Private Car Parking",
     subtitle: "On-Site Drive-In Facility",
     eyebrow: "CONVENIENCE & SAFETY",
+    mainIcon: <Car className="w-6 h-6 text-[#c9a227]" />,
     description: "Navigating the winding roads of Shimla is thrilling, but finding parking shouldn't be. We offer the rare luxury of ample, secure, and complimentary on-site parking (on availability) exclusively for our guests. Drive-in directly into our private premises and enjoy complete peace of mind, knowing your vehicle is safe and accessible at all times. Other paid Govt. car parking lots are nearby.",
     features: [
       "Complimentary On-Site Parking",
@@ -83,6 +86,7 @@ const facilities = [
     title: "Guest Services",
     subtitle: "24/7 Dedicated Care",
     eyebrow: "HOSPITALITY",
+    mainIcon: <Clock className="w-6 h-6 text-[#c9a227]" />,
     description: "True luxury lies in effortless convenience. Our dedicated reception, room service, housekeeping and kitchen staff are at your disposal. Our staff is committed to anticipating your needs and delivering flawless, highly personalized polite service throughout your stay. We have safe deposit facility for your valuables and cloak room for luggage storage.",
     features: [
       "Dedicated Reception Staff",
@@ -226,8 +230,11 @@ export default function FacilitiesPage() {
                 {/* Details Section (55% Width) */}
                 <div className="w-full lg:w-[55%] p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
                   <div>
-                    {/* Eyebrow Label */}
-                    <div className="flex items-center gap-2 mb-2">
+                    {/* Eyebrow Label & SVG Icon Badge */}
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-9 h-9 rounded-full bg-brand-green-950/90 border border-[#c9a227]/40 flex items-center justify-center shadow-sm">
+                        {facility.mainIcon}
+                      </div>
                       <span className="text-[11px] uppercase font-bold tracking-[0.22em] text-[#c9a227]">
                         {facility.eyebrow}
                       </span>
