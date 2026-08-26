@@ -31,31 +31,31 @@ export default function Home() {
               transition={{ duration: 0.7 }}
               className="lg:col-span-6 space-y-6"
             >
-              <div className="space-y-2">
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#047857]">
+              <div className="space-y-3">
+                <span className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-[#047857]">
                   SINCE 1959
                 </span>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-normal font-serif text-[#1e1e1e] leading-tight tracking-tight">
+                <h2 className="text-4xl sm:text-5xl md:text-[54px] font-normal font-serif text-[#2d251e] leading-[1.15] tracking-tight">
                   The Heritage of Brightland
                 </h2>
               </div>
 
-              <div className="space-y-6 text-[#374151] text-base md:text-lg font-normal leading-relaxed pt-2">
+              <div className="space-y-6 text-[#4a4036] text-[15px] md:text-[16px] font-normal leading-[1.75] pt-1">
                 <div>
-                  <h3 className="text-lg md:text-xl font-bold text-[#1e1e1e] mb-2">
+                  <h3 className="text-[15px] md:text-[16px] font-bold text-[#2d251e] mb-1.5">
                     A Legacy of Himalayan Hospitality Since 1959
                   </h3>
-                  <p className="leading-relaxed">
-                    Welcome to Brightland Hotel, a timeless heritage retreat where the old-world charm of Shimla meets the warm, enduring spirit of the Himalayas. Open year-round, our property preserves the signature Victorian-era elegance that defined this historic hill station. As you step inside, you are enveloped by authentic hospitality and panoramic mountain views.
+                  <p className="leading-[1.75]">
+                    Welcome to Brightland Hotel, a timeless heritage retreat where the old-world charm of Shimla meets the warm, enduring spirit of the Himalayas. Welcoming global travelers since 1959, our property preserves the signature Victorian-era elegance that defined this historic hill station. As you step inside, you are enveloped by the rich fragrance of authentic pine wood interior design. This craftsmanship reflects the classic architecture of the region. Whether you are relaxing in our rooms or dining at our restaurant, you are participating in a living legacy of hospitality.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-lg md:text-xl font-bold text-[#1e1e1e] mb-2">
+                  <h3 className="text-[15px] md:text-[16px] font-bold text-[#2d251e] mb-1.5">
                     In the Heart of Imperial Shimla
                   </h3>
-                  <p className="leading-relaxed">
-                    Brightland is uniquely situated adjacent to The Mall and near the Army Training Command, the historic heart of British India. Our windows open up to panoramic views of lush green Deodar trees that have watched over the town for centuries. Staying at Brightland Hotel means you are living within its historical heart, with modern luxuries like covered drive-in parking.
+                  <p className="leading-[1.75]">
+                    Brightland Hotel is uniquely situated adjacent to The Mall and near the Army Training Command enclave, the historic political nerve center of British India. Our windows open up to panoramic views of lush green Deodar trees that have watched over the town for centuries. Staying at Brightland Hotel means you are living within its historical heart, with modern rare luxuries like our covered drive-in parking facility.
                   </p>
                 </div>
               </div>

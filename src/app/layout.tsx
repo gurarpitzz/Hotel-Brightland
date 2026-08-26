@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Great_Vibes } from "next/font/google";
+import { Geist, Geist_Mono, Great_Vibes, Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -25,6 +25,18 @@ const greatVibes = Great_Vibes({
   subsets: ["latin"],
 });
 
+const cormorantGaramond = Cormorant_Garamond({
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-jakarta",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Brightland Hotel, Shimla | Official Website",
   description: "Book direct and save up to 15%. Brightland Hotel offers prime Shimla location, family-friendly rooms with mountain views, and easy access to local attractions.",
@@ -43,7 +55,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} ${cormorantGaramond.variable} ${plusJakartaSans.variable} h-full antialiased`}
     >
       <head>
         <link rel="icon" href="/assets/logo/logo.png" type="image/png" />

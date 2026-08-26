@@ -23,6 +23,8 @@
   --color-brand-yellow-900: #78350f;
 
   --font-cursive: var(--font-great-vibes);
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-jakarta), sans-serif;
 }
 
 :root {
