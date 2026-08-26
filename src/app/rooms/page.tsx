@@ -167,34 +167,39 @@ export default function RoomsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#071c13]/95 via-[#0a2318]/85 to-transparent z-0" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a2318]/60 via-transparent to-black/30 z-0" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full py-20 text-white">
-          <div className="max-w-xl text-left">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full py-24 text-white">
+          <div className="max-w-2xl lg:max-w-3xl text-left">
             <AnimatedFadeUp>
-              {/* Top Ornamental Accent */}
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-[1.5px] bg-[#c9a227]" />
-                <span className="text-[#c9a227] text-xs uppercase tracking-[0.25em] font-bold font-serif italic">Our Collection</span>
+              {/* Handwritten Elegant Tagline */}
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-12 h-[1.5px] bg-[#c9a227]" />
+                <span className="text-[#c9a227] text-2xl sm:text-3xl font-serif italic font-normal tracking-wide drop-shadow">
+                  Our Collection
+                </span>
+                <div className="w-8 h-[1px] bg-[#c9a227]/40" />
               </div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-normal text-brand-yellow-50 tracking-tight mb-6 drop-shadow-md leading-[1.1]">
+              {/* Large & Elegant Headline */}
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-normal text-brand-yellow-50 tracking-tight mb-8 drop-shadow-lg leading-[1.05]">
                 Rooms &amp; Suites
               </h1>
 
               {/* Antique Gold Line & Motif */}
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-16 h-[1px] bg-[#c9a227]/70" />
-                <div className="text-[#c9a227] text-xs">❖ ❖ ❖</div>
-                <div className="w-24 h-[1px] bg-[#c9a227]/40" />
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-20 h-[1.5px] bg-[#c9a227]/80" />
+                <div className="text-[#c9a227] text-sm tracking-widest">❖ ❖ ❖</div>
+                <div className="w-32 h-[1px] bg-[#c9a227]/30" />
               </div>
 
-              <p className="text-base sm:text-lg md:text-xl text-brand-yellow-100/90 font-light leading-relaxed drop-shadow mb-10">
+              {/* Expanded Description Paragraph */}
+              <p className="text-lg sm:text-xl md:text-2xl text-brand-yellow-100/95 font-light leading-relaxed drop-shadow-md mb-12 max-w-2xl">
                 Discover comfort and elegance in the heart of Shimla. Every room is designed to provide a warm, relaxing atmosphere with beautiful views.
               </p>
 
               {/* Scroll Down Guide */}
-              <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-[#c9a227]/80 font-medium">
+              <div className="flex items-center gap-3 text-sm uppercase tracking-[0.2em] text-[#c9a227] font-semibold drop-shadow">
                 <span>Scroll to explore rooms</span>
-                <span className="animate-bounce text-base">↓</span>
+                <span className="animate-bounce text-lg">↓</span>
               </div>
             </AnimatedFadeUp>
           </div>
