@@ -10,21 +10,30 @@ export const metadata = {
 const rooms = [
   {
     id: "imperial-non-valley",
-    name: "Imperial Rooms (Non Valley View)",
-    price: 3500,
+    name: "Imperial Room (Non Valley View)",
+    price: 3800,
+    paxNotes: "Tariff Rs. 3800 + GST per day",
+    extraPax: "Extra PAX/bed (above 5 years) Rs. 900 + GST per day",
+    guestsCount: "Up to 2 Guests",
     badgeText: "Budget Friendly",
     features: [
-      "Queen Size Bed",
-      "Attached Bathroom",
-      "Room Heater (On Request)",
-      "Daily Housekeeping",
-      "Intercom Facility"
+      "Queen size bed",
+      "Attached bathroom with geyser",
+      "Daily housekeeping",
+      "Intercom facility",
+      "Free WiFi",
+      "Multi channel satellite cable TV",
+      "Room service (A La Carte menu)",
+      "Laundry service (extra charges)",
+      "Room heater/blower (extra charges)",
+      "Courteous and friendly staff"
     ],
+    policyNote: "Stags entry is not allowed in our Hotel and such bookings will not be entertained",
     amenities: [
-      { icon: <Users size={18} />, label: "Up to 2 Guests" },
-      { icon: <Wifi size={18} />, label: "Free WiFi" },
-      { icon: <Tv size={18} />, label: "Smart TV" },
-      { icon: <Coffee size={18} />, label: "Tea/Coffee Maker" },
+      { icon: <Users size={16} />, label: "Up to 2 Guests" },
+      { icon: <Wifi size={16} />, label: "Free WiFi" },
+      { icon: <Tv size={16} />, label: "Satellite Cable TV" },
+      { icon: <Bed size={16} />, label: "Queen Size Bed" },
     ],
     images: [
       "/assets/Imperial Rooms - non valley view/Imperial Rooms - non valley view (1).jpg",
@@ -36,22 +45,68 @@ const rooms = [
     ]
   },
   {
-    id: "corporate",
-    name: "Corporate Rooms",
-    price: 4500,
-    badgeText: "Business Ready",
+    id: "royal-valley",
+    name: "Royal Room (Valley View)",
+    price: 4600,
+    paxNotes: "Tariff Rs. 4600 + GST per day",
+    extraPax: "Extra PAX/bed (above 5 years) Rs. 900 + GST per day",
+    guestsCount: "Up to 2 Guests",
+    badgeText: "Popular",
     features: [
-      "King Size Bed",
-      "Work Desk & Chair",
-      "Mountain Views",
-      "Premium Toiletries",
-      "Express Laundry"
+      "Queen size bed",
+      "Attached bathroom with geyser",
+      "Daily housekeeping",
+      "Intercom facility",
+      "Free WiFi",
+      "Multi channel satellite cable TV",
+      "Room service (A La Carte menu)",
+      "Laundry service (extra charges)",
+      "Room heater/blower (extra charges)",
+      "Courteous and friendly staff"
     ],
+    policyNote: "Stags entry is not allowed in our Hotel and such bookings will not be entertained",
     amenities: [
-      { icon: <Users size={18} />, label: "Up to 2 Guests" },
-      { icon: <Wifi size={18} />, label: "High-Speed WiFi" },
-      { icon: <Tv size={18} />, label: "Smart TV" },
-      { icon: <Coffee size={18} />, label: "Tea/Coffee Maker" },
+      { icon: <Users size={16} />, label: "Up to 2 Guests" },
+      { icon: <Wifi size={16} />, label: "Free WiFi" },
+      { icon: <Tv size={16} />, label: "Satellite Cable TV" },
+      { icon: <Bed size={16} />, label: "Queen Size Bed" },
+    ],
+    images: [
+      "/assets/Royal Rooms/Royal Rooms (1).jpg",
+      "/assets/Royal Rooms/Royal Rooms (2).jpg",
+      "/assets/Royal Rooms/Royal Rooms (3).jpg",
+      "/assets/Royal Rooms/Royal Rooms (4).jpg",
+      "/assets/Royal Rooms/Royal Rooms (5).jpg",
+      "/assets/Royal Rooms/Royal Rooms (6).jpg",
+      "/assets/Royal Rooms/Royal Rooms (7).jpg"
+    ]
+  },
+  {
+    id: "corporate-valley",
+    name: "Corporate Room (Valley View)",
+    price: 5500,
+    paxNotes: "Tariff Rs. 5500 + GST per day",
+    extraPax: "Extra PAX/bed (above 5 years) Rs. 900 + GST per day",
+    guestsCount: "Up to 2 Guests",
+    badgeText: "Luxury",
+    features: [
+      "Queen size bed",
+      "Attached bathroom with geyser",
+      "Daily housekeeping",
+      "Intercom facility",
+      "Free WiFi",
+      "Multi channel satellite cable TV",
+      "Room service (A La Carte menu)",
+      "Laundry service (extra charges)",
+      "Room heater/blower (extra charges)",
+      "Courteous and friendly staff"
+    ],
+    policyNote: "Stags entry is not allowed in our Hotel and such bookings will not be entertained",
+    amenities: [
+      { icon: <Users size={16} />, label: "Up to 2 Guests" },
+      { icon: <Wifi size={16} />, label: "Free WiFi" },
+      { icon: <Tv size={16} />, label: "Satellite Cable TV" },
+      { icon: <Bed size={16} />, label: "Queen Size Bed" },
     ],
     images: [
       "/assets/Corporate Rooms/Corporate Rooms (1).jpg",
@@ -65,52 +120,67 @@ const rooms = [
     ]
   },
   {
-    id: "royal",
-    name: "Royal Rooms",
-    price: 5500,
-    badgeText: "Popular",
+    id: "regal-suite",
+    name: "Regal Suite (Non Valley View)",
+    price: 6000,
+    paxNotes: "Tariff Rs. 6000 + GST per day (2 PAX)",
+    extraPax: "Extra PAX/bed (above 5 years) Rs. 900 + GST per day",
+    guestsCount: "Up to 4 Guests",
+    badgeText: "Family Suite",
     features: [
-      "King Size Bed",
-      "Panoramic Valley Views",
-      "Plush Seating Area",
-      "Mini Fridge",
-      "Premium Linen"
+      "Queen size bed + two bunk beds",
+      "Separate drawing cum dining area",
+      "Attached bathroom with geyser",
+      "Daily housekeeping",
+      "Intercom facility",
+      "Free WiFi",
+      "Multi channel satellite cable TV",
+      "Room service (A La Carte menu)",
+      "Laundry service (extra charges)",
+      "Room heater/blower (extra charges)",
+      "Courteous and friendly staff"
     ],
+    policyNote: "Stags entry is not allowed in our Hotel and such bookings will not be entertained",
     amenities: [
-      { icon: <Users size={18} />, label: "Up to 2 Guests" },
-      { icon: <Wifi size={18} />, label: "Free WiFi" },
-      { icon: <Tv size={18} />, label: "Smart TV" },
-      { icon: <Coffee size={18} />, label: "Tea/Coffee Maker" },
-      { icon: <Maximize size={18} />, label: "Spacious Layout" },
+      { icon: <Users size={16} />, label: "Up to 4 Guests" },
+      { icon: <Wifi size={16} />, label: "Free WiFi" },
+      { icon: <Tv size={16} />, label: "Satellite Cable TV" },
+      { icon: <Bed size={16} />, label: "Queen + 2 Bunk Beds" },
     ],
     images: [
-      "/assets/Royal Rooms/Royal Rooms (1).jpg",
-      "/assets/Royal Rooms/Royal Rooms (2).jpg",
-      "/assets/Royal Rooms/Royal Rooms (3).jpg",
-      "/assets/Royal Rooms/Royal Rooms (4).jpg",
-      "/assets/Royal Rooms/Royal Rooms (5).jpg",
-      "/assets/Royal Rooms/Royal Rooms (6).jpg",
-      "/assets/Royal Rooms/Royal Rooms (7).jpg"
+      "/assets/Regal Suites/Regal Suites (1).jpg",
+      "/assets/Regal Suites/Regal Suites (2).jpg",
+      "/assets/Regal Suites/Regal Suites (3).jpg",
+      "/assets/Regal Suites/Regal Suites (4).jpg",
+      "/assets/Regal Suites/Regal Suites (5).jpg"
     ]
   },
   {
-    id: "presidential",
-    name: "Presidential Rooms",
-    price: 7500,
-    badgeText: "Luxury",
+    id: "presidential-valley",
+    name: "Presidential Room (Valley View)",
+    price: 6000,
+    paxNotes: "Tariff Rs. 6000 + GST per day (2 PAX)",
+    extraPax: "Extra PAX/bed (above 5 years) Rs. 900 + GST per day",
+    guestsCount: "Up to 4 Guests",
+    badgeText: "Family Room",
     features: [
-      "Super King Size Bed",
-      "180° Mountain Views",
-      "Private Balcony Access",
-      "Luxury Bathtub",
-      "Welcome Basket"
+      "Queen size bed + two bunk beds",
+      "Attached bathroom with geyser",
+      "Daily housekeeping",
+      "Intercom facility",
+      "Free WiFi",
+      "Multi channel satellite cable TV",
+      "Room service (A La Carte menu)",
+      "Laundry service (extra charges)",
+      "Room heater/blower (extra charges)",
+      "Courteous and friendly staff"
     ],
+    policyNote: "Stags entry is not allowed in our Hotel and such bookings will not be entertained",
     amenities: [
-      { icon: <Users size={18} />, label: "Up to 2 Guests" },
-      { icon: <Wifi size={18} />, label: "Premium WiFi" },
-      { icon: <Tv size={18} />, label: "55\" Smart TV" },
-      { icon: <Coffee size={18} />, label: "Espresso Machine" },
-      { icon: <Bed size={18} />, label: "Premium Bedding" },
+      { icon: <Users size={16} />, label: "Up to 4 Guests" },
+      { icon: <Wifi size={16} />, label: "Free WiFi" },
+      { icon: <Tv size={16} />, label: "Satellite Cable TV" },
+      { icon: <Bed size={16} />, label: "Queen + 2 Bunk Beds" },
     ],
     images: [
       "/assets/Presidential Rooms/Presidential Rooms (1).jpg",
@@ -121,33 +191,6 @@ const rooms = [
       "/assets/Presidential Rooms/Presidential Rooms (6).jpg",
       "/assets/Presidential Rooms/Presidential Rooms (7).jpg",
       "/assets/Presidential Rooms/Presidential Rooms (8).jpg"
-    ]
-  },
-  {
-    id: "regal-suites",
-    name: "Regal Suites",
-    price: 9500,
-    badgeText: "Family Suite",
-    features: [
-      "Two King Size Beds",
-      "Separate Living Room",
-      "Dining Area",
-      "Two Bathrooms",
-      "Mountain Views"
-    ],
-    amenities: [
-      { icon: <Users size={18} />, label: "Up to 4 Guests" },
-      { icon: <Wifi size={18} />, label: "Free WiFi" },
-      { icon: <Tv size={18} />, label: "Two Smart TVs" },
-      { icon: <Coffee size={18} />, label: "Tea/Coffee Maker" },
-      { icon: <Maximize size={18} />, label: "Extra Large" },
-    ],
-    images: [
-      "/assets/Regal Suites/Regal Suites (1).jpg",
-      "/assets/Regal Suites/Regal Suites (2).jpg",
-      "/assets/Regal Suites/Regal Suites (3).jpg",
-      "/assets/Regal Suites/Regal Suites (4).jpg",
-      "/assets/Regal Suites/Regal Suites (5).jpg"
     ]
   }
 ];
@@ -184,7 +227,7 @@ export default function RoomsPage() {
             return (
               <AnimatedFadeUp 
                 key={room.id} 
-                delay={index * 0.1} 
+                delay={index * 0.08} 
                 className={`bg-[#faf8f0]/95 backdrop-blur-md rounded-md shadow-md border border-[#c9a227]/25 overflow-hidden flex flex-col ${
                   isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
                 } transition-all duration-300 hover:border-[#c9a227]/50`}
@@ -205,7 +248,7 @@ export default function RoomsPage() {
                     </div>
 
                     {/* Room Title & Subtitle Hierarchy */}
-                    <div className="mb-4">
+                    <div className="mb-3">
                       <h2 className="text-3xl sm:text-4xl font-serif text-brand-green-900 font-normal tracking-tight">
                         {mainTitle}
                       </h2>
@@ -217,25 +260,35 @@ export default function RoomsPage() {
                     </div>
 
                     {/* Thin Antique Brass Accent Line */}
-                    <div className="w-16 h-[1px] bg-[#c9a227]/50 mb-6" />
+                    <div className="w-16 h-[1px] bg-[#c9a227]/50 mb-5" />
 
                     {/* ROOM FEATURES Section Header */}
-                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2d4a3e] mb-4">
-                      ROOM FEATURES
+                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2d4a3e] mb-3">
+                      ROOM FEATURES & AMENITIES
                     </p>
 
                     {/* Features Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-6 mb-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6 mb-5">
                       {room.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center text-xs sm:text-sm text-[#3a4a40] font-medium">
-                          <CheckCircle2 size={15} className="text-[#c9a227] mr-2 shrink-0" />
+                          <CheckCircle2 size={14} className="text-[#c9a227] mr-2 shrink-0" />
                           <span>{feature}</span>
                         </div>
                       ))}
                     </div>
                     
+                    {/* Policy & Extra Bed Note */}
+                    <div className="bg-[#0a2318]/5 border border-[#c9a227]/20 rounded p-3 mb-5 space-y-1">
+                      <p className="text-[11px] text-[#2d4a3e] font-semibold">
+                        <span className="text-[#c9a227] font-bold">Extra Bed:</span> {room.extraPax}
+                      </p>
+                      <p className="text-[11px] text-amber-900/80 font-medium italic">
+                        <span className="font-bold not-italic text-amber-900">Note:</span> {room.policyNote}
+                      </p>
+                    </div>
+
                     {/* Secondary Amenities Pill Row */}
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 py-3 border-t border-b border-[#c9a227]/15 mb-6 text-[11px] uppercase tracking-wider text-brand-green-800 font-semibold">
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 py-2.5 border-t border-b border-[#c9a227]/15 mb-6 text-[11px] uppercase tracking-wider text-brand-green-800 font-semibold">
                       {room.amenities.map((amenity, idx) => (
                         <span key={idx} className="flex items-center gap-1.5">
                           <span className="text-[#c9a227]">{amenity.icon}</span>
@@ -249,9 +302,9 @@ export default function RoomsPage() {
                   {/* Pricing & Booking Button Area */}
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-2 gap-4">
                     <div>
-                      <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-0.5">From</p>
+                      <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-0.5">Starting Tariff</p>
                       <p className="text-3xl font-serif font-bold text-brand-green-950 tracking-tight">
-                        ₹{room.price.toLocaleString('en-IN')} <span className="text-xs font-sans font-normal text-gray-500">/ night</span>
+                        ₹{room.price.toLocaleString('en-IN')} <span className="text-xs font-sans font-normal text-gray-500">+ GST / day</span>
                       </p>
                     </div>
                     <RoomBookButton roomType={room.name} baseRate={room.price} />
