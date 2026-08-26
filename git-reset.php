@@ -22,20 +22,20 @@ $cmd3 = "cd $repoPath && $gitBin pull origin main 2>&1";
 echo "Command 3: $cmd3\n";
 echo shell_exec($cmd3) . "\n\n";
 
-// 4. Force remove old generated index and _next folder
-$cmd4a = "cd $repoPath && rm -rf index.html _next 2>&1";
+// 4. Force remove old generated files and assets
+$cmd4a = "cd $repoPath && rm -rf index.html _next out/_next 2>&1";
 echo "Command 4a: $cmd4a\n";
 echo shell_exec($cmd4a) . "\n\n";
 
-// 5. Copy fresh static build files into root
-$cmd4b = "cd $repoPath && (/bin/cp -rf out/* ./ 2>&1 || /bin/cp -rf webapp/out/* ./ 2>&1)";
+// 5. Copy fresh static build files into root public_html
+$cmd4b = "cd $repoPath && (/bin/cp -rf webapp/out/* ./ 2>&1 || /bin/cp -rf out/* ./ 2>&1)";
 echo "Command 4b: $cmd4b\n";
 echo shell_exec($cmd4b) . "\n\n";
 
-// 5. Status check
+// 6. Status check
 $cmd5 = "cd $repoPath && $gitBin status 2>&1";
 echo "Command 5: $cmd5\n";
 echo shell_exec($cmd5) . "\n\n";
 
-echo "=== Done! The site has been updated and deployed directly. Refresh your browser! ===";
+echo "=== Done! Fresh build overwritten to live root! ===";
 ?>
