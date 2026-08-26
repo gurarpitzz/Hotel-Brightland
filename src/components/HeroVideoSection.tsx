@@ -132,12 +132,12 @@ export default function HeroVideoSection({
           style={{ backgroundImage: "url('/assets/Hotel building/Hotel building (5).jpg')" }}
         />
 
-        {/* YouTube Background Embed with Aspect Ratio Scaling */}
+        {/* YouTube Background Embed with Aspect Ratio Scaling (Clipped to Hide Controls) */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center z-0">
-          <div className="relative w-[300vw] h-[300vh] sm:w-[180%] sm:h-[180%] lg:w-[125%] lg:h-[125%] min-w-full min-h-full flex items-center justify-center pointer-events-none select-none">
+          <div className="relative w-[340vw] h-[340vh] sm:w-[220%] sm:h-[220%] lg:w-[150%] lg:h-[150%] min-w-full min-h-full flex items-center justify-center pointer-events-none select-none">
             <div
               id="hero-yt-player"
-              className="w-[177.77vh] min-w-full h-[56.25vw] min-h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none select-none"
+              className="w-[195vh] min-w-full h-[62vw] min-h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none select-none"
             />
           </div>
         </div>
