@@ -156,17 +156,43 @@ import RoomBookButton from "./RoomBookButton";
 
 export default function RoomsPage() {
   return (
-    <div className="bg-brand-yellow-50 min-h-screen py-16">
+    <div className="bg-brand-yellow-50 min-h-screen pb-16">
+      
+      {/* Header Banner Section */}
+      <section className="relative w-full min-h-[380px] md:min-h-[440px] flex items-center justify-center bg-cover bg-center bg-no-repeat mb-12 shadow-md overflow-hidden border-b border-[#c9a227]/30"
+        style={{ backgroundImage: "url('/assets/headbanner.png')" }}
+      >
+        {/* Subtle Dark Overlay for Text Legibility */}
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] z-0" />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center py-16 text-white">
+          <AnimatedFadeUp>
+            {/* Top Ornamental Accent */}
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <div className="w-10 h-[1px] bg-[#c9a227]/80" />
+              <span className="text-[#c9a227] text-xs uppercase tracking-[0.25em] font-medium font-serif italic">Our Collection</span>
+              <div className="w-10 h-[1px] bg-[#c9a227]/80" />
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-normal text-brand-yellow-50 tracking-tight mb-4 drop-shadow-md">
+              Rooms & Suites
+            </h1>
+
+            {/* Antique Gold Line & Motif */}
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-16 h-[1px] bg-[#c9a227]/60" />
+              <div className="text-[#c9a227] text-xs">❖ ❖ ❖</div>
+              <div className="w-16 h-[1px] bg-[#c9a227]/60" />
+            </div>
+
+            <p className="text-base sm:text-lg md:text-xl text-brand-yellow-100/90 max-w-2xl mx-auto font-light leading-relaxed drop-shadow">
+              Discover comfort and elegance in the heart of Shimla. Every room is designed to provide a warm, relaxing atmosphere with beautiful views.
+            </p>
+          </AnimatedFadeUp>
+        </div>
+      </section>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <AnimatedFadeUp className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-green-900 mb-4">
-            Our Rooms & Suites
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover comfort and elegance in the heart of Shimla. Every room is designed to provide a warm, relaxing atmosphere with beautiful views.
-          </p>
-        </AnimatedFadeUp>
 
         <div className="space-y-16">
           {rooms.map((room, index) => (
