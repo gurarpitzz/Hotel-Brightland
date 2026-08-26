@@ -201,11 +201,9 @@ import PageHeaderBanner from "@/components/PageHeaderBanner";
 export default function RoomsPage() {
   return (
     <div 
-      className="relative bg-[#faf8f0] bg-repeat min-h-screen pb-24 overflow-hidden"
-      style={{ backgroundImage: "url('/assets/contactbg.png')" }}
+      className="bg-[#faf8f0] bg-cover bg-top bg-no-repeat min-h-screen pb-24"
+      style={{ backgroundImage: "url('/assets/longbg.png')" }}
     >
-      {/* 40% Rich Warm Brown / Amber-Espresso Tint Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#2a1708]/45 via-[#3d230f]/40 to-[#2a1708]/45 pointer-events-none z-0" />
       
       <PageHeaderBanner
         tagline="Our Collection"
