@@ -235,7 +235,7 @@ export default function HeroVideoSection({
       </section>
 
       {/* Trust Indicators */}
-      <section className="bg-brand-yellow-50 py-8 border-b border-brand-green-100 relative z-20">
+      <section className="bg-brand-green-900 py-6 border-b border-[#c9a227]/30 relative z-20 text-brand-yellow-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-6 md:gap-12">
             {trustIndicators.map((indicator, index) => (
@@ -245,10 +245,10 @@ export default function HeroVideoSection({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex items-center space-x-2"
+                className="flex items-center space-x-2.5"
               >
-                <div className="w-2.5 h-2.5 rounded-full bg-brand-green-700" />
-                <span className="text-brand-green-900 font-medium">{indicator}</span>
+                <div className="w-2 h-2 rounded-full bg-[#c9a227]" />
+                <span className="text-brand-yellow-100 font-medium text-sm md:text-base tracking-wide">{indicator}</span>
               </motion.div>
             ))}
           </div>
