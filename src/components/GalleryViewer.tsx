@@ -119,15 +119,12 @@ export default function GalleryViewer({ images }: { images: string[] }) {
             transition={{ duration: 0.5 }}
             className="max-w-5xl mx-auto"
           >
-            {/* Slideshow Container with homebg.png background */}
-            <div 
-              className="relative rounded-md overflow-hidden shadow-2xl bg-cover bg-center border border-[#c9a227]/40 p-4 sm:p-6"
-              style={{ backgroundImage: "url('/assets/homebg.png')" }}
-            >
-              <div className="overflow-hidden rounded-md border border-[#c9a227]/30 shadow-inner" ref={emblaRef}>
+            {/* Slideshow Container with solid cream heritage card background matching Rooms page */}
+            <div className="relative rounded-md overflow-hidden shadow-xl bg-[#faf8f0] border border-[#c9a227]/35 p-4 sm:p-6">
+              <div className="overflow-hidden rounded-md border border-[#c9a227]/25 shadow-inner bg-brand-green-950/90" ref={emblaRef}>
                 <div className="flex">
                   {images.map((src, idx) => (
-                    <div className="relative flex-[0_0_100%] min-w-0 h-[50vh] md:h-[65vh] bg-black/40" key={idx}>
+                    <div className="relative flex-[0_0_100%] min-w-0 h-[50vh] md:h-[65vh]" key={idx}>
                       <Image
                         src={src}
                         alt={`Slide ${idx + 1}`}
