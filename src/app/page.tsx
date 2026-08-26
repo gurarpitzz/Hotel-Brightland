@@ -1,6 +1,8 @@
 "use client";
 
 import HeroVideoSection from "@/components/HeroVideoSection";
+import AmenitiesSection from "@/components/AmenitiesSection";
+import ContactMapSection from "@/components/ContactMapSection";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -89,6 +91,7 @@ export default function Home() {
             </motion.div>
           </div>
 
+          {/* Heritage Legacy Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center bg-white/80 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-brand-green-200 shadow-md mb-20">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
@@ -129,52 +132,14 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
-
-          {/* Location Section */}
-          <div className="flex flex-col md:flex-row gap-12 items-center bg-white/80 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-brand-green-200 shadow-md">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7 }}
-              className="flex-1 space-y-6"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-brand-green-950">The Perfect Starting Point</h2>
-              <p className="text-brand-green-950 text-base md:text-lg font-medium leading-relaxed">
-                Strategically positioned to offer the absolute best of both worlds: deep, tranquil mountain serenity combined with effortless walking access to Shimla&apos;s most iconic attractions.
-              </p>
-              <ul className="space-y-3 text-brand-green-950 font-bold">
-                <li className="flex items-center space-x-3">
-                  <div className="w-3 h-3 rounded-full bg-brand-green-700" />
-                  <span>5 minutes from Old ISBT</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <div className="w-3 h-3 rounded-full bg-brand-green-700" />
-                  <span>15 minutes walk to the historic Toy Train</span>
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex-1 w-full h-[380px] relative rounded-2xl overflow-hidden shadow-xl border-4 border-white"
-            >
-              <iframe 
-                src="https://maps.google.com/maps?q=Brightland+Hotel,+Shimla&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </motion.div>
-          </div>
         </div>
       </section>
+
+      {/* Hotel Amenities Section (Hotel Harsha Style) */}
+      <AmenitiesSection />
+
+      {/* Get in Touch & Location Map Section (Hotel Harsha Layout) */}
+      <ContactMapSection />
     </div>
   );
 }
