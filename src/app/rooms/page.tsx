@@ -167,35 +167,6 @@ export default function RoomsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#071c13]/95 via-[#0a2318]/85 to-transparent z-0" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a2318]/60 via-transparent to-black/30 z-0" />
 
-        {/* Botanical Side Leaves Print Accent on Left */}
-        <div className="absolute top-0 left-0 bottom-0 w-full max-w-lg pointer-events-none z-[1] opacity-[0.18] mix-blend-screen overflow-hidden">
-          <svg className="w-full h-full text-[#c9a227]" viewBox="0 0 500 800" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(-50, -50) scale(1.2)">
-              {/* Main Stem & Leaves Branch */}
-              <path d="M 60 850 C 120 650 180 450 110 50 C 90 200 140 380 70 600 Z" opacity="0.6"/>
-              {/* Leaf Pair 1 */}
-              <path d="M 120 620 Q 220 580 260 640 Q 180 670 120 620 Z" />
-              <path d="M 115 625 Q 40 560 10 610 Q 70 640 115 625 Z" />
-              {/* Leaf Pair 2 */}
-              <path d="M 140 480 Q 260 420 290 490 Q 210 520 140 480 Z" />
-              <path d="M 135 485 Q 30 410 0 460 Q 65 495 135 485 Z" />
-              {/* Leaf Pair 3 */}
-              <path d="M 130 340 Q 240 270 270 330 Q 190 370 130 340 Z" />
-              <path d="M 125 345 Q 40 280 15 325 Q 70 360 125 345 Z" />
-              {/* Leaf Pair 4 */}
-              <path d="M 110 200 Q 210 130 230 190 Q 160 230 110 200 Z" />
-              <path d="M 105 205 Q 30 140 10 185 Q 55 220 105 205 Z" />
-              {/* Top Leaves */}
-              <path d="M 90 80 Q 160 20 170 70 Q 120 100 90 80 Z" />
-            </g>
-            <g transform="translate(40, 200) scale(0.9) rotate(-15)">
-              <path d="M 100 500 Q 200 440 230 500 Q 150 530 100 500 Z" opacity="0.8"/>
-              <path d="M 95 360 Q 200 290 220 350 Q 150 380 95 360 Z" opacity="0.8"/>
-              <path d="M 85 220 Q 170 150 190 210 Q 130 240 85 220 Z" opacity="0.8"/>
-            </g>
-          </svg>
-        </div>
-
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full py-20 text-white">
           <div className="max-w-xl text-left">
             <AnimatedFadeUp>
