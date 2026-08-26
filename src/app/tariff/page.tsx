@@ -82,37 +82,37 @@ export default function TariffPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Room Rates Grid - Increased card size & padding */}
+        {/* Room Rates Grid - Expanded card size & solid cream background */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 mb-16">
           {roomRates.map((room, idx) => (
             <AnimatedFadeUp 
               key={idx} 
               delay={idx * 0.08}
-              className={`relative bg-[#faf8f0]/95 backdrop-blur-md rounded-md p-8 sm:p-9 shadow-lg border ${
-                room.popular ? "border-[#c9a227] ring-2 ring-[#c9a227]/40" : "border-[#c9a227]/30"
-              } transition-all duration-300 hover:border-[#c9a227] hover:shadow-xl flex flex-col justify-between`}
+              className={`relative bg-[#faf8f0] rounded-md p-8 sm:p-10 shadow-lg border ${
+                room.popular ? "border-[#c9a227] ring-2 ring-[#c9a227]/40" : "border-[#c9a227]/35"
+              } transition-all duration-300 hover:border-[#c9a227] hover:shadow-xl flex flex-col justify-between min-h-[460px]`}
             >
               {room.tagline && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/50 px-4 py-1 rounded-sm text-xs font-semibold capitalize tracking-wider shadow-md">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/50 px-4 py-1 rounded-sm text-xs font-semibold capitalize tracking-wider shadow-md z-10">
                   {room.tagline}
                 </div>
               )}
 
-              <div>
-                <div className="flex items-center justify-between mb-2 mt-1">
+              <div className="pt-2">
+                <div className="flex items-center justify-between mb-2">
                   <span className="text-[11px] uppercase font-bold tracking-[0.22em] text-[#c9a227]">
                     THE BRIGHTLAND TARIFF
                   </span>
                 </div>
 
                 <div className="mb-5">
-                  <h3 className="text-2xl sm:text-3xl font-serif text-brand-green-900 font-normal tracking-tight">{room.name}</h3>
-                  <p className="text-sm font-serif italic text-brand-green-800/80 mt-0.5">{room.view}</p>
+                  <h3 className="text-3xl sm:text-4xl font-serif text-brand-green-900 font-normal tracking-tight">{room.name}</h3>
+                  <p className="text-base font-serif italic text-brand-green-800/80 mt-1">{room.view}</p>
                 </div>
 
                 <div className="w-16 h-[1px] bg-[#c9a227]/50 mb-6" />
 
-                <div className="mb-5">
+                <div className="mb-6">
                   <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-1">European Plan (Room charges only)</p>
                   <p className="text-3xl sm:text-4xl font-serif font-bold text-brand-green-950 tracking-tight">
                     Rs. {room.price} <span className="text-xs font-sans font-normal text-gray-500">+ GST per day ({room.pax})</span>
@@ -120,7 +120,7 @@ export default function TariffPage() {
                 </div>
 
                 <div className="bg-[#0a2318]/5 border border-[#c9a227]/25 rounded-sm p-4 mb-8">
-                  <p className="text-xs text-[#2d4a3e] font-semibold leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#2d4a3e] font-semibold leading-relaxed">
                     <span className="text-[#c9a227] font-bold">Extra PAX:</span> {room.extraBed}
                   </p>
                 </div>
@@ -128,7 +128,7 @@ export default function TariffPage() {
 
               <Link 
                 href="/rooms" 
-                className="w-full bg-brand-green-900 hover:bg-brand-green-950 text-brand-yellow-50 hover:text-[#c9a227] py-3.5 rounded-md font-semibold text-xs uppercase tracking-[0.2em] transition-all shadow-md border border-[#c9a227]/40 hover:border-[#c9a227] flex items-center justify-center gap-2 group text-center"
+                className="w-full bg-brand-green-900 hover:bg-brand-green-950 text-brand-yellow-50 hover:text-[#c9a227] py-3.5 rounded-md font-semibold text-xs sm:text-sm uppercase tracking-[0.2em] transition-all shadow-md border border-[#c9a227]/40 hover:border-[#c9a227] flex items-center justify-center gap-2 group text-center mt-4"
               >
                 <span>EXPLORE ROOM</span>
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
