@@ -1,4 +1,4 @@
-import { Check, Info, AlertTriangle, Coffee, Utensils, Award, FileText } from "lucide-react";
+import { Check, Info, AlertTriangle, Coffee, Utensils, Award, FileText, Clock } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatedFadeUp } from "@/components/AnimatedWrappers";
@@ -9,12 +9,60 @@ export const metadata = {
 };
 
 const roomRates = [
-  { name: "Imperial Room", pax: "Valid for 2 PAX", price: "3,800", popular: false },
-  { name: "Royal Room", pax: "Valid for 2 PAX", price: "4,600", popular: true },
-  { name: "Corporate Room", pax: "Valid for 2 PAX", price: "5,500", popular: false },
-  { name: "Regular Suite", pax: "Valid for 4 PAX", price: "5,500", popular: true },
-  { name: "Regal Suite", pax: "Valid for 2 PAX", price: "6,000", popular: false },
-  { name: "Presidential Room", pax: "Valid for 2 PAX", price: "6,000", popular: false },
+  { 
+    name: "Imperial Room", 
+    view: "Non Valley View",
+    tagline: "budget friendly", 
+    price: "3800", 
+    pax: "2 PAX",
+    extraBed: "Extra PAX/bed (above 5 years) Rs. 900 + GST per day",
+    popular: false 
+  },
+  { 
+    name: "Royal Room", 
+    view: "Valley View",
+    tagline: "popular", 
+    price: "4600", 
+    pax: "2 PAX",
+    extraBed: "Extra PAX/bed (above 5 years) Rs. 900 + GST per day",
+    popular: true 
+  },
+  { 
+    name: "Corporate Room", 
+    view: "Valley View",
+    tagline: "luxury", 
+    price: "5500", 
+    pax: "2 PAX",
+    extraBed: "Extra PAX/bed (above 5 years) Rs. 900 + GST per day",
+    popular: false 
+  },
+  { 
+    name: "Regular Suite", 
+    view: "Non Valley View",
+    tagline: "Family Room", 
+    price: "5500", 
+    pax: "4 PAX",
+    extraBed: "Extra PAX/bed (above 5 years) Rs. 900 + GST per day",
+    popular: false 
+  },
+  { 
+    name: "Regal Suite", 
+    view: "Non Valley View",
+    tagline: "Family Suite", 
+    price: "6000", 
+    pax: "2 PAX",
+    extraBed: "Extra PAX/bed (above 5 years) Rs. 900 + GST per day",
+    popular: true 
+  },
+  { 
+    name: "Presidential Room", 
+    view: "Valley View",
+    tagline: "Family Room", 
+    price: "6000", 
+    pax: "2 PAX",
+    extraBed: "Extra PAX/bed (above 5 years) Rs. 900 + GST per day",
+    popular: false 
+  },
 ];
 
 import PageHeaderBanner from "@/components/PageHeaderBanner";
@@ -44,14 +92,14 @@ export default function TariffPage() {
                 room.popular ? "border-[#c9a227] ring-2 ring-[#c9a227]/30" : "border-[#c9a227]/25"
               } transition-all duration-300 hover:border-[#c9a227] flex flex-col justify-between`}
             >
-              {room.popular && (
-                <div className="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/40 px-3.5 py-0.5 rounded-sm text-[11px] font-semibold uppercase tracking-widest shadow-md">
-                  Most Popular
+              {room.tagline && (
+                <div className="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/40 px-3.5 py-0.5 rounded-sm text-[11px] font-semibold capitalize tracking-wider shadow-md">
+                  {room.tagline}
                 </div>
               )}
 
               <div>
-                <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center justify-between mb-1 mt-1">
                   <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#c9a227]">
                     THE BRIGHTLAND TARIFF
                   </span>
@@ -59,32 +107,23 @@ export default function TariffPage() {
 
                 <div className="mb-4">
                   <h3 className="text-2xl font-serif text-brand-green-900 font-normal tracking-tight">{room.name}</h3>
-                  <p className="text-xs font-serif italic text-brand-green-800/80">{room.pax}</p>
+                  <p className="text-xs font-serif italic text-brand-green-800/80">{room.view}</p>
                 </div>
 
                 <div className="w-12 h-[1px] bg-[#c9a227]/50 mb-5" />
 
-                <div className="mb-6">
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-0.5">Starting Rate</p>
+                <div className="mb-4">
+                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-0.5">European Plan (Room charges only)</p>
                   <p className="text-3xl font-serif font-bold text-brand-green-950 tracking-tight">
-                    ₹{room.price} <span className="text-xs font-sans font-normal text-gray-500">/ day</span>
+                    Rs. {room.price} <span className="text-xs font-sans font-normal text-gray-500">+ GST per day ({room.pax})</span>
                   </p>
                 </div>
 
-                <ul className="space-y-2.5 mb-8 text-xs sm:text-sm text-[#3a4a40] font-medium border-t border-b border-[#c9a227]/15 py-4">
-                  <li className="flex items-center">
-                    <Check size={15} className="text-[#c9a227] mr-2 shrink-0" />
-                    <span>European Plan (Room Only)</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check size={15} className="text-[#c9a227] mr-2 shrink-0" />
-                    <span>Free Wi-Fi (Reception/Restaurant)</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check size={15} className="text-[#c9a227] mr-2 shrink-0" />
-                    <span>Daily Housekeeping</span>
-                  </li>
-                </ul>
+                <div className="bg-[#0a2318]/5 border border-[#c9a227]/20 rounded p-3 mb-6">
+                  <p className="text-[11px] text-[#2d4a3e] font-semibold">
+                    <span className="text-[#c9a227] font-bold">Extra PAX:</span> {room.extraBed}
+                  </p>
+                </div>
               </div>
 
               <Link 
@@ -98,35 +137,33 @@ export default function TariffPage() {
           ))}
         </div>
 
-        {/* Extra Bed & Meal Rates */}
+        {/* Dining & Additional Details Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {/* Meals Section */}
-          <AnimatedFadeUp className="bg-[#faf8f0]/95 backdrop-blur-md rounded-md p-8 shadow-md border border-[#c9a227]/25">
-            <h3 className="text-2xl font-serif text-brand-green-900 mb-2 flex items-center">
-              <Utensils className="mr-3 text-[#c9a227]" size={22} />
-              Meal Rates (Fixed Menu)
-            </h3>
-            <p className="text-xs text-gray-600 mb-6 font-medium tracking-wide">Table D&apos; Hote per PAX (above 5 years) per day:</p>
-            
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-[#0a2318]/5 rounded-md border border-[#c9a227]/20">
-                <div className="flex items-center font-serif text-lg text-brand-green-900 font-bold">
-                  <Coffee className="mr-3 text-[#c9a227]" size={20} />
-                  Breakfast
+          
+          {/* Dining Info Section */}
+          <AnimatedFadeUp className="bg-[#faf8f0]/95 backdrop-blur-md rounded-md p-8 shadow-md border border-[#c9a227]/25 flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-serif text-brand-green-900 mb-3 flex items-center">
+                <Utensils className="mr-3 text-[#c9a227]" size={22} />
+                Dining & Kitchen Facilities
+              </h3>
+              <p className="text-xs text-gray-600 mb-6 font-medium tracking-wide leading-relaxed">
+                A La Carte Indian Cuisine available for breakfast, snacks, lunch and dinner.
+              </p>
+              
+              <div className="p-4 bg-[#0a2318]/5 rounded-md border border-[#c9a227]/20 space-y-2">
+                <div className="flex items-center text-sm font-semibold text-brand-green-950">
+                  <Clock className="mr-2.5 text-[#c9a227]" size={18} />
+                  <span>Service Timings: 7:30 AM to 10:30 PM</span>
                 </div>
-                <div className="font-serif font-bold text-2xl text-brand-green-950">₹450</div>
-              </div>
-              <div className="flex items-center justify-between p-4 bg-[#0a2318]/5 rounded-md border border-[#c9a227]/20">
-                <div className="flex items-center font-serif text-lg text-brand-green-900 font-bold">
-                  <Utensils className="mr-3 text-[#c9a227]" size={20} />
-                  Lunch / Dinner
-                </div>
-                <div className="font-serif font-bold text-2xl text-brand-green-950">₹700</div>
+                <p className="text-xs text-[#3a4a40] pl-7">
+                  Room service and multi-cuisine restaurant open daily for all resident guests.
+                </p>
               </div>
             </div>
           </AnimatedFadeUp>
 
-          {/* Add-ons & Discounts */}
+          {/* Additional Details */}
           <AnimatedFadeUp delay={0.2} className="bg-[#faf8f0]/95 backdrop-blur-md rounded-md p-8 shadow-md border border-[#c9a227]/25 flex flex-col justify-between">
             <div>
               <h3 className="text-2xl font-serif text-brand-green-900 mb-6 flex items-center">
@@ -134,22 +171,26 @@ export default function TariffPage() {
                 Additional Details
               </h3>
               
-              <ul className="space-y-3.5 text-sm">
-                <li className="flex justify-between items-center border-b border-[#c9a227]/15 pb-3">
+              <ul className="space-y-3.5 text-xs sm:text-sm">
+                <li className="flex justify-between items-center border-b border-[#c9a227]/15 pb-2.5">
                   <span className="text-[#3a4a40] font-medium">Extra PAX / Bed (Above 5 yrs)</span>
-                  <span className="font-serif font-bold text-brand-green-950 text-base">₹900 / day</span>
+                  <span className="font-serif font-bold text-brand-green-950">Rs. 900 + GST per day</span>
                 </li>
-                <li className="flex justify-between items-center border-b border-[#c9a227]/15 pb-3">
+                <li className="flex justify-between items-center border-b border-[#c9a227]/15 pb-2.5">
                   <span className="text-[#3a4a40] font-medium">Group Tariff</span>
-                  <span className="font-semibold text-brand-green-900">Available on request</span>
+                  <span className="font-semibold text-brand-green-900">Group rates available on request</span>
                 </li>
-                <li className="flex justify-between items-center border-b border-[#c9a227]/15 pb-3">
+                <li className="flex justify-between items-center border-b border-[#c9a227]/15 pb-2.5">
                   <span className="text-[#3a4a40] font-medium">Taxes Applicable</span>
-                  <span className="font-semibold text-brand-green-900">GST extra on Room & F&B</span>
+                  <span className="font-semibold text-brand-green-900">GST extra on accommodation and F&B</span>
+                </li>
+                <li className="flex justify-between items-center border-b border-[#c9a227]/15 pb-2.5">
+                  <span className="text-[#3a4a40] font-medium">Off Season Discount</span>
+                  <span className="font-semibold text-brand-green-950">As applicable</span>
                 </li>
                 <li className="flex justify-between items-center pt-1">
-                  <span className="text-[#3a4a40] font-medium">Check-in / Check-out</span>
-                  <span className="font-semibold text-brand-green-950 bg-[#0a2318]/10 text-brand-green-950 border border-[#c9a227]/30 px-3 py-1 rounded-sm text-xs tracking-wider">12:00 NOON</span>
+                  <span className="text-[#3a4a40] font-medium">Check-in / Checkout Time</span>
+                  <span className="font-semibold text-brand-green-950 bg-[#0a2318]/10 border border-[#c9a227]/30 px-3 py-1 rounded-sm text-xs tracking-wider">12:00 NOON</span>
                 </li>
               </ul>
             </div>
@@ -162,22 +203,18 @@ export default function TariffPage() {
             <AlertTriangle className="mr-2.5 text-[#c9a227]" size={22} />
             Important Rules & Regulations
           </h3>
-          <ul className="space-y-2.5 text-xs sm:text-sm text-[#3a4a40] font-medium">
+          <ul className="space-y-3 text-xs sm:text-sm text-[#3a4a40] font-medium">
             <li className="flex items-start">
-              <span className="mr-2 text-[#c9a227] font-bold">•</span>
+              <span className="mr-2.5 text-[#c9a227] font-bold">•</span>
+              <span><strong>Note:</strong> Tariff & Govt. taxes are subject to change without notice.</span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-2.5 text-[#c9a227] font-bold">•</span>
               <span><strong>Stag entry is not allowed</strong> in our Hotel and such bookings will not be entertained.</span>
             </li>
             <li className="flex items-start">
-              <span className="mr-2 text-[#c9a227] font-bold">•</span>
+              <span className="mr-2.5 text-[#c9a227] font-bold">•</span>
               <span>All rooms/suites are different in decoration and interiors. <strong>Some categories are not valley facing.</strong> Before booking please confirm from Hotel.</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-2 text-[#c9a227] font-bold">•</span>
-              <span>Tariff & Govt. taxes are subject to change without notice.</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-2 text-[#c9a227] font-bold">•</span>
-              <span>Wi-Fi connection is limited to the Hotel Reception and Restaurant only.</span>
             </li>
           </ul>
         </AnimatedFadeUp>
