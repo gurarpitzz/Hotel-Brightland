@@ -19,32 +19,17 @@ export default function HeroVideoSection({
   trustIndicators: string[];
 }) {
   const { setIsCartOpen } = useBooking();
-  const [isMuted, setIsMuted] = useState(false);
-  const [isApiLoaded, setIsApiLoaded] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const playerRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check if YouTube IFrame API script is already added
-    if (!window.YT) {
-      const tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      const firstScriptTag = document.getElementsByTagName("script")[0];
-      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+    let isMounted = true;
 
-      window.onYouTubeIframeAPIReady = () => {
-        setIsApiLoaded(true);
-      };
-    } else {
-      setIsApiLoaded(true);
-    }
-  }, []);
-
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-
-  useEffect(() => {
-    if (isApiLoaded && !playerRef.current) {
+    const initPlayer = () => {
+      if (!isMounted || playerRef.current || !window.YT) return;
       playerRef.current = new window.YT.Player("hero-yt-player", {
         videoId: "G9wqwz74kVY",
         playerVars: {
@@ -57,7 +42,7 @@ export default function HeroVideoSection({
           rel: 0,
           fs: 0,
           autohide: 1,
-          mute: 1, // Mute on initial load to guarantee instant autoplay without browser block
+          mute: 1,
           enablejsapi: 1,
           playsinline: 1,
           disablekb: 1,
@@ -71,17 +56,40 @@ export default function HeroVideoSection({
           },
           onStateChange: (event: any) => {
             if (event.data === window.YT.PlayerState.PLAYING) {
-              setIsVideoPlaying(true);
+              if (isMounted) setIsVideoPlaying(true);
             }
-            // Loop automatically when ended
             if (event.data === window.YT.PlayerState.ENDED) {
               event.target.playVideo();
             }
           },
         },
       });
-    }
-  }, [isApiLoaded]);
+    };
+
+    // Defer loading YouTube IFrame API asynchronously to prioritize page rendering & LCP poster
+    const loadYouTubeApi = () => {
+      if (!window.YT) {
+        window.onYouTubeIframeAPIReady = () => {
+          initPlayer();
+        };
+        const tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        tag.async = true;
+        const firstScriptTag = document.getElementsByTagName("script")[0];
+        firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
+      } else {
+        initPlayer();
+      }
+    };
+
+    // Defer execution using setTimeout/requestIdleCallback so initial HTML & poster render without blockage
+    const timer = setTimeout(loadYouTubeApi, 100);
+
+    return () => {
+      isMounted = false;
+      clearTimeout(timer);
+    };
+  }, []);
 
   const toggleMute = () => {
     setHasInteracted(true);
@@ -97,7 +105,6 @@ export default function HeroVideoSection({
     }
   };
 
-  // User click anywhere on section attempts to enable audio if browser blocked sound
   const handleContainerClick = () => {
     if (!hasInteracted && isMuted && playerRef.current) {
       playerRef.current.unMute();
@@ -110,7 +117,6 @@ export default function HeroVideoSection({
   const [showContent, setShowContent] = useState(true);
 
   useEffect(() => {
-    // Hide overlay text & CTA after 5 seconds
     const timer = setTimeout(() => {
       setShowContent(false);
     }, 5000);
@@ -122,9 +128,21 @@ export default function HeroVideoSection({
     <div className="flex flex-col">
       <section 
         ref={containerRef}
-        className="relative min-h-[75vh] sm:min-h-screen w-full bg-black overflow-hidden pointer-events-none"
+        onClick={handleContainerClick}
+        className="relative min-h-[75vh] sm:min-h-screen w-full bg-black overflow-hidden select-none"
       >
-        {/* Fallback / Loading Poster Image until video starts playing */}
+        {/* Responsive Video Container - Absolute fill cover */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+          <div className="relative w-full h-full pointer-events-none select-none">
+            <div
+              id="hero-yt-player"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full pointer-events-none select-none"
+              style={{ pointerEvents: "none" }}
+            />
+          </div>
+        </div>
+
+        {/* Lightweight Poster image displayed until video reaches PLAYING state */}
         <div 
           className={`absolute inset-0 bg-cover bg-center z-10 transition-opacity duration-1000 ${
             isVideoPlaying ? "opacity-0 pointer-events-none" : "opacity-100"
@@ -132,21 +150,8 @@ export default function HeroVideoSection({
           style={{ backgroundImage: "url('/assets/Hotel building/Hotel building (5).jpg')" }}
         />
 
-        {/* YouTube Background Embed with Aspect Ratio Scaling (Clipped to Hide Controls) */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center z-0">
-          <div className="relative w-[340vw] h-[340vh] sm:w-[220%] sm:h-[220%] lg:w-[150%] lg:h-[150%] min-w-full min-h-full flex items-center justify-center pointer-events-none select-none">
-            <div
-              id="hero-yt-player"
-              className="w-[195vh] min-w-full h-[62vw] min-h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none select-none"
-            />
-          </div>
-        </div>
-
-        {/* Transparent Shield & Vignette Overlay to hide control icons and prevent hover states */}
-        <div className="absolute inset-0 z-10 pointer-events-none bg-transparent" />
-
-        {/* Subtle Bottom Vignette Gradient (no green tint) for clear button visibility */}
-        <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-1000 ${showContent ? "opacity-100" : "opacity-0"}`} />
+        {/* Full-width transparent interactive overlay receiving all pointer clicks */}
+        <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-auto" />
 
         {/* Audio Mute / Unmute Floating Toggle */}
         <div className="absolute top-24 right-4 sm:right-8 z-30 flex items-center gap-2 pointer-events-auto">
@@ -167,7 +172,7 @@ export default function HeroVideoSection({
               toggleMute();
             }}
             aria-label={isMuted ? "Unmute video" : "Mute video"}
-            className="bg-black/60 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-md border border-white/20 transition-all shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center"
+            className="bg-black/60 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-md border border-white/20 transition-all shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer"
           >
             {isMuted ? (
               <VolumeX className="w-6 h-6 text-red-400" />
@@ -177,12 +182,12 @@ export default function HeroVideoSection({
           </button>
         </div>
 
-        {/* Hero Content Overlay with 5s Auto-Fade */}
+        {/* Hero Content Overlay */}
         <motion.div 
           animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 20 }}
           transition={{ duration: 1 }}
           style={{ display: showContent ? "flex" : "none" }}
-          className="relative z-20 inset-0 flex-col justify-end pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-36 pointer-events-auto"
+          className="relative z-30 inset-0 flex-col justify-end pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-36 pointer-events-auto"
         >
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
