@@ -33,6 +33,8 @@ export default function Footer() {
       className="relative bg-cover bg-center bg-no-repeat text-brand-yellow-50 pt-16 pb-12 mt-auto border-t-2 border-[#d97706]/40 overflow-hidden"
       style={{ backgroundImage: "url('/assets/footerbg.png')" }}
     >
+      {/* Subtle Blur & Dark Tint Overlay for optimal text contrast */}
+      <div className="absolute inset-0 bg-brand-green-950/40 backdrop-blur-[3px] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
