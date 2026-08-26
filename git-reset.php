@@ -7,25 +7,20 @@ $gitBin   = '/usr/local/cpanel/3rdparty/bin/git';
 
 echo "=== Resetting Git Repository ===\n\n";
 
-// 1. Pull latest code from GitHub
-$cmd1 = "cd $repoPath && $gitBin pull origin main 2>&1";
+// 1. Reset tracked files and pull latest code from GitHub
+$cmd1 = "cd $repoPath && $gitBin fetch --all 2>&1 && $gitBin reset --hard origin/main 2>&1";
 echo "Command 1: $cmd1\n";
 echo shell_exec($cmd1) . "\n\n";
 
-// 2. Force remove root _next and old root HTML files
-$cmd2 = "cd $repoPath && rm -rf _next index.html 404 404.html contact facilities gallery policy rooms tariff terms travel-desk 2>&1";
+// 2. Determine where out/ is located and copy static export files to public_html root
+$cmd2 = "cd $repoPath && if [ -d \"webapp/out\" ]; then cp -rf webapp/out/* ./; elif [ -d \"out\" ]; then cp -rf out/* ./; fi 2>&1";
 echo "Command 2: $cmd2\n";
 echo shell_exec($cmd2) . "\n\n";
 
-// 3. Copy fresh static build files from out/ into root public_html
-$cmd3 = "cd $repoPath && /bin/cp -rf out/* ./ 2>&1";
+// 3. Ensure permissions
+$cmd3 = "cd $repoPath && chmod -R 755 _next assets 2>/dev/null || true";
 echo "Command 3: $cmd3\n";
 echo shell_exec($cmd3) . "\n\n";
 
-// 4. Copy htaccess if present
-$cmd4 = "cd $repoPath && /bin/cp -f out/.htaccess ./ 2>&1";
-echo "Command 4: $cmd4\n";
-echo shell_exec($cmd4) . "\n\n";
-
-echo "=== Done! Fresh build copied successfully! Refresh site. ===";
+echo "=== Deployment Sync Complete! Refresh your browser now. ===";
 ?>
