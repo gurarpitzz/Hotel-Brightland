@@ -181,7 +181,7 @@ export default function ContactClient() {
                       <Clock size={14} className="text-[#c9a227] shrink-0" />
                       <span>Reservations (10:00 AM – 6:00 PM)</span>
                     </p>
-                    <p className="font-serif font-bold text-lg text-brand-green-950">0177-2658275</p>
+                    <a href="tel:01772658275" className="font-serif font-bold text-lg text-brand-green-950 hover:text-[#c9a227] transition-colors block">0177-2658275</a>
                   </div>
 
                   {/* Reception Desk */}
