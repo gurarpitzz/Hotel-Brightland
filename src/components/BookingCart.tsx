@@ -4,7 +4,7 @@ import { useBooking, RoomCategory } from "@/context/BookingContext";
 import { X, Calendar as CalendarIcon, Users, CreditCard, ChevronDown, AlertCircle, Plus, Minus, Trash2, ShoppingBag } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { format, parseISO } from "date-fns";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 const termsAndConditions = [
@@ -65,6 +65,17 @@ export default function BookingCart() {
   const calc = calculateTotal();
   const [isTCOpen, setIsTCOpen] = useState(false);
   const [isAgreedToTerms, setIsAgreedToTerms] = useState(false);
+
+  useEffect(() => {
+    if (isCartOpen && typeof window !== "undefined") {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: "begin_checkout",
+        cart_total_rooms: calc.totalRooms,
+        cart_estimated_total: calc.grandTotal,
+      });
+    }
+  }, [isCartOpen]);
 
   if (!isCartOpen) return null;
 
