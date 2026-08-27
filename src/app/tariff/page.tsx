@@ -256,7 +256,7 @@ export default function TariffPage() {
               <span className="font-semibold text-[#c9a227]">Get best deals on direct booking!</span>
             </p>
             <a 
-              href="https://wa.me/919816024100?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20room%20tariff%20and%20direct%20booking%20discount%20at%20Brightland%20Hotel." 
+              href="https://wa.me/918219200074?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20room%20tariff%20and%20direct%20booking%20discount%20at%20Brightland%20Hotel." 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#c9a227] hover:bg-[#b08d1e] text-brand-green-950 px-8 py-3.5 rounded-md font-bold text-xs uppercase tracking-[0.2em] transition-all shadow-md transform hover:scale-105"
