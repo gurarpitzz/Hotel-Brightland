@@ -489,6 +489,14 @@ export default function BookingCart() {
                       target="_blank"
                       rel="noopener noreferrer"
                       data-analytics-event="whatsapp_booking_click"
+                      onClick={() => {
+                        if (typeof window !== "undefined") {
+                          (window as any).dataLayer = (window as any).dataLayer || [];
+                          (window as any).dataLayer.push({
+                            event: "whatsapp_booking_click",
+                          });
+                        }
+                      }}
                       className="flex items-center justify-center rounded-xl border border-transparent bg-brand-green-800 px-4 py-4 text-sm font-bold text-white shadow-lg hover:bg-brand-green-900 transition-all transform hover:scale-[1.02] text-center leading-snug"
                     >
                       Continue to WhatsApp to Book Room &rarr;

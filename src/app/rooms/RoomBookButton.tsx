@@ -19,6 +19,14 @@ export default function RoomBookButton({ roomType, baseRate }: RoomBookButtonPro
     else if (roomType.toLowerCase().includes("imperial")) mappedType = "imperial";
     
     addToCart(mappedType, roomType, 1);
+
+    if (typeof window !== "undefined") {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: "add_to_cart",
+        room_type: roomType,
+      });
+    }
   };
 
   return (
