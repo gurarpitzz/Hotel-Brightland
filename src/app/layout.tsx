@@ -39,8 +39,11 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://brightlandhotel.com"),
-  title: "Brightland Hotel, Shimla | Official Website",
-  description: "Book direct and save extra at Brightland Hotel, Shimla. Prime central location, 15-minute walk to The Mall, family-friendly rooms with Himalayan valley views.",
+  title: {
+    default: "Brightland Hotel, Shimla | Official Website | Direct Booking",
+    template: "%s | Brightland Hotel, Shimla",
+  },
+  description: "Book direct and save extra at Brightland Hotel, Shimla. Established 1959. Prime central location, 15-minute walk to The Mall, luxury rooms & suites with Himalayan valley views.",
   keywords: [
     "Brightland Hotel",
     "Brightland Hotel Shimla",
@@ -50,6 +53,8 @@ export const metadata: Metadata = {
     "Family Hotel Shimla",
     "Best Rates Hotel Shimla",
     "Direct Booking Hotel Shimla",
+    "Shimla Hotel Parking",
+    "Shimla Hotel Valley View",
   ],
   authors: [{ name: "Brightland Hotel Shimla" }],
   creator: "Brightland Hotel",
@@ -66,7 +71,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Brightland Hotel, Shimla | Official Website",
+    title: "Brightland Hotel, Shimla | Official Website | Direct Booking",
     description: "Book direct and save extra at Brightland Hotel, Shimla. Prime central location near The Mall, luxury rooms with Himalayan valley views.",
     url: "https://brightlandhotel.com",
     siteName: "Brightland Hotel Shimla",
@@ -77,7 +82,7 @@ export const metadata: Metadata = {
         url: "/assets/homebg.png",
         width: 1200,
         height: 630,
-        alt: "Brightland Hotel Shimla",
+        alt: "Brightland Hotel Shimla - Panoramic Mountain View",
       },
     ],
   },
@@ -87,9 +92,90 @@ export const metadata: Metadata = {
     description: "Book direct and save extra at Brightland Hotel, Shimla. Prime central location near The Mall, luxury rooms with Himalayan valley views.",
     images: ["/assets/homebg.png"],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   alternates: {
     canonical: "https://brightlandhotel.com",
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Hotel",
+  "name": "Brightland Hotel",
+  "image": "https://brightlandhotel.com/assets/homebg.png",
+  "@id": "https://brightlandhotel.com/#hotel",
+  "url": "https://brightlandhotel.com",
+  "telephone": "+91-8219200074",
+  "email": "mail@brightlandhotel.com",
+  "priceRange": "₹3800 - ₹8500",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Cart Road, Near Old ISBT",
+    "addressLocality": "Shimla",
+    "addressRegion": "Himachal Pradesh",
+    "postalCode": "171001",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 31.1048,
+    "longitude": 77.1734
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "starRating": {
+    "@type": "Rating",
+    "ratingValue": "4.5"
+  },
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Free Parking (on availability)",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Free High-Speed WiFi",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "In-house Indian Restaurant",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Panoramic Himalayan Valley Views",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Travel Desk & Sightseeing Assistance",
+      "value": true
+    }
+  ]
 };
 
 export default function RootLayout({
@@ -108,6 +194,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/assets/logo/logo.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#0a2318" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="min-h-full flex flex-col pb-16 md:pb-0">
         <Providers>
