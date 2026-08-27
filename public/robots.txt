@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Host
+Host: https://brightlandhotel.com
+
+# Sitemaps
+Sitemap: https://brightlandhotel.com/sitemap.xml

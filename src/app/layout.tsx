@@ -38,12 +38,57 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://brightlandhotel.com"),
   title: "Brightland Hotel, Shimla | Official Website",
-  description: "Book direct and save up to 15%. Brightland Hotel offers prime Shimla location, family-friendly rooms with mountain views, and easy access to local attractions.",
+  description: "Book direct and save extra at Brightland Hotel, Shimla. Prime central location, 15-minute walk to The Mall, family-friendly rooms with Himalayan valley views.",
+  keywords: [
+    "Brightland Hotel",
+    "Brightland Hotel Shimla",
+    "Hotels in Shimla",
+    "Hotel near Mall Road Shimla",
+    "Heritage Hotel Shimla",
+    "Family Hotel Shimla",
+    "Best Rates Hotel Shimla",
+    "Direct Booking Hotel Shimla",
+  ],
+  authors: [{ name: "Brightland Hotel Shimla" }],
+  creator: "Brightland Hotel",
+  publisher: "Brightland Hotel",
+  formatDetection: {
+    telephone: true,
+    address: true,
+    email: true,
+  },
   icons: {
     icon: "/assets/logo/logo.png",
     shortcut: "/assets/logo/logo.png",
     apple: "/assets/logo/logo.png",
+  },
+  manifest: "/site.webmanifest",
+  openGraph: {
+    title: "Brightland Hotel, Shimla | Official Website",
+    description: "Book direct and save extra at Brightland Hotel, Shimla. Prime central location near The Mall, luxury rooms with Himalayan valley views.",
+    url: "https://brightlandhotel.com",
+    siteName: "Brightland Hotel Shimla",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/assets/homebg.png",
+        width: 1200,
+        height: 630,
+        alt: "Brightland Hotel Shimla",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brightland Hotel, Shimla | Official Website",
+    description: "Book direct and save extra at Brightland Hotel, Shimla. Prime central location near The Mall, luxury rooms with Himalayan valley views.",
+    images: ["/assets/homebg.png"],
+  },
+  alternates: {
+    canonical: "https://brightlandhotel.com",
   },
 };
 
@@ -61,7 +106,8 @@ export default function RootLayout({
         <link rel="icon" href="/assets/logo/logo.png" type="image/png" />
         <link rel="shortcut icon" href="/assets/logo/logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/assets/logo/logo.png" />
-        <link rel="preload" as="image" href="/assets/logo/logo.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#0a2318" />
       </head>
       <body className="min-h-full flex flex-col pb-16 md:pb-0">
         <Providers>

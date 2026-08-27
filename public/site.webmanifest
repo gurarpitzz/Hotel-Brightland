@@ -1,0 +1,21 @@
+{
+  "name": "Brightland Hotel, Shimla",
+  "short_name": "Brightland Hotel",
+  "description": "Book direct and save extra at Brightland Hotel, Shimla. Prime central location near The Mall.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf8f0",
+  "theme_color": "#0a2318",
+  "icons": [
+    {
+      "src": "/assets/logo/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logo/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
