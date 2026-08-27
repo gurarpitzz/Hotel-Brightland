@@ -115,8 +115,8 @@ export default function Header() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`font-serif text-base xl:text-lg font-medium tracking-wide transition-colors hover:text-brand-green-700 whitespace-nowrap ${
-                  pathname === link.href ? "text-brand-green-800 border-b-2 border-brand-green-700 py-0.5 font-semibold" : "text-gray-700"
+                className={`font-serif text-base xl:text-lg font-bold tracking-wide transition-colors hover:text-brand-green-700 whitespace-nowrap ${
+                  pathname === link.href ? "text-brand-green-800 border-b-2 border-brand-green-700 py-0.5" : "text-gray-800"
                 }`}
               >
                 {link.name}
@@ -254,10 +254,10 @@ export default function Header() {
               key={link.name}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`block px-3 py-3 rounded-md font-serif text-xl font-medium tracking-wide ${
+              className={`block px-3 py-3 rounded-md font-serif text-xl font-bold tracking-wide ${
                 pathname === link.href
-                  ? "bg-brand-yellow-50 text-brand-green-800 font-semibold"
-                  : "text-gray-700 hover:bg-gray-50 hover:text-brand-green-700"
+                  ? "bg-brand-yellow-50 text-brand-green-800"
+                  : "text-gray-800 hover:bg-gray-50 hover:text-brand-green-700"
               }`}
             >
               {link.name}
