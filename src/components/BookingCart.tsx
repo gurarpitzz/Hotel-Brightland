@@ -1,10 +1,11 @@
 "use client";
 
-import { useBooking } from "@/context/BookingContext";
-import { X, Calendar as CalendarIcon, Users, CreditCard, ChevronDown, AlertCircle } from "lucide-react";
+import { useBooking, RoomCategory } from "@/context/BookingContext";
+import { X, Calendar as CalendarIcon, Users, CreditCard, ChevronDown, AlertCircle, Plus, Minus, Trash2, ShoppingBag } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { format, parseISO } from "date-fns";
 import React, { useState } from "react";
+import Link from "next/link";
 
 const termsAndConditions = [
   "Check-in / checkout time is 12:00 noon. Early Check in: Check in before 6:00 A.M. will be charged for 01 additional day. Check in after 6:00 A.M. will be charged 50% of room tariff (subject to availability). Late checkout: Check out after 6:00 P.M. will be charged for 01 additional day. Checkout between 12:00 noon and 6:00 P.M. will be charged 50% of room tariff. (subject to availability).",
@@ -49,8 +50,19 @@ const termsAndConditions = [
 ];
 
 export default function BookingCart() {
-  const { booking, setBooking, isCartOpen, setIsCartOpen, calculateTotal, generateWhatsAppLink } = useBooking();
-  const { nights, roomsRequired, extraBeds, baseRatePerRoom, roomCharges, extraBedCharges, total } = calculateTotal();
+  const {
+    booking,
+    setBooking,
+    isCartOpen,
+    setIsCartOpen,
+    updateQuantity,
+    removeFromCart,
+    updateItemGuests,
+    calculateTotal,
+    generateWhatsAppLink,
+  } = useBooking();
+
+  const calc = calculateTotal();
   const [isTCOpen, setIsTCOpen] = useState(false);
   const [isAgreedToTerms, setIsAgreedToTerms] = useState(false);
 
@@ -66,233 +78,405 @@ export default function BookingCart() {
     setBooking((prev) => ({ ...prev, checkOut: newDate }));
   };
 
-  const isCheckoutDisabled = booking.adults < 1 || !booking.guestName?.trim() || !isAgreedToTerms;
+  const hasItems = booking.items.length > 0;
+  const hasDates = !!booking.checkIn && !!booking.checkOut;
+  const hasGuestName = !!booking.guestName?.trim();
+
+  const isCheckoutDisabled =
+    !hasItems || !hasDates || !hasGuestName || !isAgreedToTerms;
 
   const getCheckoutDisabledMessage = () => {
-    if (booking.adults < 1) return "At least one adult is required to book";
-    if (!booking.guestName?.trim()) return "Please enter your full name";
-    if (!isAgreedToTerms) return "Please accept Terms & Conditions below to proceed";
-    return "Please complete all required details";
+    if (!hasItems) return "Your reservation cart is empty";
+    if (!hasDates) return "Please select Check-in and Check-out dates";
+    if (!hasGuestName) return "Please enter your full name";
+    if (!isAgreedToTerms) return "Please accept Hotel Rules & Terms below";
+    return "Please complete all required fields";
   };
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 overflow-hidden">
+      <div
+        className="fixed inset-0 z-50 overflow-hidden"
+        data-analytics-event="begin_checkout"
+      >
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsCartOpen(false)}
-          className="absolute inset-0 bg-brand-green-900/60 backdrop-blur-sm transition-opacity"
+          className="absolute inset-0 bg-brand-green-950/60 backdrop-blur-sm transition-opacity"
         />
 
         {/* Slide-over panel */}
-        <div className="fixed inset-y-0 right-0 flex max-w-full pl-10">
+        <div className="fixed inset-y-0 right-0 flex max-w-full pl-6 sm:pl-10">
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="w-screen max-w-md"
+            className="w-screen max-w-lg"
           >
-            <div className="flex h-full flex-col bg-brand-yellow-50 shadow-xl border-l-4 border-brand-green-700">
+            <div className="flex h-full flex-col bg-[#faf8f0] shadow-2xl border-l-4 border-brand-green-700">
               {/* Drawer Header */}
-              <div className="px-4 py-5 sm:px-6 bg-white border-b border-brand-green-100 flex items-center justify-between shrink-0">
-                <h2 className="text-2xl font-bold text-brand-green-900 font-cursive tracking-wider">
-                  Your Booking
-                </h2>
+              <div className="px-5 py-5 sm:px-6 bg-white border-b border-brand-green-100 flex items-center justify-between shrink-0">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-brand-green-50 border border-brand-green-200 flex items-center justify-center text-brand-green-800">
+                    <ShoppingBag size={20} />
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-bold text-brand-green-950 font-serif tracking-wide">
+                      Your Reservation Cart
+                    </h2>
+                    <p className="text-xs text-gray-500">
+                      {calc.totalRooms > 0
+                        ? `${calc.totalRooms} Room${calc.totalRooms > 1 ? "s" : ""} Selected`
+                        : "No rooms added yet"}
+                    </p>
+                  </div>
+                </div>
                 <button
                   type="button"
                   onClick={() => setIsCartOpen(false)}
-                  className="p-2 text-brand-green-800 hover:text-brand-green-900 rounded-full hover:bg-gray-100 transition-colors"
+                  className="p-2 text-gray-500 hover:text-brand-green-900 rounded-full hover:bg-gray-100 transition-colors"
                 >
                   <X className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
 
-              {/* Main Unified Scrollable Content Area */}
+              {/* Main Scrollable Content */}
               <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 space-y-6">
-                {/* Booking Details Form */}
-                <div className="rounded-xl border border-brand-green-200 bg-white p-6 shadow-sm">
-                  {/* Room Type */}
-                  <div className="mb-6 border-b border-gray-100 pb-4">
-                    <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">Room Selected</h3>
-                    <p className="text-xl font-bold text-brand-green-800 capitalize">
-                      {booking.roomType ? `${booking.roomType} Room` : "No Room Selected"}
-                    </p>
+                {/* Section 1: Guest Info & Stay Dates */}
+                <div className="rounded-2xl border border-brand-green-200/80 bg-white p-5 shadow-sm space-y-4">
+                  {/* Primary Guest Name */}
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-brand-green-950 mb-1.5 flex items-center gap-1.5">
+                      <Users size={14} className="text-[#c9a227]" />
+                      Primary Guest Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Enter your full name"
+                      className="w-full border border-gray-300 rounded-lg p-2.5 text-sm text-gray-900 focus:ring-2 focus:ring-brand-green-600 focus:border-brand-green-600 outline-none"
+                      value={booking.guestName || ""}
+                      onChange={(e) =>
+                        setBooking((prev) => ({ ...prev, guestName: e.target.value }))
+                      }
+                    />
                   </div>
 
-                  {/* Guest Name */}
-                  <div className="mb-6 border-b border-gray-100 pb-4 flex items-start space-x-3">
-                    <Users className="text-brand-green-700 mt-1" size={20} />
-                    <div className="w-full">
-                      <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Primary Guest</h3>
+                  {/* Dates Selection */}
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-brand-green-950 mb-1.5 flex items-center gap-1.5">
+                      <CalendarIcon size={14} className="text-[#c9a227]" />
+                      Stay Dates *
+                    </label>
+                    <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-xs font-semibold text-gray-700 mb-1">Full Name *</label>
-                        <input 
-                          type="text" 
-                          required
-                          placeholder="Enter your name"
-                          className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
-                          value={booking.guestName || ""}
-                          onChange={(e) => setBooking(prev => ({ ...prev, guestName: e.target.value }))}
+                        <span className="block text-[11px] font-semibold text-gray-600 mb-1">
+                          Check-in
+                        </span>
+                        <input
+                          type="date"
+                          className="w-full border border-gray-300 rounded-lg p-2 text-xs text-gray-900 focus:ring-2 focus:ring-brand-green-600 outline-none"
+                          value={
+                            booking.checkIn ? format(booking.checkIn, "yyyy-MM-dd") : ""
+                          }
+                          onChange={handleCheckInChange}
+                        />
+                      </div>
+                      <div>
+                        <span className="block text-[11px] font-semibold text-gray-600 mb-1">
+                          Check-out
+                        </span>
+                        <input
+                          type="date"
+                          className="w-full border border-gray-300 rounded-lg p-2 text-xs text-gray-900 focus:ring-2 focus:ring-brand-green-600 outline-none"
+                          value={
+                            booking.checkOut ? format(booking.checkOut, "yyyy-MM-dd") : ""
+                          }
+                          onChange={handleCheckOutChange}
                         />
                       </div>
                     </div>
-                  </div>
-
-                  {/* Dates with Inputs */}
-                  <div className="mb-6 border-b border-gray-100 pb-4 flex items-start space-x-3">
-                    <CalendarIcon className="text-brand-green-700 mt-1" size={20} />
-                    <div className="w-full">
-                      <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Stay Dates</h3>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-xs font-semibold text-gray-700 mb-1">Check-in</label>
-                          <input 
-                            type="date" 
-                            className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
-                            value={booking.checkIn ? format(booking.checkIn, "yyyy-MM-dd") : ""}
-                            onChange={handleCheckInChange}
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-semibold text-gray-700 mb-1">Check-out</label>
-                          <input 
-                            type="date" 
-                            className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
-                            value={booking.checkOut ? format(booking.checkOut, "yyyy-MM-dd") : ""}
-                            onChange={handleCheckOutChange}
-                          />
-                        </div>
-                      </div>
-                      {nights > 0 && (
-                        <p className="text-sm text-brand-green-700 mt-3 font-medium bg-brand-green-50 inline-block px-2 py-0.5 rounded">
-                          {nights} Night{nights > 1 ? 's' : ''} Stay
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Guests with Inputs */}
-                  <div className="mb-6 border-b border-gray-100 pb-4 flex items-start space-x-3">
-                    <Users className="text-brand-green-700 mt-1" size={20} />
-                    <div className="w-full">
-                      <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Guests</h3>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-xs font-semibold text-gray-700 mb-1">Adults</label>
-                          <input 
-                            type="number" 
-                            min="1"
-                            className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
-                            value={booking.adults}
-                            onChange={(e) => setBooking(prev => ({ ...prev, adults: parseInt(e.target.value) || 0 }))}
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-semibold text-gray-700 mb-1">Children (5+ yrs)</label>
-                          <input 
-                            type="number" 
-                            min="0"
-                            className="w-full border border-gray-300 rounded-md p-2 text-sm text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
-                            value={booking.children}
-                            onChange={(e) => setBooking(prev => ({ ...prev, children: parseInt(e.target.value) || 0 }))}
-                          />
-                        </div>
-                      </div>
-                      <p className="text-[10px] text-gray-500 mt-2 italic">Children below 5 years stay free without an extra bed.</p>
-                    </div>
-                  </div>
-
-                  {/* Pricing Breakdown */}
-                  <div className="flex items-start space-x-3">
-                    <CreditCard className="text-brand-green-700 mt-1" size={20} />
-                    <div className="w-full">
-                      <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Estimated Charges</h3>
-                      {booking.roomType && booking.adults >= 1 ? (
-                        <div className="bg-gray-50 rounded-lg p-3 w-full border border-gray-100">
-                          <div className="flex justify-between text-sm text-gray-600 mb-1">
-                            <span>Rooms Required</span>
-                            <span className="font-medium text-gray-900">{roomsRequired}</span>
-                          </div>
-                          <div className="flex justify-between text-sm text-gray-600 mb-1">
-                            <span>Extra Beds Required</span>
-                            <span className="font-medium text-gray-900">{extraBeds}</span>
-                          </div>
-                          <div className="my-2 border-t border-gray-200"></div>
-                          <div className="flex justify-between text-sm text-gray-600 mb-1">
-                            <span>Room Charges</span>
-                            <span>₹{roomCharges}</span>
-                          </div>
-                          {extraBedCharges > 0 && (
-                            <div className="flex justify-between text-sm text-gray-600 mb-2">
-                              <span>Extra Bed Charges</span>
-                              <span>₹{extraBedCharges}</span>
-                            </div>
-                          )}
-                          <div className="flex justify-between text-lg font-bold text-brand-green-900 pt-2 border-t border-gray-200 mt-2">
-                            <span>Total Estimate</span>
-                            <span>₹{total}</span>
-                          </div>
-                        </div>
-                      ) : (
-                        <p className="text-sm text-red-500 italic">Please select a room and at least 1 adult to see pricing.</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Terms Accordion & Mandatory Checkbox */}
-                <div className="rounded-xl border border-brand-green-200 bg-white p-5 shadow-sm">
-                  <button 
-                    onClick={() => setIsTCOpen(!isTCOpen)}
-                    className="flex items-center justify-between w-full text-left text-xs font-bold text-gray-800 uppercase tracking-wider hover:text-brand-green-800 transition-colors"
-                  >
-                    <span>Hotel Rules & Terms & Conditions</span>
-                    <ChevronDown className={`w-4 h-4 transform transition-transform ${isTCOpen ? 'rotate-180' : ''}`} />
-                  </button>
-
-                  <AnimatePresence>
-                    {isTCOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="mt-3 text-xs text-gray-700 border border-gray-300 rounded-xl p-3.5 bg-gray-50 leading-relaxed max-h-56 overflow-y-auto space-y-3 shadow-inner">
-                          <p className="font-semibold text-brand-green-900 text-xs border-b border-gray-200 pb-2">
-                            Please scroll through and review all hotel rules and regulations:
-                          </p>
-                          <ol className="list-decimal pl-4 space-y-2.5">
-                            {termsAndConditions.map((term, index) => (
-                              <li key={index} className="pl-1 text-[11px] text-gray-700 leading-normal">
-                                {term}
-                              </li>
-                            ))}
-                          </ol>
-                        </div>
-                      </motion.div>
+                    {calc.nights > 0 && (
+                      <p className="text-xs text-brand-green-800 font-semibold bg-brand-green-50/80 border border-brand-green-200 mt-2 px-3 py-1 rounded-md inline-block">
+                        {calc.nights} Night{calc.nights > 1 ? "s" : ""} Stay
+                      </p>
                     )}
-                  </AnimatePresence>
-
-                  {/* Mandatory Checkbox */}
-                  <label className="flex items-start gap-3 mt-4 p-3.5 bg-amber-50 border border-amber-200 rounded-xl cursor-pointer select-none hover:bg-amber-100/80 transition-colors">
-                    <input
-                      type="checkbox"
-                      checked={isAgreedToTerms}
-                      onChange={(e) => setIsAgreedToTerms(e.target.checked)}
-                      className="mt-0.5 h-4 w-4 rounded border-gray-400 text-brand-green-700 focus:ring-brand-green-500 cursor-pointer shrink-0"
-                    />
-                    <span className="text-xs font-semibold text-gray-900 leading-snug">
-                      I have read, understood, and accept all <strong className="font-bold text-brand-green-900">Hotel Rules & Terms and Conditions</strong>.
-                    </span>
-                  </label>
+                  </div>
                 </div>
 
-                {/* WhatsApp Action Button */}
+                {/* Section 2: Selected Rooms (Cart Items) */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-brand-green-950">
+                      Selected Rooms ({booking.items.length})
+                    </h3>
+                    <Link
+                      href="/rooms"
+                      onClick={() => setIsCartOpen(false)}
+                      className="text-xs font-bold text-[#9e7c15] hover:underline flex items-center gap-1"
+                    >
+                      + Add Another Room
+                    </Link>
+                  </div>
+
+                  {!hasItems ? (
+                    <div className="rounded-2xl border border-dashed border-gray-300 bg-white p-8 text-center space-y-3">
+                      <ShoppingBag className="mx-auto h-10 w-10 text-gray-300" />
+                      <p className="text-sm font-semibold text-gray-600">
+                        Your reservation cart is currently empty.
+                      </p>
+                      <Link
+                        href="/rooms"
+                        onClick={() => setIsCartOpen(false)}
+                        className="inline-block bg-brand-green-900 text-brand-yellow-50 px-6 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-brand-green-950 transition-colors shadow-sm"
+                      >
+                        Explore Rooms & Suites
+                      </Link>
+                    </div>
+                  ) : (
+                    calc.itemsBreakdown.map(
+                      ({
+                        item,
+                        itemExtraBeds,
+                        itemRoomCharges,
+                        itemExtraBedCharges,
+                        itemTotal,
+                        isOverCapacity,
+                      }) => (
+                        <div
+                          key={item.id}
+                          className="rounded-2xl border border-brand-green-200/80 bg-white p-4 shadow-sm space-y-3 relative overflow-hidden"
+                        >
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <h4 className="font-bold text-brand-green-950 text-sm sm:text-base font-serif">
+                                {item.roomName}
+                              </h4>
+                              <p className="text-xs text-gray-600">
+                                ₹{item.baseRatePerRoom.toLocaleString("en-IN")} / night
+                              </p>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => removeFromCart(item.id)}
+                              aria-label={`Remove ${item.roomName} from reservation`}
+                              className="text-gray-400 hover:text-red-600 transition-colors p-1 rounded-md hover:bg-red-50"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </div>
+
+                          {/* Room Quantity Controls */}
+                          <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+                            <span className="text-xs font-semibold text-gray-700">
+                              Number of Rooms:
+                            </span>
+                            <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden bg-gray-50">
+                              <button
+                                type="button"
+                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                aria-label={`Decrease ${item.roomName} quantity`}
+                                className="p-1.5 text-gray-600 hover:text-brand-green-900 hover:bg-gray-200 transition-colors"
+                              >
+                                <Minus size={14} />
+                              </button>
+                              <span className="px-3 text-xs font-bold text-brand-green-950">
+                                {item.quantity}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                aria-label={`Increase ${item.roomName} quantity`}
+                                className="p-1.5 text-gray-600 hover:text-brand-green-900 hover:bg-gray-200 transition-colors"
+                              >
+                                <Plus size={14} />
+                              </button>
+                            </div>
+                          </div>
+
+                          {/* Guest Capacity for this room item */}
+                          <div className="grid grid-cols-2 gap-3 pt-2 border-t border-gray-100">
+                            <div>
+                              <label className="block text-[11px] font-semibold text-gray-600 mb-1">
+                                Adults
+                              </label>
+                              <input
+                                type="number"
+                                min="1"
+                                className="w-full border border-gray-300 rounded-md p-1.5 text-xs text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
+                                value={item.adults}
+                                onChange={(e) =>
+                                  updateItemGuests(
+                                    item.id,
+                                    parseInt(e.target.value) || 1,
+                                    item.children
+                                  )
+                                }
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-[11px] font-semibold text-gray-600 mb-1">
+                                Children (5+ yrs)
+                              </label>
+                              <input
+                                type="number"
+                                min="0"
+                                className="w-full border border-gray-300 rounded-md p-1.5 text-xs text-gray-900 focus:ring-brand-green-500 focus:border-brand-green-500"
+                                value={item.children}
+                                onChange={(e) =>
+                                  updateItemGuests(
+                                    item.id,
+                                    item.adults,
+                                    parseInt(e.target.value) || 0
+                                  )
+                                }
+                              />
+                            </div>
+                          </div>
+
+                          {/* Item Capacity Warning & Extra Bed calculation */}
+                          {isOverCapacity ? (
+                            <div className="p-2.5 rounded-lg bg-red-50 border border-red-200 flex items-start gap-2 text-[11px] text-red-800">
+                              <AlertCircle size={15} className="shrink-0 mt-0.5" />
+                              <span>
+                                Guest count ({item.adults + item.children}) exceeds max capacity for {item.quantity} {item.roomName}. Please add another room.
+                              </span>
+                            </div>
+                          ) : itemExtraBeds > 0 ? (
+                            <p className="text-[11px] text-amber-800 bg-amber-50 p-2 rounded-lg border border-amber-200">
+                              Requires <strong>{itemExtraBeds} Extra Bed</strong> (@ ₹900/night).
+                            </p>
+                          ) : null}
+
+                          {/* Item Subtotal Calculation */}
+                          <div className="flex justify-between items-center text-xs font-bold text-brand-green-950 pt-2 border-t border-gray-100">
+                            <span>Item Subtotal ({calc.nights || 1} Night{calc.nights > 1 ? "s" : ""})</span>
+                            <span>₹{itemTotal.toLocaleString("en-IN")}</span>
+                          </div>
+                        </div>
+                      )
+                    )
+                  )}
+                </div>
+
+                {/* Section 3: Summary Pricing Breakdown */}
+                {hasItems && (
+                  <div className="rounded-2xl border border-brand-green-200/80 bg-white p-5 shadow-sm space-y-3">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-brand-green-950 flex items-center gap-1.5">
+                      <CreditCard size={14} className="text-[#c9a227]" />
+                      Estimated Summary Charges
+                    </h3>
+                    <div className="space-y-2 text-xs text-gray-700">
+                      <div className="flex justify-between">
+                        <span>Total Rooms</span>
+                        <span className="font-semibold text-gray-900">{calc.totalRooms}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Total Guests</span>
+                        <span className="font-semibold text-gray-900">
+                          {calc.totalAdults} Adults
+                          {calc.totalChildren > 0 ? `, ${calc.totalChildren} Child (5+)` : ""}
+                        </span>
+                      </div>
+                      {calc.totalExtraBeds > 0 && (
+                        <div className="flex justify-between">
+                          <span>Total Extra Beds</span>
+                          <span className="font-semibold text-amber-800">
+                            {calc.totalExtraBeds} Bed{calc.totalExtraBeds > 1 ? "s" : ""}
+                          </span>
+                        </div>
+                      )}
+                      <div className="border-t border-gray-100 pt-2 flex justify-between">
+                        <span>Room Charges</span>
+                        <span className="font-semibold">
+                          ₹{calc.estimatedRoomCharges.toLocaleString("en-IN")}
+                        </span>
+                      </div>
+                      {calc.estimatedExtraBedCharges > 0 && (
+                        <div className="flex justify-between text-amber-800">
+                          <span>Extra Bed Charges</span>
+                          <span className="font-semibold">
+                            ₹{calc.estimatedExtraBedCharges.toLocaleString("en-IN")}
+                          </span>
+                        </div>
+                      )}
+                      <div className="border-t border-gray-200 pt-2 flex justify-between text-base font-bold text-brand-green-950">
+                        <span>Grand Estimated Total</span>
+                        <span className="text-brand-green-800">
+                          ₹{calc.grandTotal.toLocaleString("en-IN")}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Section 4: Terms Accordion & Mandatory Checkbox */}
+                {hasItems && (
+                  <div className="rounded-2xl border border-brand-green-200/80 bg-white p-5 shadow-sm">
+                    <button
+                      type="button"
+                      onClick={() => setIsTCOpen(!isTCOpen)}
+                      className="flex items-center justify-between w-full text-left text-xs font-bold text-gray-800 uppercase tracking-wider hover:text-brand-green-800 transition-colors"
+                    >
+                      <span>Hotel Rules & Terms & Conditions</span>
+                      <ChevronDown
+                        className={`w-4 h-4 transform transition-transform ${
+                          isTCOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    <AnimatePresence>
+                      {isTCOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="mt-3 text-xs text-gray-700 border border-gray-300 rounded-xl p-3.5 bg-gray-50 leading-relaxed max-h-56 overflow-y-auto space-y-3 shadow-inner">
+                            <p className="font-semibold text-brand-green-900 text-xs border-b border-gray-200 pb-2">
+                              Please scroll through and review all hotel rules and regulations:
+                            </p>
+                            <ol className="list-decimal pl-4 space-y-2.5">
+                              {termsAndConditions.map((term, index) => (
+                                <li
+                                  key={index}
+                                  className="pl-1 text-[11px] text-gray-700 leading-normal"
+                                >
+                                  {term}
+                                </li>
+                              ))}
+                            </ol>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    {/* Mandatory Checkbox */}
+                    <label className="flex items-start gap-3 mt-4 p-3.5 bg-amber-50 border border-amber-200 rounded-xl cursor-pointer select-none hover:bg-amber-100/80 transition-colors">
+                      <input
+                        type="checkbox"
+                        checked={isAgreedToTerms}
+                        onChange={(e) => setIsAgreedToTerms(e.target.checked)}
+                        className="mt-0.5 h-4 w-4 rounded border-gray-400 text-brand-green-700 focus:ring-brand-green-500 cursor-pointer shrink-0"
+                      />
+                      <span className="text-xs font-semibold text-gray-900 leading-snug">
+                        I have read, understood, and accept all{" "}
+                        <strong className="font-bold text-brand-green-900">
+                          Hotel Rules & Terms and Conditions
+                        </strong>
+                        .
+                      </span>
+                    </label>
+                  </div>
+                )}
+
+                {/* Section 5: WhatsApp Action Button */}
                 <div className="pb-6">
                   {isCheckoutDisabled ? (
                     <div className="flex items-center justify-center rounded-xl border border-red-700 bg-red-600 px-4 py-4 text-xs font-bold text-white cursor-not-allowed text-center leading-snug shadow-md">
@@ -304,7 +488,8 @@ export default function BookingCart() {
                       href={generateWhatsAppLink()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center rounded-xl border border-transparent bg-brand-green-700 px-4 py-4 text-sm font-bold text-white shadow-lg hover:bg-brand-green-800 transition-all transform hover:scale-[1.02] text-center leading-snug"
+                      data-analytics-event="whatsapp_booking_click"
+                      className="flex items-center justify-center rounded-xl border border-transparent bg-brand-green-800 px-4 py-4 text-sm font-bold text-white shadow-lg hover:bg-brand-green-900 transition-all transform hover:scale-[1.02] text-center leading-snug"
                     >
                       Continue to WhatsApp to Book Room &rarr;
                     </a>
