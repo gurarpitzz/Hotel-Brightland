@@ -110,12 +110,12 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-brand-green-700 ${
+                className={`text-xs xl:text-sm font-semibold transition-colors hover:text-brand-green-700 whitespace-nowrap ${
                   pathname === link.href ? "text-brand-green-800 border-b-2 border-brand-green-700 py-1" : "text-gray-600"
                 }`}
               >
@@ -125,24 +125,12 @@ export default function Header() {
           </nav>
 
           {/* Desktop CTA with Slide-Down Popover & Cart Icon */}
-          <div className="hidden md:flex items-center gap-3">
-            <button
-              onClick={() => setIsCartOpen(true)}
-              className="relative p-2.5 text-brand-green-900 hover:bg-brand-green-50 rounded-full transition-colors border border-brand-green-200"
-              aria-label="View Reservation Cart"
-            >
-              <ShoppingBag size={22} />
-              {calc.totalRooms > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#c9a227] text-brand-green-950 font-extrabold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
-                  {calc.totalRooms}
-                </span>
-              )}
-            </button>
-
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
+            {/* 1. Book via WhatsApp Button (Left) */}
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsOfferDropdownOpen(!isOfferDropdownOpen)}
-                className="bg-brand-green-700 hover:bg-brand-green-800 text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow-md flex items-center gap-2"
+                className="bg-brand-green-700 hover:bg-brand-green-800 text-white px-5 py-2.5 rounded-full font-bold text-xs xl:text-sm transition-all shadow-md flex items-center gap-1.5 whitespace-nowrap"
               >
                 <span>Book via WhatsApp (Save Extra)</span>
                 <ChevronDown 
@@ -217,10 +205,24 @@ export default function Header() {
                 )}
               </AnimatePresence>
             </div>
+
+            {/* 2. Cart Icon Button (Right of WhatsApp Button) */}
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2.5 text-brand-green-900 hover:bg-brand-green-50 rounded-full transition-all border border-brand-green-300 hover:border-brand-green-700 shadow-sm shrink-0"
+              aria-label="View Reservation Cart"
+            >
+              <ShoppingBag size={22} />
+              {calc.totalRooms > 0 && (
+                <span className="absolute -top-1 -right-1 bg-[#c9a227] text-brand-green-950 font-extrabold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-md">
+                  {calc.totalRooms}
+                </span>
+              )}
+            </button>
           </div>
 
           {/* Mobile menu & Cart buttons */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-2">
             <button
               onClick={() => setIsCartOpen(true)}
               className="relative p-2 text-brand-green-900 hover:bg-brand-green-50 rounded-full transition-colors border border-brand-green-200"
@@ -246,7 +248,7 @@ export default function Header() {
 
       {/* Mobile Menu Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-24 space-y-1 shadow-2xl fixed inset-x-0 top-16 sm:top-20 bottom-0 z-50 overflow-y-auto">
+        <div className="lg:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-24 space-y-1 shadow-2xl fixed inset-x-0 top-16 sm:top-20 bottom-0 z-50 overflow-y-auto">
           {navLinks.map((link) => (
             <Link
               key={link.name}
