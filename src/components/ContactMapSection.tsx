@@ -150,18 +150,39 @@ export default function ContactMapSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="lg:col-span-6 space-y-8"
           >
-            {/* Embedded Google Map with Rounded Border Shadow */}
-            <div className="w-full h-[380px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white relative">
-              <iframe 
-                src="https://maps.google.com/maps?q=Brightland+Hotel,+Shimla&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Brightland Hotel Location Map"
-              />
+            {/* Embedded Google Map with Rounded Border Shadow & Directions CTA */}
+            <div className="space-y-2">
+              <div className="w-full h-[360px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white relative">
+                <iframe 
+                  src="https://maps.google.com/maps?q=Brightland+Hotel,+Shimla&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Brightland Hotel Location Map"
+                />
+              </div>
+
+              <div className="pt-1 flex items-center justify-between text-xs px-1">
+                <span className="font-semibold text-[#1b3d2f]">📍 Near Army Training Command & Mall Road</span>
+                <a 
+                  href="https://maps.app.goo.gl/aBS4dAoDwjUdKePy5" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  data-analytics-event="directions_click"
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      (window as any).dataLayer = (window as any).dataLayer || [];
+                      (window as any).dataLayer.push({ event: "directions_click" });
+                    }
+                  }}
+                  className="font-extrabold text-[#3d2c23] hover:text-[#1b3d2f] uppercase tracking-wider underline flex items-center gap-1"
+                >
+                  <span>Open in Google Maps App →</span>
+                </a>
+              </div>
             </div>
 
             {/* Address & Quick Contact Details */}
