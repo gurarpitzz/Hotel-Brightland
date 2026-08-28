@@ -68,9 +68,22 @@ export default function BookingCart() {
 
   useEffect(() => {
     if (isCartOpen && typeof window !== "undefined") {
+      const items = booking.items.map((item) => ({
+        item_id: item.id,
+        item_name: item.roomName,
+        item_category: "Hotel Room",
+        price: item.baseRatePerRoom,
+        quantity: item.quantity,
+      }));
+
       (window as any).dataLayer = (window as any).dataLayer || [];
       (window as any).dataLayer.push({
         event: "begin_checkout",
+        ecommerce: {
+          currency: "INR",
+          value: calc.grandTotal,
+          items: items,
+        },
         cart_total_rooms: calc.totalRooms,
         cart_estimated_total: calc.grandTotal,
       });
@@ -502,10 +515,34 @@ export default function BookingCart() {
                       data-analytics-event="whatsapp_booking_click"
                       onClick={() => {
                         if (typeof window !== "undefined") {
+                          const items = booking.items.map((item) => ({
+                            item_id: item.id,
+                            item_name: item.roomName,
+                            item_category: "Hotel Room",
+                            price: item.baseRatePerRoom,
+                            quantity: item.quantity,
+                          }));
+
                           (window as any).dataLayer = (window as any).dataLayer || [];
                           (window as any).dataLayer.push({
                             event: "whatsapp_booking_click",
+                            ecommerce: {
+                              currency: "INR",
+                              value: calc.grandTotal,
+                              items: items,
+                            },
+                            cart_total_rooms: calc.totalRooms,
+                            cart_estimated_total: calc.grandTotal,
                           });
+
+                          if (typeof (window as any).fbq === "function") {
+                            (window as any).fbq("track", "InitiateCheckout", {
+                              content_name: "Multi-Room Booking Enquiry",
+                              num_items: calc.totalRooms,
+                              value: calc.grandTotal,
+                              currency: "INR",
+                            });
+                          }
                         }
                       }}
                       className="flex items-center justify-center rounded-xl border border-transparent bg-brand-green-800 px-4 py-4 text-sm font-bold text-white shadow-lg hover:bg-brand-green-900 transition-all transform hover:scale-[1.02] text-center leading-snug"

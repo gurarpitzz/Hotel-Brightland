@@ -22,10 +22,35 @@ export default function RoomBookButton({ roomType, baseRate }: RoomBookButtonPro
 
     if (typeof window !== "undefined") {
       (window as any).dataLayer = (window as any).dataLayer || [];
+      
+      const ecommerceItem = {
+        item_id: mappedType,
+        item_name: roomType,
+        item_category: "Hotel Room",
+        price: baseRate,
+        quantity: 1,
+      };
+
       (window as any).dataLayer.push({
         event: "add_to_cart",
+        ecommerce: {
+          currency: "INR",
+          value: baseRate,
+          items: [ecommerceItem],
+        },
         room_type: roomType,
+        price: baseRate,
       });
+
+      if (typeof (window as any).fbq === "function") {
+        (window as any).fbq("track", "AddToCart", {
+          content_name: roomType,
+          content_category: "Hotel Room",
+          content_ids: [mappedType],
+          value: baseRate,
+          currency: "INR",
+        });
+      }
     }
   };
 
