@@ -297,6 +297,13 @@ export default function ContactClient() {
                 href="https://maps.app.goo.gl/aBS4dAoDwjUdKePy5"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-analytics-event="directions_click"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    (window as any).dataLayer = (window as any).dataLayer || [];
+                    (window as any).dataLayer.push({ event: "directions_click" });
+                  }
+                }}
                 className="w-full inline-flex items-center justify-center gap-2 font-semibold text-xs uppercase tracking-[0.18em] py-3 px-4 rounded-md shadow-sm bg-brand-green-900 hover:bg-brand-green-950 text-brand-yellow-50 hover:text-[#c9a227] border border-[#c9a227]/40 transition-colors"
               >
                 <Navigation size={15} />
@@ -438,6 +445,13 @@ export default function ContactClient() {
                   href="https://maps.app.goo.gl/aBS4dAoDwjUdKePy5" 
                   target="_blank" 
                   rel="noopener noreferrer"
+                  data-analytics-event="directions_click"
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      (window as any).dataLayer = (window as any).dataLayer || [];
+                      (window as any).dataLayer.push({ event: "directions_click" });
+                    }
+                  }}
                   className="font-bold text-[#c9a227] uppercase tracking-wider hover:underline"
                 >
                   Open in Google Maps App →

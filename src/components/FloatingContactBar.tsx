@@ -28,6 +28,13 @@ export default function FloatingContactBar() {
           href="https://maps.app.goo.gl/aBS4dAoDwjUdKePy5" 
           target="_blank"
           rel="noopener noreferrer"
+          data-analytics-event="directions_click"
+          onClick={() => {
+            if (typeof window !== "undefined") {
+              (window as any).dataLayer = (window as any).dataLayer || [];
+              (window as any).dataLayer.push({ event: "directions_click" });
+            }
+          }}
           className="flex flex-col items-center justify-center text-brand-green-800 hover:bg-brand-yellow-50 transition-colors"
         >
           <MapPin size={20} className="mb-1" />

@@ -176,6 +176,13 @@ export default function Home() {
                     href="https://maps.app.goo.gl/aBS4dAoDwjUdKePy5"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-analytics-event="directions_click"
+                    onClick={() => {
+                      if (typeof window !== "undefined") {
+                        (window as any).dataLayer = (window as any).dataLayer || [];
+                        (window as any).dataLayer.push({ event: "directions_click" });
+                      }
+                    }}
                     className="inline-flex items-center gap-2 bg-brand-green-900 hover:bg-brand-green-950 text-[#c9a227] border border-[#c9a227]/40 px-6 py-3 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all shadow-md transform hover:scale-105"
                   >
                     <Navigation size={14} />
